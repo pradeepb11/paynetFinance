@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Global icon font
+@import "./assets/fonts/feather/style.css";
+// // 3rd party plugins
+@import "~@mdi/font/css/materialdesignicons.min.css";
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import '~animate.css/animate.min.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~metismenujs/scss/metismenujs";
+@import '~simple-datatables/dist/style.css';
+// ngx-toaster
+// NobleUI styles for LTR
+@import "./assets/scss/style";
+body {
+    background-color: #fff;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border-color: red
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.bg-primary-gradient {
+    background-image: linear-gradient(to left, #4169e1 0%, #4169e1e3 100%) !important;
+    // color: #fff;
+}
+
+.card-img-holder {
+    position: relative;
+    .card-img-absolute {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        opacity: 0.7;
+    }
+}
+
+nav {
+    #sidebar-menu {
+        .nav-item {
+            .active {
+                color: #c96522;
+                box-shadow: 1px 2px 9px 1px #e1e1e1;
+                &::before {
+                    // content: '';
+                    // width: 3px;
+                    // height: 26px;
+                    // background: #c96522;
+                    // position: absolute;
+                    // left: -25px;
+                    // top: 11px;
+                    content: "";
+                    width: 3px;
+                    height: 40px;
+                    background: #c96522;
+                    position: absolute;
+                    left: -7px;
+                    top: 0;
+                }
+                .link-icon {
+                    fill: rgba(239, 243, 255, .5);
+                    color: #c96522;
+                }
+            }
+        }
+    }
+}

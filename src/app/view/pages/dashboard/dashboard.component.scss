@@ -1,0 +1,56 @@
+.bb-1 {
+    border-bottom: 1px solid #4169e1 !important;
+}
+
+.transtion-list {
+    background-color: #6571ff;
+    padding: 18px 8px 0;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.fulltransbody {
+    margin: 64px 0 !important;
+}
+
+.trans-list-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 0px;
+    cursor: pointer;
+    .trans-list-detail {
+        width: calc(100% - 40px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1;
+        .content {
+            overflow: hidden;
+            .from {
+                display: block;
+                margin: 0 0 1px 0;
+                color: #fff;
+                font-weight: bold;
+            }
+            .msg {
+                width: 97%;
+                color: #fff;
+                font-size: .8rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        .amt {
+            color: #fff;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+    }
+}
+
+.perfect-scrollbar-example {
+    position: relative;
+    max-height: 323px;
+}

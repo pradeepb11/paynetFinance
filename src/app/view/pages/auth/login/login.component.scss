@@ -1,0 +1,185 @@
+.brand_company {
+    padding: 20px 0;
+}
+
+#loginCon {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    &::before {
+        position: absolute;
+        content: "";
+        z-index: -9;
+        // top: 0;
+        // left: 0;
+        top: 0;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        // background-color: #151e67;
+        background: url('../../../../../assets/images/Background_orng.svg') no-repeat;
+        background-position: center;
+        background-size: cover;
+        // opacity: 0.6;
+    }
+    // &::after {
+    //     position: absolute;
+    //     content: "";
+    //     z-index: -9;
+    //     // top: 0;
+    //     // left: 0;
+    //     top: 0;
+    //     right: 0px;
+    //     width: 100%;
+    //     height: 100%;
+    //     // background-color: #151e67;
+    //     // background: url('../../../../../assets//images/corner-2.png') no-repeat;
+    //     background-position: right;
+    //     background-size: cover;
+    //     opacity: 0.6;
+    // }
+    .login_box {
+        width: 100%;
+        min-height: 89vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1;
+        // background-image: url('https://colorlib.com/etc/lf/Login_v12/images/img-01.jpg');
+        .wrap_login {
+            // width: 390px;
+            width: 350px;
+            // background: #ffffffe3;
+            background: #fff;
+            // background: #ffffffb0;
+            // font-size: 1rem;
+            font-size: 0.9rem;
+            position: relative;
+            .login-menu {
+                position: absolute;
+                right: -140px;
+                top: 0;
+                padding: 0;
+                margin: 0;
+                li {
+                    display: block;
+                    list-style-type: none;
+                    text-align: center;
+                    margin-top: 20px;
+                    a {
+                        padding: 12px 5px;
+                        display: inline-block;
+                    }
+                }
+            }
+            .gray-login {
+                position: relative;
+                right: 0px;
+                a {
+                    background: #a2aeba;
+                    border-radius: 0 10px 10px 0;
+                    width: 125px;
+                    &:hover {
+                        background: #bbc5ce;
+                    }
+                }
+            }
+            .blue-login {
+                position: relative;
+                left: 15px;
+                a {
+                    // background: #0f5ef7;
+                    background: #6571ff;
+                    border-radius: 0 10px 10px 0;
+                    width: 155px;
+                    color: #fff;
+                    &:hover {
+                        background: #417ef6;
+                    }
+                }
+            }
+            .brand_company {
+                width: 150px;
+                // position: absolute;
+                margin: 0 auto;
+                margin-bottom: 20px;
+            }
+            label {
+                font-size: 0.9rem;
+            }
+            .divider:after,
+            .divider:before {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #c1c1c1;
+            }
+        }
+    }
+}
+
+.brandCaptialW {
+    text-shadow: 0px 1px 2px #383636;
+    color: #275c9a;
+}
+
+.brand-link {
+    color: #ee8035;
+}
+
+.posrelative {
+    position: relative;
+}
+
+.posabso {
+    position: absolute;
+}
+
+.iconsright {
+    top: 45px;
+    right: 14px;
+}
+
+@media (max-width: 767px) {
+    .login-menu {
+        position: relative !important;
+        width: 100%;
+        display: block;
+        right: 0 !important;
+        li {
+            margin-bottom: 30px ​!important;
+            a {
+                border-radius: 10px !important;
+            }
+        }
+    }
+}
+
+.dark-shadow {
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 51%) !important;
+}
+
+.btn-b-dark {
+    background-color: #275c9a;
+}
+
+.text-darkb {
+    color: #275c9a;
+}
+
+.color-Orange {
+    color: #ee8035;
+}
+
+.loginHeader {
+    color: #ee8035;
+    font-weight: bold;
+    font-size: 23px;
+}
