@@ -8,7 +8,7 @@
     }
 }
 
-.invoicedetails {
+.addproccingDetails {
     // display: none;
     position: fixed;
     top: 58px !important;
@@ -46,6 +46,12 @@
     }
 }
 
-.fz13{
-    font-size: 12px;;
+.fz13 {
+    font-size: 12px;
+    ;
+}
+
+.perfect-scrollbar-example {
+    position: relative;
+    max-height: 600px;
 }

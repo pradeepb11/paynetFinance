@@ -41,13 +41,13 @@
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td><i class="mdi mdi mdi-close text-danger"></i> </td>
                                         <td>30th April 2022 10:18 </td>
-                                        <td> 
-                                        <a class="ms-1">
-                                        <span class="badge bg-primary">
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
                                         <em class="mdi mdi-lead-pencil"></em>
                                         </span>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -58,13 +58,13 @@
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td>30th April 2022 10:18 </td>
-                                        <td> 
-                                        <a class="ms-1">
-                                        <span class="badge bg-primary">
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
                                         <em class="mdi mdi-lead-pencil"></em>
                                         </span>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -75,13 +75,13 @@
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td>30th April 2022 10:18 </td>
-                                        <td> 
-                                        <a class="ms-1">
-                                        <span class="badge bg-primary">
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
                                         <em class="mdi mdi-lead-pencil"></em>
                                         </span>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -92,13 +92,13 @@
                                         <td><i class="mdi mdi mdi-close text-danger"></i> </td>
                                         <td><i class="mdi mdi-check text-success"></i> </td>
                                         <td>30th April 2022 10:18 </td>
-                                        <td> 
-                                        <a class="ms-1">
-                                        <span class="badge bg-primary">
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
                                         <em class="mdi mdi-lead-pencil"></em>
                                         </span>
-                                        </a>
-                                    </td>
+                                            </a>
+                                        </td>
                                     </tr>
 
 
@@ -119,66 +119,44 @@
 
 
 
-<div class="invoicedetails" *ngIf="addbankPage">
+<div class="addproccingDetails" *ngIf="addbankPage">
     <div class="card cardA">
         <div class="card-header align-items-center d-flex justify-content-between">
-            <h3> Add Paymnet Processor</h3>
+            <h3> Add Payment Processor</h3>
             <button type="button" class="btn-close float-end closebtn" (click)="cloneAddBank()" aria-label="Close"></button>
         </div>
-        <div class="card-body ">
-            <form>
+        <div class="card-body perfect-scrollbar-example" [perfectScrollbar]>
+            <form [formGroup]="addproccingForm" (ngSubmit)="addproccingSubmit()">
 
                 <div class="row">
 
 
-                    <input type="hidden" name="" formControlName="paynet_merchant_id">
+
                     <div class="col-sm-12 mb-3">
                         <div class="form-group list-filter-item">
                             <label>Processor Name</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name">
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
 
                         </div>
                     </div>
 
-                    <div class="col-sm-12 mb-3 d-flex">
-                        <div class="mb-3 form-check form-switch me-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="CreditCard" >
-                            <label class="form-check-label fz13" for="CreditCard">Credit Card</label>
-                          </div>
-                          <div class="mb-3 form-check form-switch me-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="DEBITCARD" >
-                            <label class="form-check-label fz13" for="DEBITCARD">DEBIT CARD</label>
-                          </div>
-                          <div class="mb-3 form-check form-switch me-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="NETBANKING" >
-                            <label class="form-check-label fz13" for="NETBANKING">NET BANKING</label>
-                          </div>
-                          <div class="mb-3 form-check form-switch me-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="THIRDPARTY" >
-                            <label class="form-check-label fz13" for="THIRDPARTY">THIRD PARTY</label>
-                          </div>
-                          <div class="mb-3 form-check form-switch me-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="PAYOUT" >
-                            <label class="form-check-label fz13" for="PAYOUT">PAY OUT</label>
-                          </div>
-                    </div>
 
                     <div class="col-sm-12 mb-3">
                         <label>Avaliable for Merchants?</label>
                         <div class="form-group list-filter-item d-flex mt-2">
-                           
+
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                  Default radio
+                                <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
+                                <label class="form-check-label" for="Yes">
+                                 Yes
                                 </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                  Second default radio
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
+                                <label class="form-check-label" for="No">
+                                 No
                                 </label>
-                              </div>
+                            </div>
 
                         </div>
                     </div>
@@ -186,61 +164,84 @@
                     <div class="col-sm-12 mb-3">
                         <div class="form-group list-filter-item">
                             <label>Numbar of API fields (Access Scode, Secure hash)</label>
-                           
+
 
                         </div>
                     </div>
 
-                    <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item row align-items-center">
-                            <div class="col-sm-5">
-                                <input type="text" name="id" class="form-control input-sm" placeholder="Api field Title">
+
+
+                    <div class="col-sm-12 mb-3" formArrayName="processor_data">
+
+                        <div class="form-group list-filter-item" *ngFor="let customer of customerFormGroup.controls; let i = index">
+                            <div class="col-sm-12 mb-2">
+                                <select name="" id="" formControlName="processor_type" class="form-control form-select">
+                                    <option selected disabled>Please Select processor Type</option>
+                                    <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
+                                    <!-- <option value="business">Business</option> -->
+                                </select>
                             </div>
-                            <div class="col-sm-5">
-                                <input type="text" name="id" class="form-control input-sm" placeholder="Api field Element Name ">
+                            <div class="row" [formGroupName]="i">
+
+
+
+                                <div formArrayName="api_fields">
+                                    <div *ngFor="let fields of customerFormGroup.controls; let i = index">
+                                        <div [formGroupName]="i" class="d-flex">
+                                            <div class="col-sm-6 mb-2 me-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="Api ID" formControlName="key">
+                                            </div>
+                                            <div class="col-sm-6 mb-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="Api Secret Key " formControlName="value">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
 
                             </div>
-                            <div class="col-sm-2">
-                                <button class="badge bg-primary btn-sm border-0 "> <i class="mdi mdi-plus"></i> Add field</button>
-                            </div>
-                          
-                            
-                           
+
                         </div>
+
+                        <button class="badge bg-primary btn-sm border-0 float-end" (click)="addprocessorData()"> <i class="mdi mdi-plus"></i> Add field</button>
                     </div>
 
                     <div class="col-sm-12 mb-3">
                         <div class="form-group list-filter-item">
                             <label>Country</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Country">
-                          
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
+
 
                         </div>
                     </div>
 
                     <div class="col-sm-12 mb-3">
-                        <label>Avaliable for Merchants?</label>
+                        <label>Status</label>
                         <div class="form-group list-filter-item d-flex mt-2">
-                           
+
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
+                                <label class="form-check-label" for="enable">
                                   Enable
                                 </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
+                                <label class="form-check-label" for="Disabled">
                                  Disabled
                                 </label>
-                              </div>
+                            </div>
 
                         </div>
                     </div>
 
 
 
-                    
+
 
 
                     <div class="d-flex justify-content-left mt-3">
@@ -258,6 +259,7 @@
 
 
             </form>
+            {{addproccingForm.value | json}}
         </div>
     </div>
 

@@ -39,6 +39,15 @@ export const MENU: MenuItem[] = [
     icon: 'cast',
     link: '/addprocessor'
   },
+  {
+    label: 'Operation',
+    isTitle: true,
+  },
+  {
+    label: 'Activation MID',
+    icon: 'cast',
+    link: '/activationmid'
+  },
   // {
   //   label: 'Customer',
   //   icon: 'user',
