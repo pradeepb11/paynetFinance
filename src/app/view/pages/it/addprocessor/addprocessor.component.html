@@ -1,0 +1,261 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <div>
+        <h4 class="mb-3 mb-md-0">Add Processor</h4>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="row flex-grow-1">
+        <div class="col-md-12 grid-margin stretch-card ">
+            <div class="card p-3">
+                <section class="invoicebody">
+                    <div class="content-wrapper">
+
+
+
+                        <div class="table-responsive pt-1 ">
+
+                            <button type="submit" class="btn btn-primary btnDark float-end mb-3" (click)="addBank()"> <i class="mdi mdi-plus"></i> Add Processor</button>
+
+                            <table class="table table-bordered table-sm table-hover tbl-addpricingProccessor">
+                                <thead>
+                                    <tr>
+                                        <th>Processor Name</th>
+                                        <th>Credit Card</th>
+                                        <th>Debit Card</th>
+                                        <th>Net Banking </th>
+                                        <th>Third Party</th>
+                                        <th>Pay Out</th>
+                                        <th>Created Date</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CashFree</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td> 
+                                        <a class="ms-1">
+                                        <span class="badge bg-primary">
+                                        <em class="mdi mdi-lead-pencil"></em>
+                                        </span>
+                                        </a>
+                                    </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Lyra</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td> 
+                                        <a class="ms-1">
+                                        <span class="badge bg-primary">
+                                        <em class="mdi mdi-lead-pencil"></em>
+                                        </span>
+                                        </a>
+                                    </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>ISG</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td> 
+                                        <a class="ms-1">
+                                        <span class="badge bg-primary">
+                                        <em class="mdi mdi-lead-pencil"></em>
+                                        </span>
+                                        </a>
+                                    </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Nupay</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td> 
+                                        <a class="ms-1">
+                                        <span class="badge bg-primary">
+                                        <em class="mdi mdi-lead-pencil"></em>
+                                        </span>
+                                        </a>
+                                    </td>
+                                    </tr>
+
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="invoicedetails" *ngIf="addbankPage">
+    <div class="card cardA">
+        <div class="card-header">
+            <h3> Add Paymnet Processor</h3>
+            <button type="button" class="btn-close float-end closebtn" (click)="cloneAddBank()" aria-label="Close"></button>
+        </div>
+        <div class="card-body ">
+            <form>
+
+                <div class="row">
+
+
+                    <input type="hidden" name="" formControlName="paynet_merchant_id">
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Processor Name</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3 d-flex">
+                        <div class="mb-3 form-check form-switch me-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="CreditCard" >
+                            <label class="form-check-label fz13" for="CreditCard">Credit Card</label>
+                          </div>
+                          <div class="mb-3 form-check form-switch me-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="DEBITCARD" >
+                            <label class="form-check-label fz13" for="DEBITCARD">DEBIT CARD</label>
+                          </div>
+                          <div class="mb-3 form-check form-switch me-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="NETBANKING" >
+                            <label class="form-check-label fz13" for="NETBANKING">NET BANKING</label>
+                          </div>
+                          <div class="mb-3 form-check form-switch me-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="THIRDPARTY" >
+                            <label class="form-check-label fz13" for="THIRDPARTY">THIRD PARTY</label>
+                          </div>
+                          <div class="mb-3 form-check form-switch me-3">
+                            <input class="form-check-input" type="checkbox" role="switch" id="PAYOUT" >
+                            <label class="form-check-label fz13" for="PAYOUT">PAY OUT</label>
+                          </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        <label>Avaliable for Merchants?</label>
+                        <div class="form-group list-filter-item d-flex mt-2">
+                           
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Default radio
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Second default radio
+                                </label>
+                              </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Numbar of API fields (Access Scode, Secure hash)</label>
+                           
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item row">
+                            <div class="col-sm-6">
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Bank Code">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Bank Phone">
+
+                            </div>
+                            
+                           
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Country</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="City" formControlName="Bank Address">
+                          
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+                        <label>Avaliable for Merchants?</label>
+                        <div class="form-group list-filter-item d-flex mt-2">
+                           
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Enable
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                 Disabled
+                                </label>
+                              </div>
+
+                        </div>
+                    </div>
+
+
+
+                    
+
+
+                    <div class="d-flex justify-content-left mt-3">
+                        <button type="submit" class="btn btn-primary btnDark">Add Bank</button>
+                        <button type="submit" class="btn btn-secondary ms-2">Clear</button>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>

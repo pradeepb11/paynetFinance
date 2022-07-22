@@ -2,7 +2,7 @@ import { MenuItem } from './menu.model';
 
 export const MENU: MenuItem[] = [
   {
-    label: 'Main',
+    label: 'Finance',
     isTitle: true,
   },
   {
@@ -29,6 +29,15 @@ export const MENU: MenuItem[] = [
     label: 'Bank List',
     icon: 'briefcase',
     link: '/banklist'
+  },
+  {
+    label: 'IT',
+    isTitle: true,
+  },
+  {
+    label: 'Add Processor',
+    icon: 'cast',
+    link: '/addprocessor'
   },
   // {
   //   label: 'Customer',
