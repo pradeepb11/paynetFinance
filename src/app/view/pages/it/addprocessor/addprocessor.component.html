@@ -121,7 +121,7 @@
 
 <div class="invoicedetails" *ngIf="addbankPage">
     <div class="card cardA">
-        <div class="card-header">
+        <div class="card-header align-items-center d-flex justify-content-between">
             <h3> Add Paymnet Processor</h3>
             <button type="button" class="btn-close float-end closebtn" (click)="cloneAddBank()" aria-label="Close"></button>
         </div>
@@ -192,14 +192,18 @@
                     </div>
 
                     <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item row">
-                            <div class="col-sm-6">
-                                <input type="text" name="id" class="form-control input-sm" placeholder="Bank Code">
+                        <div class="form-group list-filter-item row align-items-center">
+                            <div class="col-sm-5">
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Api field Title">
                             </div>
-                            <div class="col-sm-6">
-                                <input type="text" name="id" class="form-control input-sm" placeholder="Bank Phone">
+                            <div class="col-sm-5">
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Api field Element Name ">
 
                             </div>
+                            <div class="col-sm-2">
+                                <button class="badge bg-primary btn-sm border-0 "> <i class="mdi mdi-plus"></i> Add field</button>
+                            </div>
+                          
                             
                            
                         </div>
@@ -208,7 +212,7 @@
                     <div class="col-sm-12 mb-3">
                         <div class="form-group list-filter-item">
                             <label>Country</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="City" formControlName="Bank Address">
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Country">
                           
 
                         </div>
@@ -240,7 +244,7 @@
 
 
                     <div class="d-flex justify-content-left mt-3">
-                        <button type="submit" class="btn btn-primary btnDark">Add Bank</button>
+                        <button type="submit" class="btn btn-primary btnDark">Add Pricing</button>
                         <button type="submit" class="btn btn-secondary ms-2">Clear</button>
 
                     </div>
