@@ -48,6 +48,11 @@ export const MENU: MenuItem[] = [
     icon: 'cast',
     link: '/activationmid'
   },
+  {
+    label:'Merchant Profile',
+    icon: 'cast',
+    link: '/merchantprofile'
+  }
   // {
   //   label: 'Customer',
   //   icon: 'user',

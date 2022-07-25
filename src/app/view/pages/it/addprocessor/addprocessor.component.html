@@ -129,115 +129,130 @@
             <form [formGroup]="addproccingForm" (ngSubmit)="addproccingSubmit()">
 
                 <div class="row">
+                
+                 <!-- processor name     -->
+                <div class="col-sm-12 mb-3">
+                <div class="form-group list-filter-item">
+                <label>Processor Name</label>
+                <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
 
+                </div>
+                </div>
+                <!-- /processor name     -->    
 
+                <!-- Avaliable for Merchants -->
+                <div class="col-sm-12 mb-3">
+                    <label>Avaliable for Merchants?</label>
+                    <div class="form-group list-filter-item d-flex mt-2">
 
-                    <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item">
-                            <label>Processor Name</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
-
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
+                            <label class="form-check-label" for="Yes">
+                             Yes
+                            </label>
                         </div>
-                    </div>
-
-
-                    <div class="col-sm-12 mb-3">
-                        <label>Avaliable for Merchants?</label>
-                        <div class="form-group list-filter-item d-flex mt-2">
-
-                            <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
-                                <label class="form-check-label" for="Yes">
-                                 Yes
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
-                                <label class="form-check-label" for="No">
-                                 No
-                                </label>
-                            </div>
-
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
+                            <label class="form-check-label" for="No">
+                             No
+                            </label>
                         </div>
+
                     </div>
+                </div>
+                <!-- /Avaliable for Merchants -->
 
-                    <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item">
-                            <label>Numbar of API fields (Access Scode, Secure hash)</label>
+                <!-- Country -->
+                <div class="col-sm-12 mb-3">
+                    <div class="form-group list-filter-item">
+                        <label>Country</label>
+                        <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
 
 
+                    </div>
+                </div>
+                 <!-- / Country -->
+
+                 <!-- Status -->
+                 <div class="col-sm-12 mb-3">
+                    <label>Status</label>
+                    <div class="form-group list-filter-item d-flex mt-2">
+
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
+                            <label class="form-check-label" for="enable">
+                              Enable
+                            </label>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
+                            <label class="form-check-label" for="Disabled">
+                             Disabled
+                            </label>
+                        </div>
+
                     </div>
+                </div>
+                 <!-- / Status -->
 
+                 <!-- processor_data []  -->
+                 <div class="col-sm-12 mb-3" formArrayName="processor_data">
 
+                    <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
 
-                    <div class="col-sm-12 mb-3" formArrayName="processor_data">
-
-                        <div class="form-group list-filter-item" *ngFor="let customer of customerFormGroup.controls; let i = index">
+                        <div [formGroupName]="i" >
+                            <!-- processor Type -->
                             <div class="col-sm-12 mb-2">
                                 <select name="" id="" formControlName="processor_type" class="form-control form-select">
                                     <option selected disabled>Please Select processor Type</option>
                                     <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
                                     <!-- <option value="business">Business</option> -->
                                 </select>
+                            
                             </div>
-                            <div class="row" [formGroupName]="i">
+                            <!-- /processor Type -->
+                           
 
+                            <div formArrayName="api_fields">
 
+                                <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
 
-                                <div formArrayName="api_fields">
-                                    <div *ngFor="let fields of customerFormGroup.controls; let i = index">
-                                        <div [formGroupName]="i" class="d-flex">
-                                            <div class="col-sm-6 mb-2 me-2">
-                                                <input type="text" name="id" class="form-control input-sm" placeholder="Api ID" formControlName="key">
-                                            </div>
-                                            <div class="col-sm-6 mb-2">
-                                                <input type="text" name="id" class="form-control input-sm" placeholder="Api Secret Key " formControlName="value">
-
-                                            </div>
+                                    <div [formGroupName]="j" class="d-flex" >
+                                        <div class="col-sm-6 mb-2 me-2">
+                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
+                                        </div>
+                                        <div class="col-sm-6 mb-2">
+                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
+        
                                         </div>
                                     </div>
-
-
 
                                 </div>
 
 
+                                
                             </div>
+                            <button type="button" (click)="addapi_fields(i)">
+                                + Add Field
+                              </button>
 
                         </div>
-
-                        <button class="badge bg-primary btn-sm border-0 float-end" (click)="addprocessorData()"> <i class="mdi mdi-plus"></i> Add field</button>
+                      
                     </div>
+                    <button type="button" (click)="addprocessor_data()">Add Processor</button>
+                 </div>
 
-                    <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item">
-                            <label>Country</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
+                <!-- processor_data -->
+
+                  
 
 
-                        </div>
-                    </div>
 
-                    <div class="col-sm-12 mb-3">
-                        <label>Status</label>
-                        <div class="form-group list-filter-item d-flex mt-2">
+                    
 
-                            <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
-                                <label class="form-check-label" for="enable">
-                                  Enable
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
-                                <label class="form-check-label" for="Disabled">
-                                 Disabled
-                                </label>
-                            </div>
+                
 
-                        </div>
-                    </div>
+                    
 
 
 
@@ -246,7 +261,7 @@
 
                     <div class="d-flex justify-content-left mt-3">
                         <button type="submit" class="btn btn-primary btnDark">Add Pricing</button>
-                        <button type="submit" class="btn btn-secondary ms-2">Clear</button>
+                        <button type="reset" class="btn btn-secondary ms-2">Clear</button>
 
                     </div>
 

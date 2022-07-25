@@ -18,9 +18,10 @@ export class AddprocessorComponent implements OnInit {
   submitted = false;
   // formgroup
   addproccingForm: FormGroup;
-  public customerList: FormArray;
   myFormValueChanges$:any;
   display: any;
+  empForm: FormGroup;
+
 
   
   cards = [{ name: "Credit Card",value:'CC' }, { name: "Debit Card", value:'DC' }, { name: "Net banking", value:'NB' }, { name: 'Third Party', value:'TP' },{name: 'Pay Out', value:'PO'}]
@@ -37,8 +38,8 @@ export class AddprocessorComponent implements OnInit {
 
   this.setValidateAddprocessor();
  
-  this.customerList = this.addproccingForm.get('processor_data') as FormArray;
-   
+ 
+
 
   }
   
@@ -54,27 +55,51 @@ export class AddprocessorComponent implements OnInit {
     })
   }
 
-
- 
-  get customerFormGroup(){
+  processor_data(): FormArray{
+    
     return this.addproccingForm.get('processor_data') as FormArray;
   }
 
   createItemFeild(){
     
-      return this.fb.group({
-        processor_type: new FormControl(''),
-        api_fields:this.fb.array([this.createSubItemList()])
-       
-    })
-  }
+    return this.fb.group({
+      processor_type: new FormControl(''),
+      api_fields:this.fb.array([this.createSubItemList()])
+     
+  })
+}
 
   createSubItemList(){
+  
     return this.fb.group({
+      
       key: [],
       value: []
     })
   }
+
+  employeeSkills(i: number): FormArray {
+    return this.processor_data()
+      .at(i)
+      .get('api_fields') as FormArray;
+  }
+
+  removeprocessorData(i:any){
+    this.processor_data().removeAt(i)
+  }
+
+  addprocessor_data(){
+    this.processor_data().push(this.createItemFeild())
+  }
+
+  addapi_fields(i:any){
+    this.employeeSkills(i).push(this.createSubItemList())
+  }
+
+
+ 
+
+
 
  
 
@@ -86,10 +111,6 @@ export class AddprocessorComponent implements OnInit {
 
   }
 
-  addprocessorData(){
-    this.customerList.push(this.createSubItemList());
-  }
-
 
 
 
@@ -99,15 +120,19 @@ export class AddprocessorComponent implements OnInit {
 
   addproccingSubmit(){
     console.log('Working');
-    this.display = Object.entries(this.addproccingForm.value.processor_data);
-    console.log(this.display);
-    this.display = Object.entries(this.addproccingForm.value).map((e:any) => {
+ 
+    this.display = Object.entries(this.addproccingForm.value.processor_data).map((e:any) => {
+      console.log(e[1].api_fields[0])
+      
       return {
        
-       [e[1].key]: e[1].value,
+       [e[1].api_fields[0].key]: e[1].api_fields[0].value,
      };
    });
    console.log(this.display);
+   this.display.push(this.addproccingForm.value);
+ 
+
     console.log(this.addproccingForm.value)
   }
 
