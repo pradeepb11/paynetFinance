@@ -18,11 +18,14 @@ const routes: Routes = [
       { path: 'merchantvc', loadChildren: () => import('./view/pages/finance/merchantvc/merchantvc.module').then(m => m.MerchantvcModule) },
       { path: 'banklist', loadChildren: () => import('./view/pages/finance/banklist/banklist.module').then(m => m.BanklistModule) },
       { path: 'addprocessor', loadChildren: () => import('./view/pages/it/addprocessor/addprocessor.module').then(m => m.AddprocessorModule) },
+      { path: 'paymentprocessor', loadChildren: () => import('./view/pages/it/addpaymentprocessor/addpaymentprocessor.module').then(m => m.AddpaymentprocessorModule) },
       // { path: 'merchantsetting', loadChildren: () => import('./view/pages/operation/merchantsetting/merchantsetting.module').then(m => m.MerchantsettingModule) },
       // { path: 'activationmid', loadChildren: () => import('./view/pages/operation/activationmid/activationmid.module').then(m => m.ActivationmidModule) },
       { path: 'merchantprofile', loadChildren: () => import('./view/pages/operation/merchantprofile/merchantprofile.module').then(m => m.MerchantprofileModule) },
+
     ]
   },
+  
   
   
   

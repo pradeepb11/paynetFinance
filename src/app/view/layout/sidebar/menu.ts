@@ -40,6 +40,11 @@ export const MENU: MenuItem[] = [
     link: '/addprocessor'
   },
   {
+    label: 'Add Payment Processor',
+    icon: 'cast',
+    link: '/paymentprocessor'
+  },
+  {
     label: 'Operation',
     isTitle: true,
   },

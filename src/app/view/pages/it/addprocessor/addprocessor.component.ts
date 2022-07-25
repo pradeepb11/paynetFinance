@@ -7,13 +7,20 @@ import {
   trigger,
   state
 } from "@angular/animations";
+import { Subject } from 'rxjs';
+
+import {ItprocessorService, paymentprocessor} from '../../../../service/itprocessor.service';
+
+
 
 @Component({
   selector: 'app-addprocessor',
   templateUrl: './addprocessor.component.html',
-  styleUrls: ['./addprocessor.component.scss']
+  styleUrls: ['./addprocessor.component.scss'],
+  providers:[ItprocessorService]
 })
 export class AddprocessorComponent implements OnInit {
+  
   addbankPage: boolean = false;
   submitted = false;
   // formgroup
@@ -21,6 +28,7 @@ export class AddprocessorComponent implements OnInit {
   myFormValueChanges$:any;
   display: any;
   empForm: FormGroup;
+  selectedValueProcessor = new Subject;
 
 
   
@@ -29,7 +37,8 @@ export class AddprocessorComponent implements OnInit {
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private paymentProcessorService: ItprocessorService
   ) { 
 
   }
@@ -70,10 +79,13 @@ export class AddprocessorComponent implements OnInit {
 }
 
   createSubItemList(){
-  
+    console.log(Object.keys)
+    // Object.entries(this.addproccingForm.value.processor_data.api_fields).map((element:any) => {
+    //     console.log(element)
+    //   });
     return this.fb.group({
       
-      key: [],
+      key: [Object.keys],
       value: []
     })
   }
@@ -89,13 +101,33 @@ export class AddprocessorComponent implements OnInit {
   }
 
   addprocessor_data(){
-    this.processor_data().push(this.createItemFeild())
+
+  
+    this.processor_data().push(this.createItemFeild());
+
+  
+
+
   }
 
   addapi_fields(i:any){
-    this.employeeSkills(i).push(this.createSubItemList())
+    this.employeeSkills(i).push(this.createSubItemList());
+   
+   
   }
 
+
+  onChange(selectedValue:string) {
+    // console.log('value is ', selectedValue);
+    if (selectedValue) {
+     console.log('value is ', selectedValue);
+     this.selectedValueProcessor.next(selectedValue)
+    } else {
+      console.log('Value unselected', selectedValue)
+      // let index = emailFormArray.controls.findIndex(x => x.value == cards)
+      // emailFormArray.removeAt(index);
+    }
+  }
 
  
 
@@ -121,19 +153,29 @@ export class AddprocessorComponent implements OnInit {
   addproccingSubmit(){
     console.log('Working');
  
-    this.display = Object.entries(this.addproccingForm.value.processor_data).map((e:any) => {
-      console.log(e[1].api_fields[0])
+  //   this.display = Object.entries(this.addproccingForm.value.processor_data).map((e:any) => {
+  //     console.log(e[1].api_fields[0])
       
-      return {
+  //     return {
        
-       [e[1].api_fields[0].key]: e[1].api_fields[0].value,
-     };
-   });
-   console.log(this.display);
-   this.display.push(this.addproccingForm.value);
+  //      [e[1].api_fields[0].key]: e[1].api_fields[0].value,
+  //    };
+  //  });
+  //  console.log(this.display);
+  //  this.display.push(this.addproccingForm.value);
  
 
-    console.log(this.addproccingForm.value)
+  //   console.log(this.addproccingForm.value)
+
+console.log(this.addproccingForm.value);
+  this.paymentProcessorService.postPaymentProcessor(this.addproccingForm.value)
+  .subscribe(
+    (res) =>{
+      console.log(res);
+    }
+  )
+
+
   }
 
 

@@ -129,130 +129,131 @@
             <form [formGroup]="addproccingForm" (ngSubmit)="addproccingSubmit()">
 
                 <div class="row">
-                
-                 <!-- processor name     -->
-                <div class="col-sm-12 mb-3">
-                <div class="form-group list-filter-item">
-                <label>Processor Name</label>
-                <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
 
-                </div>
-                </div>
-                <!-- /processor name     -->    
+                    <!-- processor name     -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Processor Name</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
 
-                <!-- Avaliable for Merchants -->
-                <div class="col-sm-12 mb-3">
-                    <label>Avaliable for Merchants?</label>
-                    <div class="form-group list-filter-item d-flex mt-2">
+                        </div>
+                    </div>
+                    <!-- /processor name     -->
 
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
-                            <label class="form-check-label" for="Yes">
+                    <!-- Avaliable for Merchants -->
+                    <div class="col-sm-12 mb-3">
+                        <label>Avaliable for Merchants?</label>
+                        <div class="form-group list-filter-item d-flex mt-2">
+
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
+                                <label class="form-check-label" for="Yes">
                              Yes
                             </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
-                            <label class="form-check-label" for="No">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
+                                <label class="form-check-label" for="No">
                              No
                             </label>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
-                <!-- /Avaliable for Merchants -->
+                    <!-- /Avaliable for Merchants -->
 
-                <!-- Country -->
-                <div class="col-sm-12 mb-3">
-                    <div class="form-group list-filter-item">
-                        <label>Country</label>
-                        <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
+                    <!-- Country -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Country</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
 
 
+                        </div>
                     </div>
-                </div>
-                 <!-- / Country -->
+                    <!-- / Country -->
 
-                 <!-- Status -->
-                 <div class="col-sm-12 mb-3">
-                    <label>Status</label>
-                    <div class="form-group list-filter-item d-flex mt-2">
+                    <!-- Status -->
+                    <div class="col-sm-12 mb-3">
+                        <label>Status</label>
+                        <div class="form-group list-filter-item d-flex mt-2">
 
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
-                            <label class="form-check-label" for="enable">
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
+                                <label class="form-check-label" for="enable">
                               Enable
                             </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
-                            <label class="form-check-label" for="Disabled">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
+                                <label class="form-check-label" for="Disabled">
                              Disabled
                             </label>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
-                 <!-- / Status -->
+                    <!-- / Status -->
 
-                 <!-- processor_data []  -->
-                 <div class="col-sm-12 mb-3" formArrayName="processor_data">
+                    <!-- processor_data []  -->
+                    <div class="col-sm-12 mb-3" formArrayName="processor_data">
 
-                    <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
+                        <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
 
-                        <div [formGroupName]="i" >
-                            <!-- processor Type -->
-                            <div class="col-sm-12 mb-2">
-                                <select name="" id="" formControlName="processor_type" class="form-control form-select">
+                            <div [formGroupName]="i">
+                                <!-- processor Type -->
+                                <div class="col-sm-12 mb-2">
+                                    <label for="processor_type" class="form-label">Select processor Type</label>
+                                    <select name="" id="processor_type" formControlName="processor_type" class="form-control form-select" (change)="onChange($event.target.value)">
                                     <option selected disabled>Please Select processor Type</option>
                                     <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
                                     <!-- <option value="business">Business</option> -->
                                 </select>
-                            
-                            </div>
-                            <!-- /processor Type -->
-                           
-
-                            <div formArrayName="api_fields">
-
-                                <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
-
-                                    <div [formGroupName]="j" class="d-flex" >
-                                        <div class="col-sm-6 mb-2 me-2">
-                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
-                                        </div>
-                                        <div class="col-sm-6 mb-2">
-                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
-        
-                                        </div>
-                                    </div>
 
                                 </div>
+                                <!-- /processor Type -->
 
 
-                                
-                            </div>
-                            <button type="button" (click)="addapi_fields(i)">
+                                <div formArrayName="api_fields">
+
+                                    <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
+
+                                        <div [formGroupName]="j" class="d-flex">
+                                            <div class="col-sm-6 mb-2 me-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
+                                            </div>
+                                            <div class="col-sm-6 mb-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                                <button type="button" class="badge bg-primary float-end border-0" (click)="addapi_fields(i)">
                                 + Add Field
                               </button>
+                                <div style="clear:both"></div>
+                            </div>
 
                         </div>
-                      
+                        <button type="button" class="btn btn-primary badge" (click)="addprocessor_data()">Add Processor</button>
                     </div>
-                    <button type="button" (click)="addprocessor_data()">Add Processor</button>
-                 </div>
 
-                <!-- processor_data -->
-
-                  
+                    <!-- processor_data -->
 
 
 
-                    
 
-                
 
-                    
+
+
+
+
+
 
 
 

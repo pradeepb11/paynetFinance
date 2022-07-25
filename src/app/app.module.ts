@@ -11,6 +11,8 @@ import { HttpClientModule} from '@angular/common/http';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +24,7 @@ import { HttpClientModule} from '@angular/common/http';
     LayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthGuard

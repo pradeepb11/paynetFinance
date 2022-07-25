@@ -1,0 +1,300 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <div>
+        <h4 class="mb-3 mb-md-0">Add Processor</h4>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="row flex-grow-1">
+        <div class="col-md-12 grid-margin stretch-card ">
+            <div class="card p-3">
+                <section class="invoicebody">
+                    <div class="content-wrapper">
+
+
+
+                        <div class="table-responsive pt-1 ">
+
+                            <button type="submit" class="btn btn-primary btnDark float-end mb-3" (click)="addBank()"> <i class="mdi mdi-plus"></i> Add Processor</button>
+
+                            <table class="table table-bordered table-sm table-hover tbl-addpricingProccessor">
+                                <thead>
+                                    <tr>
+                                        <th>Processor Name</th>
+                                        <th>Credit Card</th>
+                                        <th>Debit Card</th>
+                                        <th>Net Banking </th>
+                                        <th>Third Party</th>
+                                        <th>Pay Out</th>
+                                        <th>Created Date</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CashFree</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
+                                      <em class="mdi mdi-lead-pencil"></em>
+                                      </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Lyra</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
+                                      <em class="mdi mdi-lead-pencil"></em>
+                                      </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>ISG</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
+                                      <em class="mdi mdi-lead-pencil"></em>
+                                      </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Nupay</td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
+                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                        <td>30th April 2022 10:18 </td>
+                                        <td>
+                                            <a class="ms-1">
+                                                <span class="badge bg-primary">
+                                      <em class="mdi mdi-lead-pencil"></em>
+                                      </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="addproccingDetails" *ngIf="addbankPage">
+    <div class="card cardA">
+        <div class="card-header align-items-center d-flex justify-content-between">
+            <h3> Add Payment Processor</h3>
+            <button type="button" class="btn-close float-end closebtn" (click)="closeAddBank()" aria-label="Close"></button>
+        </div>
+        <div class="card-body perfect-scrollbar-example" [perfectScrollbar]>
+            <form>
+                <!-- [formGroup]="addproccingForm" (ngSubmit)="addproccingSubmit()" -->
+                <div class="row">
+
+                    <div class="col-md-12 grid-margin">
+                        <div class="card border-0">
+                            <div class="card-body p-0 border-0">
+
+                                <form [formGroup]="addpaymentproccingForm" (ngSubmit)="addproccingSubmit()">
+
+
+
+                                    <!-- <h6 class="card-title">Example</h6> -->
+                                    <!-- processor name     -->
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="form-group list-filter-item">
+                                            <label>Processor Name</label>
+                                            <input type="text" name="id" class="form-control input-sm" placeholder="Processor Name" formControlName="payment_processor_name">
+
+                                        </div>
+                                    </div>
+                                    <!-- /processor name     -->
+
+                                    <!-- Avaliable for Merchants -->
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Avaliable for Merchants?</label>
+                                        <div class="form-group list-filter-item d-flex mt-2">
+
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio" id="Yes" value="1" formControlName="avail_for_merchant">
+                                                <label class="form-check-label" for="Yes">
+                                    Yes
+                                    </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="No" value="0" formControlName="avail_for_merchant">
+                                                <label class="form-check-label" for="No">
+                                    No
+                                    </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /Avaliable for Merchants -->
+
+                                    <!-- Country -->
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="form-group list-filter-item">
+                                            <label>Country</label>
+                                            <input type="text" name="id" class="form-control input-sm" placeholder="Country" formControlName="country">
+
+
+                                        </div>
+                                    </div>
+                                    <!-- / Country -->
+
+                                    <!-- Status -->
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Status</label>
+                                        <div class="form-group list-filter-item d-flex mt-2">
+
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio" id="enable" value="1" formControlName="status">
+                                                <label class="form-check-label" for="enable">
+                            Enable
+                          </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="Disabled" value="0" formControlName="status">
+                                                <label class="form-check-label" for="Disabled">
+                           Disabled
+                          </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- / Status -->
+
+
+
+                                    <div class="example">
+                                        <ul ngbNav #defaultNav="ngbNav" [(activeId)]="defaultNavActiveId" class="nav-tabs">
+                                            <li [ngbNavItem]="1">
+                                                <a ngbNavLink>Credit Card</a>
+                                                <ng-template ngbNavContent>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 mb-3">
+                                                            <div class="form-group list-filter-item">
+
+                                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3">
+                                                            <div class="form-group list-filter-item">
+                                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </li>
+                                            <li [ngbNavItem]="2">
+                                                <a ngbNavLink>Debit Card</a>
+                                                <ng-template ngbNavContent>
+                                                    <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip
+                                                        jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan
+                                                        fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus
+                                                        tattooed echo park.</p>
+                                                </ng-template>
+                                            </li>
+                                            <li [ngbNavItem]="3">
+                                                <a ngbNavLink>Net Banking</a>
+                                                <ng-template ngbNavContent>
+                                                    <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt
+                                                        eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla
+                                                        tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                                                        mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                                                </ng-template>
+                                            </li>
+                                            <li [ngbNavItem]="4">
+                                                <a ngbNavLink>Third Party</a>
+                                                <ng-template ngbNavContent>
+                                                    <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt
+                                                        eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla
+                                                        tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                                                        mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                                                </ng-template>
+                                            </li>
+                                            <li [ngbNavItem]="5">
+                                                <a ngbNavLink>Pay Out</a>
+                                                <ng-template ngbNavContent>
+                                                    <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt
+                                                        eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla
+                                                        tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                                                        mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                                                </ng-template>
+                                            </li>
+                                        </ul>
+
+                                        <div [ngbNavOutlet]="defaultNav" class="p-3"></div>
+                                        <!-- <p class="mt-2">Active: {{ defaultNavActiveId }}</p> -->
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-left mt-3">
+                        <button type="submit" class="btn btn-primary btnDark">Add Pricing</button>
+                        <button type="reset" class="btn btn-secondary ms-2">Clear</button>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </form>
+            <!-- {{addproccingForm.value | json}} -->
+        </div>
+    </div>
+
+
+</div> `
