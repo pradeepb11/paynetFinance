@@ -140,6 +140,56 @@
                     </div>
                     <!-- /processor name     -->
 
+                    <!-- processor_data []  -->
+                    <div class="col-sm-12 mb-3" formArrayName="processor_data">
+
+                        <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
+
+                            <div [formGroupName]="i">
+                                <!-- processor Type -->
+                                <div class="col-sm-12 mb-2">
+                                    <label for="processor_type" class="form-label">Select processor Type</label>
+                                    <select name="" id="processor_type" formControlName="processor_type" class="form-control form-select" (change)="onChange($event.target.value)">
+                                    <option selected disabled>Please Select processor Type</option>
+                                    <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
+                                    <!-- <option value="business">Business</option> -->
+                                </select>
+
+                                </div>
+                                <!-- /processor Type -->
+
+
+                                <div formArrayName="api_fields">
+
+                                    <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
+
+                                        <div [formGroupName]="j" class="d-flex">
+                                            <div class="col-sm-6 mb-2 me-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
+                                            </div>
+                                            <div class="col-sm-6 mb-2">
+                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                                <button type="button" class="badge bg-primary float-end border-0" (click)="addapi_fields(i)">
+                                + Add Field
+                              </button>
+                                <div style="clear:both"></div>
+                            </div>
+
+                        </div>
+                        <button type="button" class="btn btn-primary badge" (click)="addprocessor_data()">Add Processor</button>
+                    </div>
+
+                    <!-- processor_data -->
+
                     <!-- Avaliable for Merchants -->
                     <div class="col-sm-12 mb-3">
                         <label>Avaliable for Merchants?</label>
@@ -195,55 +245,7 @@
                     </div>
                     <!-- / Status -->
 
-                    <!-- processor_data []  -->
-                    <div class="col-sm-12 mb-3" formArrayName="processor_data">
 
-                        <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
-
-                            <div [formGroupName]="i">
-                                <!-- processor Type -->
-                                <div class="col-sm-12 mb-2">
-                                    <label for="processor_type" class="form-label">Select processor Type</label>
-                                    <select name="" id="processor_type" formControlName="processor_type" class="form-control form-select" (change)="onChange($event.target.value)">
-                                    <option selected disabled>Please Select processor Type</option>
-                                    <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
-                                    <!-- <option value="business">Business</option> -->
-                                </select>
-
-                                </div>
-                                <!-- /processor Type -->
-
-
-                                <div formArrayName="api_fields">
-
-                                    <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
-
-                                        <div [formGroupName]="j" class="d-flex">
-                                            <div class="col-sm-6 mb-2 me-2">
-                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
-                                            </div>
-                                            <div class="col-sm-6 mb-2">
-                                                <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                </div>
-                                <button type="button" class="badge bg-primary float-end border-0" (click)="addapi_fields(i)">
-                                + Add Field
-                              </button>
-                                <div style="clear:both"></div>
-                            </div>
-
-                        </div>
-                        <button type="button" class="btn btn-primary badge" (click)="addprocessor_data()">Add Processor</button>
-                    </div>
-
-                    <!-- processor_data -->
 
 
 

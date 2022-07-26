@@ -46,29 +46,78 @@ nav {
     #sidebar-menu {
         .nav-item {
             .active {
-                color: #c96522;
+                color: #EE8035;
                 box-shadow: 1px 2px 9px 1px #e1e1e1;
                 &::before {
                     // content: '';
                     // width: 3px;
                     // height: 26px;
-                    // background: #c96522;
+                    // background: #EE8035;
                     // position: absolute;
                     // left: -25px;
                     // top: 11px;
                     content: "";
                     width: 3px;
                     height: 40px;
-                    background: #c96522;
+                    background: #EE8035;
                     position: absolute;
                     left: -7px;
                     top: 0;
                 }
                 .link-icon {
                     fill: rgba(239, 243, 255, .5);
-                    color: #c96522;
+                    color: #EE8035;
                 }
             }
         }
     }
+}
+
+.table-sm> :not(caption)>*>* {
+    padding: 0.4rem 0.4rem !important;
+}
+
+.invoicedetails,
+.addproccingDetails {
+    // display: none;
+    position: fixed;
+    top: 0px !important;
+    ;
+    right: 0 !important;
+    ;
+    height: 100%;
+    width: 700px;
+    background-color: #4169E1;
+    z-index: 999;
+    // padding: 20px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.cardA {
+    height: 100%;
+}
+
+.closebtn {
+    width: 20px;
+    height: 20px;
+    background-color: #eb5f00;
+    color: #fff;
+    border-radius: 50%;
+}
+
+@media (max-width: 576px) {
+    .invoicedetails {
+        width: 100%;
+        height: auto;
+        position: absolute;
+    }
+    .cardA {
+        height: auto;
+    }
+}
+
+.bgcard {
+    background-color: #4169E1;
+    box-shadow: none !important;
 }

@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MerchantprofileComponent implements OnInit {
 
+  defaultNavActiveId = 1;
+  defaultNavCode: any;
+  horizontalAlignmentCenterCode: any;
+  horizontalCenterCode: any;
+  horizontalEndCode: any;
+  verticalNavCode: any;
+  fillJustifyNavCode: any;
+  navWidthDropdownCode: any;
+  active = 1;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -21,10 +21,14 @@ const routes: Routes = [
       { path: 'paymentprocessor', loadChildren: () => import('./view/pages/it/addpaymentprocessor/addpaymentprocessor.module').then(m => m.AddpaymentprocessorModule) },
       // { path: 'merchantsetting', loadChildren: () => import('./view/pages/operation/merchantsetting/merchantsetting.module').then(m => m.MerchantsettingModule) },
       // { path: 'activationmid', loadChildren: () => import('./view/pages/operation/activationmid/activationmid.module').then(m => m.ActivationmidModule) },
-      { path: 'merchantprofile', loadChildren: () => import('./view/pages/operation/merchantprofile/merchantprofile.module').then(m => m.MerchantprofileModule) },
+     
+      { path: 'merchantlist', loadChildren: () => import('./view/pages/operation/merchantlist/merchantlist.module').then(m => m.MerchantlistModule) },
+      { path: 'merchantreports', loadChildren: () => import('./view/pages/operation/merchantreports/merchantreports.module').then(m => m.MerchantreportsModule) },
+      { path: 'merchantrefund', loadChildren: () => import('./view/pages/operation/merchantrefund/merchantrefund.module').then(m => m.MerchantrefundModule) },
 
     ]
   },
+  
   
   
   

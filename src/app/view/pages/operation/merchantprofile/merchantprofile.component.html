@@ -1,1 +1,210 @@
-<p>merchantprofile works!</p>
+<div class="example">
+    <ul ngbNav #defaultNav="ngbNav" [(activeId)]="defaultNavActiveId" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink>Merchant Profile</a>
+            <ng-template ngbNavContent>
+
+                <div class="col-sm-12 mb-3">
+
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>Personal Details</a>
+                            <ng-template ngbNavContent>
+                                <form class="forms-sample">
+                                    <div class=" col-sm-6 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="FirstName" class="col-sm-3 col-form-label">First Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="FirstName" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="LastName" class="col-sm-3 col-form-label">Last Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="LastName" autocomplete="off" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="DateofBirth" class="col-sm-3 col-form-label">Date of Birth</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="DateofBirth" placeholder="Date of Birth" onfocus="(this.type='date')">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Phoneno" class="col-sm-3 col-form-label">Phone no.</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="Phoneno" autocomplete="off" placeholder="Phone no.">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+                                    <div class="group mt-3 ">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-secondary">Cancel</button>
+                                    </div>
+
+                                </form>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2">
+                            <a ngbNavLink>Store Details</a>
+                            <ng-template ngbNavContent>
+                                <form class="forms-sample">
+                                    <div class=" col-sm-9 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="FirstName" class="col-sm-4 col-form-label">Account Type</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="FirstName" placeholder="Account Type">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="Webpage" class="col-sm-4 col-form-label">Web page</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 1</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" onfocus="(this.type='date')">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 2</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 2">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 3</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 3">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="StoreName" class="col-sm-4 col-form-label">Store Name</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="StoreName" autocomplete="off" placeholder="Store Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="CustomerServiceContactNo" class="col-sm-4 col-form-label">Customer Service Contact No</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="CustomerServiceContactNo" autocomplete="off" placeholder="Customer Service Contact No">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="CustomerServiceEmailAddress" class="col-sm-4 col-form-label">Customer Service Email Address</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="CustomerServiceEmailAddress" autocomplete="off" placeholder="Customer Service Email Address">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Terms&ConditionsURL" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Terms&ConditionsURL" autocomplete="off" placeholder="Terms & Conditions URL">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="WorkingDays" class="col-sm-4 col-form-label">Working Days</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="WorkingDays" autocomplete="off" placeholder="Working Days">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="ProductDescription" class="col-sm-4 col-form-label">Product Description</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="ProductDescription" autocomplete="off" placeholder="Product Description">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <hr>
+                                    <div class="group mt-3 ">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-secondary">Cancel</button>
+                                    </div>
+
+                                </form>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="3">
+                            <a ngbNavLink>Bank Details</a>
+                            <ng-template ngbNavContent>
+                                <p>Bank Details</p>
+                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
+                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
+                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="4">
+                            <a ngbNavLink>KYC Details</a>
+                            <ng-template ngbNavContent>
+                                <p>KYC Details</p>
+                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
+                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
+                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="5">
+                            <a ngbNavLink>Questionnaire</a>
+                            <ng-template ngbNavContent>
+                                <p>Questionnaire</p>
+                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
+                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
+                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+                    <pre>Active: {{ active }}</pre>
+
+                </div>
+
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink>Merchant Settings</a>
+            <ng-template ngbNavContent>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eius voluptatem perspiciatis, soluta repellendus ipsa laudantium praesentium consequuntur ipsum facilis aspernatur tenetur quam maxime vitae earum cum natus qui rem.
+                    Temporibus dolorem quidem veniam aut incidunt dignissimos inventore, eveniet facilis!</p>
+
+            </ng-template>
+        </li>
+
+    </ul>
+
+    <div [ngbNavOutlet]="defaultNav" class="p-3"></div>
+
+</div>

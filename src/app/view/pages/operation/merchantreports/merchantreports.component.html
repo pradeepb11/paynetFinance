@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <div>
+        <h4 class="mb-3 mb-md-0">Report</h4>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="row flex-grow-1">
+        <div class="col-md-12 grid-margin stretch-card ">
+            <div class="card p-3">
+                <section class="invoicebody">
+                    <div class="content-wrapper">
+                        <form action="">
+
+                            <div class="row">
+
+
+                                <div class="col-sm-4">
+                                    <div class="form-group list-filter-item">
+                                        <select name="" id="" class="form-select ">
+                                      <option selected disabled>Please Select Account Type</option>
+                                      <option value="Payin">Payin</option>
+                                      <option value="Payout">Payout</option>
+                                  </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group list-filter-item">
+                                        <!-- <label>Start Date</label> -->
+                                        <input type="text" name="" class="form-control input-sm" placeholder="From" value="" onfocus="(this.type='date')">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group list-filter-item">
+                                        <!-- <label>End Date</label> -->
+                                        <input type="text" name="" class="form-control input-sm" placeholder="To" value="" onfocus="(this.type='date')">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-left mt-3">
+                                    <button type="submit" class="btn btn-primary btnDark">Generate Report</button>
+
+                                    <button type="submit" class="btn btn-secondary ms-2">Clear</button>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                        </form>
+
+                        <hr>
+                        <div class="table-responsive pt-1 ">
+                            <table class="table table-bordered table-sm table-hover" id="dataTableReport">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Report Name</th>
+                                        <th>Size</th>
+                                        <th>Generate At</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Payin</td>
+                                        <td>Payin Report-11/01/2022-08/08/2022.csv </td>
+                                        <td>300kb</td>
+                                        <td>07/09/2022 | 09:45</td>
+                                        <td><a href=""> Download</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payout</td>
+                                        <td>Payout Report-11/01/2022-08/08/2022.csv </td>
+                                        <td>500kb</td>
+                                        <td>07/09/2022 | 04:45</td>
+                                        <td><a href=""> Download</a></td>
+                                    </tr>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

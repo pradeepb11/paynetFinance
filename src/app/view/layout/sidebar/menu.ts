@@ -49,14 +49,20 @@ export const MENU: MenuItem[] = [
     isTitle: true,
   },
   {
-    label: 'Activation MID',
-    icon: 'cast',
-    link: '/activationmid'
+    label: 'Merchant List',
+    icon: 'slack',
+    link: '/merchantlist'
   },
   {
-    label:'Merchant Profile',
-    icon: 'cast',
-    link: '/merchantprofile'
+    label:'Reports',
+    icon:'slack',
+    link:'/merchantreports'
+  },
+  {
+    label: 'Refund',
+    icon:'slack',
+    link:'/merchantrefund'
+
   }
   // {
   //   label: 'Customer',

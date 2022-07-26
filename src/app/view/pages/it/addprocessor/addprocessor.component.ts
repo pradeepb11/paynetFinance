@@ -85,7 +85,7 @@ export class AddprocessorComponent implements OnInit {
     //   });
     return this.fb.group({
       
-      key: [Object.keys],
+      key: [],
       value: []
     })
   }
@@ -152,16 +152,19 @@ export class AddprocessorComponent implements OnInit {
 
   addproccingSubmit(){
     console.log('Working');
+
+    // console.log(Object.entries(this.addproccingForm.value.processor_data));
  
-  //   this.display = Object.entries(this.addproccingForm.value.processor_data).map((e:any) => {
-  //     console.log(e[1].api_fields[0])
+    this.display = Object.entries(this.addproccingForm.value.processor_data).map((e:any) => {
+      // console.log(e[1].api_fields)
+      console.log(e[1].api_fields)
       
-  //     return {
+      return {
        
-  //      [e[1].api_fields[0].key]: e[1].api_fields[0].value,
-  //    };
-  //  });
-  //  console.log(this.display);
+       [e[1].api_fields[0].key]: e[1].api_fields[0].value,
+     };
+   });
+   console.log(this.display);
   //  this.display.push(this.addproccingForm.value);
  
 

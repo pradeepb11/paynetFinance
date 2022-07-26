@@ -8,44 +8,40 @@
     }
 }
 
-.addproccingDetails {
-    // display: none;
-    position: fixed;
-    top: 58px !important;
-    ;
-    right: 0 !important;
-    ;
-    height: 100%;
-    width: 700px;
-    background-color: #6571ff;
-    z-index: 101;
-    padding: 20px;
-    font-size: 14px;
-}
-
-.cardA {
-    height: 92%;
-}
-
-.closebtn {
-    width: 20px;
-    height: 20px;
-    background-color: #eb5f00;
-    color: #fff;
-    border-radius: 50%;
-}
-
-@media (max-width: 576px) {
-    .invoicedetails {
-        width: 100%;
-        height: auto;
-        position: absolute;
-    }
-    .cardA {
-        height: auto;
-    }
-}
-
+// .addproccingDetails {
+//     // display: none;
+//     position: fixed;
+//     top: 58px !important;
+//     ;
+//     right: 0 !important;
+//     ;
+//     height: 100%;
+//     width: 700px;
+//     background-color: #4169E1;
+//     z-index: 101;
+//     padding: 20px;
+//     font-size: 14px;
+// }
+// .cardA {
+//     height: 92%;
+// }
+// .closebtn {
+//     width: 20px;
+//     height: 20px;
+//     background-color: #EE8035;
+//     color: #fff;
+//     border-radius: 50%;
+// }
+// @media (max-width: 576px) {
+//     .invoicedetails {
+//         width: 100%;
+//         height: auto;
+//         position: absolute;
+//     }
+//     .cardA {
+//         height: auto;
+//     }
+// }
 .fz13 {
     font-size: 12px;
     ;
@@ -59,5 +55,5 @@
 .nav.nav-tabs .nav-item .nav-link.active {
     border-color: #dee2e6 #dee2e6 #fff;
     color: #ffffff;
-    background: #6571ff;
+    background: #4169E1;
 }

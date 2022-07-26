@@ -81,8 +81,8 @@
 
 <div class="invoicedetails" *ngIf="addbankPage">
     <div class="card cardA">
-        <div class="card-header">
-            Add Bank
+        <div class="card-header  align-items-center d-flex justify-content-between">
+            <h2 class="fw-bold">Add Bank</h2>
             <button type="button" class="btn-close float-end closebtn" (click)="cloneAddBank()" aria-label="Close"></button>
         </div>
         <div class="card-body ">
@@ -95,7 +95,7 @@
                     <div class="col-sm-6 mb-3">
                         <div class="form-group list-filter-item">
                             <label>Bank name</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Bank name">
+                            <input type="text" name="id" class="inputText form-control input-sm" placeholder="Bank name">
 
                         </div>
                     </div>

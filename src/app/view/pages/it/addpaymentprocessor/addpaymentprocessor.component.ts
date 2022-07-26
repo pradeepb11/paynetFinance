@@ -47,7 +47,10 @@ export class AddpaymentprocessorComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     this.setValiidatepaymentProcessorForm();
+    
    
   }
 
@@ -78,8 +81,7 @@ export class AddpaymentprocessorComponent implements OnInit {
 }
 
 createSubItemList(){
-  console.log(Object.keys)
-
+  
   return this.fb.group({
     
     key: [],
@@ -122,6 +124,7 @@ addapi_fields(i:any){
   addBank(){
     console.log('working')
     this.addbankPage = true;
+   
   }
 
   closeAddBank(){
