@@ -9,6 +9,11 @@ export class MerchantprofileComponent implements OnInit {
 
   defaultNavActiveId = 1;
   defaultNavCode: any;
+
+  merchantSettingNavActiveId = 1;
+  merchantSettingNavCode: any;
+
+
   horizontalAlignmentCenterCode: any;
   horizontalCenterCode: any;
   horizontalEndCode: any;

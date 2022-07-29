@@ -55,14 +55,24 @@ export const MENU: MenuItem[] = [
   },
   {
     label:'Reports',
-    icon:'slack',
+    icon:'list',
     link:'/merchantreports'
   },
   {
+    label:'Adjustments',
+    icon:'layers',
+    link:'/adjustment'
+  },
+  {
     label: 'Refund',
-    icon:'slack',
+    icon:'rotate-cw',
     link:'/merchantrefund'
 
+  },
+  {
+    label:'Settlements',
+    icon:'check-circle',
+    link:'/settlement'
   }
   // {
   //   label: 'Customer',

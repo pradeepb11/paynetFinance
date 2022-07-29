@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="row flex-grow-1">
+        <div class="col-md-12 grid-margin stretch-card ">
+            <div class="card p-3">
+                <section class="invoicebody">
+                    <div class="content-wrapper">
+                        <form action="">
+
+                            <div class="row">
+
+
+                                <div class="col-sm-3">
+                                    <div class="form-group list-filter-item">
+                                        <!-- <label>Start Date</label> -->
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Search by Merchant ID">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group list-filter-item">
+                                        <!-- <label>Start Date</label> -->
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Search by Store Name">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-group list-filter-item">
+                                        <!-- <label>End Date</label> -->
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Search by Email">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+
+                        <hr>
+                        <div class="table-responsive pt-1 ">
+                            <table class="table table-bordered table-sm table-hover" id="dataTableReport">
+                                <thead>
+                                    <tr>
+                                        <th>Merc. ID</th>
+                                        <th>Store Name</th>
+                                        <th>Merchant Name </th>
+                                        <th>Email</th>
+                                        <th>Country</th>
+                                        <th>Masked MID</th>
+                                        <th>Activity</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2110</td>
+                                        <td>Niks-Vasai </td>
+                                        <td>Salman Ansari</td>
+                                        <td>salman@paynet.co.in</td>
+                                        <td>India </td>
+                                        <td>P10002320</td>
+                                        <td>View </td>
+                                        <td>
+                                            <a href="">
+                                                <span class="text-sucess me-3">+ Credit</span>
+                                            </a>
+                                            <a href="">
+                                                <span class="text-danger">- Debit</span>
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2110</td>
+                                        <td>Niks-Vasai </td>
+                                        <td>Salman Ansari</td>
+                                        <td>salman@paynet.co.in</td>
+                                        <td>India </td>
+                                        <td>P10002320</td>
+                                        <td><a routerLink="/adjustment/activity">View</a> </td>
+                                        <td>
+                                            <a href="">
+                                                <span class="text-sucess me-3">+ Credit</span>
+                                            </a>
+                                            <a href="">
+                                                <span class="text-danger">- Debit</span>
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2110</td>
+                                        <td>Niks-Vasai </td>
+                                        <td>Salman Ansari</td>
+                                        <td>salman@paynet.co.in</td>
+                                        <td>India </td>
+                                        <td>P10002320</td>
+                                        <td>View </td>
+                                        <td>
+                                            <a href="">
+                                                <span class="text-sucess me-3">+ Credit</span>
+                                            </a>
+                                            <a href="">
+                                                <span class="text-danger">- Debit</span>
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>

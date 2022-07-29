@@ -58,8 +58,8 @@
                         <li [ngbNavItem]="2">
                             <a ngbNavLink>Store Details</a>
                             <ng-template ngbNavContent>
-                                <form class="forms-sample">
-                                    <div class=" col-sm-9 mt-5 mb-5">
+                                <form class="forms-sample row">
+                                    <div class=" col-sm-6 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="FirstName" class="col-sm-4 col-form-label">Account Type</label>
                                             <div class="col-sm-8">
@@ -143,6 +143,58 @@
 
                                     </div>
 
+                                    <div class=" col-sm-6 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="StoreLogo" class="col-sm-4 col-form-label">Store Logo</label>
+                                            <div class="col-sm-8">
+                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <!-- <input type="text" class="form-control" id="StoreLogo" placeholder="Store Logo"> -->
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="Webpage" class="col-sm-4 col-form-label">Web page</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 1</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" onfocus="(this.type='date')">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="Charge-backContactNo" class="col-sm-4 col-form-label">Charge-back Contact No</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Charge-backContactNo" autocomplete="off" placeholder="Charge-back Contact No">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Charge-backEmailAddress" class="col-sm-4 col-form-label">Charge-back Email Address</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Charge-backEmailAddress" autocomplete="off" placeholder="Charge-back Email Address">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Terms&ConditionsURL_a" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="Terms&ConditionsURL_a" autocomplete="off" placeholder="Terms & Conditions URL">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From">
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
 
                                     <hr>
                                     <div class="group mt-3 ">
@@ -156,31 +208,231 @@
                         <li [ngbNavItem]="3">
                             <a ngbNavLink>Bank Details</a>
                             <ng-template ngbNavContent>
-                                <p>Bank Details</p>
-                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
-                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+
+                                <form class="forms-sample">
+                                    <div class=" col-sm-9 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="BankName" class="col-sm-3 col-form-label">Bank Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="BankName" placeholder="Bank Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AccountHolderName" class="col-sm-3 col-form-label">Account Holder Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="AccountHolderName" autocomplete="off" placeholder="Account Holder Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AccountNumber" class="col-sm-3 col-form-label">Account Number</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="AccountNumber" placeholder="Account Number" onfocus="(this.type='date')">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="IFSCCode" class="col-sm-3 col-form-label">IFSC Code</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="IFSCCode" autocomplete="off" placeholder="IFSC Code">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="BranchName" class="col-sm-3 col-form-label">Branch Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="BranchName" autocomplete="off" placeholder="Branch Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Address" class="col-sm-3 col-form-label">Address</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="Address" autocomplete="off" placeholder="Address">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="State" class="col-sm-3 col-form-label">State</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="State" autocomplete="off" placeholder="State">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="District" class="col-sm-3 col-form-label">District</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="District" autocomplete="off" placeholder="District">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="BankTransactionDetails" class="col-sm-3 col-form-label">Bank Transaction Details</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="BankTransactionDetails" autocomplete="off" placeholder="Bank Transaction Details">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="CancelledCHQ" class="col-sm-3 col-form-label">Cancelled CHQ</label>
+                                            <div class="col-sm-9">
+                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <!-- <input type="text" class="form-control" id="CancelledCHQ" autocomplete="off" placeholder="Cancelled CHQ"> -->
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+                                    <hr>
+                                    <div class="group mt-3 ">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-secondary">Cancel</button>
+                                    </div>
+
+                                </form>
+
                             </ng-template>
                         </li>
                         <li [ngbNavItem]="4">
                             <a ngbNavLink>KYC Details</a>
                             <ng-template ngbNavContent>
-                                <p>KYC Details</p>
-                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
-                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+
+                                <form class="forms-sample">
+                                    <div class=" col-sm-9 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="PANCardNumber" class="col-sm-3 col-form-label">PAN Card Number</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="PANCardNumber" placeholder="PAN Card Number">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="PANCardHolderName" class="col-sm-3 col-form-label">PAN Card Holder Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="PANCardHolderName" autocomplete="off" placeholder="PAN Card Holder Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="PANCardPhoto" class="col-sm-3 col-form-label">PAN Card Photo</label>
+                                            <div class="col-sm-9">
+                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <!-- <input type="text" class="form-control" id="PANCardPhoto" placeholder="PAN Card Photo"> -->
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="AadharCardNumber" class="col-sm-3 col-form-label">Aadhar Card Number</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="AadharCardNumber" autocomplete="off" placeholder="Aadhar Card Number">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="AadharCardName" class="col-sm-3 col-form-label">Aadhar Card Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="AadharCardName" autocomplete="off" placeholder="Aadhar Card Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="AadharCardPhoto" class="col-sm-3 col-form-label">Aadhar Card Photo</label>
+                                            <div class="col-sm-9">
+                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <!-- <input type="text" class="form-control" id="AadharCardPhoto" autocomplete="off" placeholder="Aadhar Card Photo"> -->
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <hr>
+                                    <div class="group mt-3 ">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-secondary">Cancel</button>
+                                    </div>
+
+                                </form>
+
                             </ng-template>
                         </li>
                         <li [ngbNavItem]="5">
                             <a ngbNavLink>Questionnaire</a>
                             <ng-template ngbNavContent>
-                                <p>Questionnaire</p>
-                                <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-                                    Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
-                                    nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                                    in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+
+                                <form class="forms-sample">
+                                    <div class=" col-sm-9 mt-5 mb-5">
+                                        <div class="row mb-3">
+                                            <label for="NatureofYourBusiness" class="col-sm-3 col-form-label">Nature of Your Business</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="NatureofYourBusiness" placeholder="Nature of Your Business">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="NatureofYearsinBusiness" class="col-sm-3 col-form-label">Nature of Years in Business</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="NatureofYearsinBusiness" autocomplete="off" placeholder="Nature of Years in Business">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="NumberofTransactionsPerMonth" class="col-sm-3 col-form-label">Number of Transactions Per Month</label>
+                                            <div class="col-sm-9">
+                                                <!-- <img src="https://via.placeholder.com/100" alt=""> -->
+                                                <input type="text" class="form-control" id="NumberofTransactionsPerMonth" placeholder="Number of Transactions Per Month">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="ValueofTransactionPerMonth" class="col-sm-3 col-form-label">Value of Transaction Per Month (in ₹)</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="ValueofTransactionPerMonth" autocomplete="off" placeholder="Value of Transaction Per Month (in ₹)">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="DoyouhaveaphysicalstoreLocation" class="col-sm-3 col-form-label">Do you have a physical store Location</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="DoyouhaveaphysicalstoreLocation" autocomplete="off" placeholder="Do you have a physical store Location">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="CountriesDeliveringto" class="col-sm-3 col-form-label">Countries Delivering to</label>
+                                            <div class="col-sm-9">
+                                                <!-- <img src="https://via.placeholder.com/100" alt=""> -->
+                                                <input type="text" class="form-control" id="CountriesDeliveringto" autocomplete="off" placeholder="Countries Delivering to">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="DeliveryMethodsUsed" class="col-sm-3 col-form-label">Delivery Methods Used</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="DeliveryMethodsUsed" autocomplete="off" placeholder="Delivery Methods Used">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Fraudmerchant" class="col-sm-3 col-form-label">Any instance of Account compromise
+                                                or
+                                                Fraud merchant may have 
+                                                experienced</label>
+                                            <div class="col-sm-9">
+                                                <!-- <img src="https://via.placeholder.com/100" alt=""> -->
+                                                <input type="text" class="form-control" id="Fraudmerchant" autocomplete="off" placeholder="No">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <hr>
+                                    <div class="group mt-3 ">
+                                        <button type="submit" class="btn btn-primary me-2">Approve</button>
+                                        <button class="btn btn-secondary">Reject</button>
+                                    </div>
+
+                                </form>
+
                             </ng-template>
                         </li>
                     </ul>
@@ -197,9 +449,384 @@
             <a ngbNavLink>Merchant Settings</a>
             <ng-template ngbNavContent>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eius voluptatem perspiciatis, soluta repellendus ipsa laudantium praesentium consequuntur ipsum facilis aspernatur tenetur quam maxime vitae earum cum natus qui rem.
-                    Temporibus dolorem quidem veniam aut incidunt dignissimos inventore, eveniet facilis!</p>
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                    <li [ngbNavItem]="1">
+                        <a ngbNavLink>Details</a>
+                        <ng-template ngbNavContent>
 
+
+
+                            <form action="">
+
+                                <div class=" col-sm-9 mt-5 mb-5">
+
+                                    <div class="mb-3 d-flex">
+
+                                        <div class="form-check mb-2 me-3">
+                                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                                            <label class="form-check-label" for="checkDefault">
+                                                Pay In
+                                        </label>
+                                        </div>
+
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                                            <label class="form-check-label" for="checkDefault">
+                                                Pay Out
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="SecurityDeposit" autocomplete="off" placeholder="Security Deposit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="MerchantBalance" autocomplete="off" placeholder="Merchant Balance">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="PayInCommittedVolume" autocomplete="off" placeholder="Pay In Committed Volume">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="PayOutCommittedVolume" autocomplete="off" placeholder="Pay Out Committed Volume">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <hr>
+                                <div class="group mt-3 ">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                                </div>
+
+                            </form>
+
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="2">
+                        <a ngbNavLink>Webhooks</a>
+                        <ng-template ngbNavContent>
+
+                            <form>
+                                <div class=" col-sm-9 mt-5 mb-5">
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="MerchantAppID" autocomplete="off" placeholder="Merchant App ID">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Merchant Secret Key">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <hr>
+                                <div class="group mt-3 ">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                                </div>
+
+                            </form>
+
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="3">
+                        <a ngbNavLink>Limit</a>
+                        <ng-template ngbNavContent>
+
+                            <form>
+                                <div class=" col-sm-9 mt-5 mb-5">
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <hr>
+                                <div class="group mt-3 ">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                                </div>
+                            </form>
+
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="4">
+                        <a ngbNavLink>Pricing</a>
+                        <ng-template ngbNavContent>
+
+                            <form>
+                                <div class=" col-sm-12 mt-5 mb-5">
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+
+                                                    <select class="form-select" id="exampleFormControlSelect2">
+                                                        <option selected disabled>Please Select processor</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                      </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <select class="form-select" id="exampleFormControlSelect2">
+                                                        <option selected disabled>Please Select Payment Method</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                      </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="EnterPercentageAmount" autocomplete="off" placeholder="Enter Percentage Amount">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="EnterFlatAmount" autocomplete="off" placeholder="Enter Flat Amount">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-sm">+ Add More Method</button>
+
+                                </div>
+
+
+                                <hr>
+                                <div class="group mt-3 ">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                                </div>
+                            </form>
+
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="5">
+                        <a ngbNavLink>MID Creation</a>
+                        <ng-template ngbNavContent>
+
+                            <form>
+                                <div class=" col-sm-12 mt-5 mb-3">
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="ProcessorName" class="form-label">Processor Name</label>
+                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="CashFree">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="CreditCard" class="form-label">Payment Type</label>
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="Credit Card">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="CreditCard" class="form-label">API Field Title</label>
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="CreditCard" class="form-label">API Field Title</label>
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class=" col-sm-12 mt-2 mb-3">
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="ProcessorName" class="form-label">Processor Name</label>
+                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="ISG">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="DebitCard" class="form-label">Payment Type</label>
+                                                    <input type="text" class="form-control" id="DebitCard" autocomplete="off" value="Debit Card">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="CreditCard" class="form-label">API Field Title</label>
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <label for="CreditCard" class="form-label">API Field Title</label>
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                                <!-- <hr>
+                                <div class="group mt-3 ">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                                </div> -->
+                            </form>
+
+                        </ng-template>
+                    </li>
+                </ul>
+
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+                <pre>Active: {{ active }}</pre>
             </ng-template>
         </li>
 

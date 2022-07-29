@@ -121,3 +121,17 @@ nav {
     background-color: #4169E1;
     box-shadow: none !important;
 }
+
+input {
+    background-color: #e1e1e130 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+    // background: #707070;
+    // opacity: 0.2;
+    // border-radius: 2px 2px 0px 0px;
+}
+
+.form-check-input:checked,
+.ng-dropdown-panel input[type=checkbox]:checked {
+    background-color: #4169E1 !important;
+    border-color: #4169E1;
+}

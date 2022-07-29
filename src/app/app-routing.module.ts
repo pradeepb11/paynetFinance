@@ -25,9 +25,13 @@ const routes: Routes = [
       { path: 'merchantlist', loadChildren: () => import('./view/pages/operation/merchantlist/merchantlist.module').then(m => m.MerchantlistModule) },
       { path: 'merchantreports', loadChildren: () => import('./view/pages/operation/merchantreports/merchantreports.module').then(m => m.MerchantreportsModule) },
       { path: 'merchantrefund', loadChildren: () => import('./view/pages/operation/merchantrefund/merchantrefund.module').then(m => m.MerchantrefundModule) },
+      { path: 'settlement', loadChildren: () => import('./view/pages/operation/settlements/settlements.module').then(m => m.SettlementsModule) },
+      { path: 'adjustment', loadChildren: () => import('./view/pages/operation/adjustments/adjustments.module').then(m => m.AdjustmentsModule) },
 
     ]
   },
+  
+  
   
   
   
