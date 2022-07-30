@@ -151,7 +151,7 @@
                                     <label for="processor_type" class="form-label">Select processor Type</label>
                                     <select name="" id="processor_type" formControlName="processor_type" class="form-control form-select" (change)="onChange($event.target.value)">
                                     <option selected disabled>Please Select processor Type</option>
-                                    <option value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
+                                    <option   value="{{data.value}}" *ngFor="let data of cards">{{data.name}}</option>
                                     <!-- <option value="business">Business</option> -->
                                 </select>
 

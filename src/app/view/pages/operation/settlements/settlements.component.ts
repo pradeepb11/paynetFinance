@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   styleUrls: ['./settlements.component.scss']
 })
 export class SettlementsComponent implements OnInit, OnChanges {
-
+  imageSrc: any;
 
   
 
@@ -24,6 +24,18 @@ export class SettlementsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  readURL(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
 
+        const reader = new FileReader();
+        reader.onload = e => this.imageSrc = reader.result;
+
+        reader.readAsDataURL(file);
+    }
+
+
+
+}
 
 }

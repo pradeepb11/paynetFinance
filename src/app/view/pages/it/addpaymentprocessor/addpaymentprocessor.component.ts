@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import {
   animate,
@@ -10,7 +10,7 @@ import {
 import { Subject } from 'rxjs';
 
 import {ItprocessorService, paymentprocessor} from '../../../../service/itprocessor.service';
-import { WizardComponent as BaseWizardComponent } from 'angular-archwizard';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ import { WizardComponent as BaseWizardComponent } from 'angular-archwizard';
   styleUrls: ['./addpaymentprocessor.component.scss'],
   providers:[ItprocessorService]
 })
-export class AddpaymentprocessorComponent implements OnInit {
+export class AddpaymentprocessorComponent implements OnInit, AfterContentInit {
 
   addbankPage: boolean = false;
   submitted = false;
@@ -29,7 +29,7 @@ export class AddpaymentprocessorComponent implements OnInit {
   display: any;
   empForm: FormGroup;
   selectedValueProcessor = new Subject;
-
+ 
   //
   defaultNavActiveId = 1;
   defaultNavCode: any;
@@ -39,19 +39,28 @@ export class AddpaymentprocessorComponent implements OnInit {
   verticalNavCode: any;
   fillJustifyNavCode: any;
   navWidthDropdownCode: any;
+  processorTypes:any;
+
+
 
   constructor(
     private fb: FormBuilder,
     private paymentProcessorService: ItprocessorService
   ) { }
 
+
+
+  ngAfterContentInit(): void {
+     console.log(this.defaultNavActiveId);
+     if(this.defaultNavActiveId === 1){
+      this.processorTypes = 'CC';
+     }
+     console.log(this.processorTypes)
+  }
+
   ngOnInit(): void {
-
-
-
-    this.setValiidatepaymentProcessorForm();
-    
-   
+  this.setValiidatepaymentProcessorForm();
+  
   }
 
   setValiidatepaymentProcessorForm(){
@@ -60,7 +69,7 @@ export class AddpaymentprocessorComponent implements OnInit {
       avail_for_merchant: new FormControl(''),
       country: new FormControl(''),
       status: new FormControl(''),
-      processor_data: this.fb.array([this.createItemFeild()]),
+      processor_type: new FormControl('CC'),
 
     })
   }
@@ -70,49 +79,13 @@ export class AddpaymentprocessorComponent implements OnInit {
     return this.addpaymentproccingForm.get('processor_data') as FormArray;
   }
 
-
   createItemFeild(){
     
     return this.fb.group({
       processor_type: new FormControl(''),
-      api_fields:this.fb.array([this.createSubItemList()])
+      api_fields:this.fb.array([])
      
   })
-}
-
-createSubItemList(){
-  
-  return this.fb.group({
-    
-    key: [],
-    value: []
-  })
-}
-
-employeeSkills(i: number): FormArray {
-  return this.processor_data()
-    .at(i)
-    .get('api_fields') as FormArray;
-}
-
-removeprocessorData(i:any){
-  this.processor_data().removeAt(i)
-}
-
-addprocessor_data(){
-
-  
-  this.processor_data().push(this.createItemFeild());
-
-
-
-
-}
-
-addapi_fields(i:any){
-  this.employeeSkills(i).push(this.createSubItemList());
- 
- 
 }
 
 
@@ -134,5 +107,24 @@ addapi_fields(i:any){
   addproccingSubmit(){
 
   }
+
+  changeTab(event:any) {
+  console.log(event)
+  }
+
+  processorType(name:any){
+    if(this.defaultNavActiveId === this.defaultNavActiveId){
+      console.log(name)
+      if(name === 'CC'){
+        console.log('cc WOrking');
+
+
+      } else if(name === 'DC'){
+        console.log('dc Working')
+      }
+    }
+  
+  }
+
 
 }

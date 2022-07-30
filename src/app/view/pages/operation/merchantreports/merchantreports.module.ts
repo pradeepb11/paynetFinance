@@ -14,4 +14,8 @@ import { MerchantreportsComponent } from './merchantreports.component';
     MerchantreportsRoutingModule
   ]
 })
-export class MerchantreportsModule { }
+export class MerchantreportsModule { 
+  constructor(){
+     console.log('Merchant Report Module')
+  }
+}

@@ -97,10 +97,10 @@
                                         <td>P10002320</td>
                                         <td>View </td>
                                         <td>
-                                            <a href="">
+                                            <a (click)="openCredit()">
                                                 <span class="text-sucess me-3">+ Credit</span>
                                             </a>
-                                            <a href="">
+                                            <a (click)="openDebit()">
                                                 <span class="text-danger">- Debit</span>
                                             </a>
 
@@ -126,4 +126,246 @@
     </div>
 
     <router-outlet></router-outlet>
+</div>
+
+
+
+
+<div class="addproccingDetails" *ngIf="creditPage">
+    <div class="card cardA">
+        <div class="card-header align-items-center d-flex justify-content-between">
+            <h3> Credit Adjustment </h3>
+            <button type="button" class="btn-close float-end closebtn" (click)="closeCredit()" aria-label="Close"></button>
+        </div>
+        <div class="card-body perfect-scrollbar-example" [perfectScrollbar]>
+            <form>
+
+                <div class="row">
+
+                    <!-- processor name     -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Merchant ID</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Merchant ID">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Merchant Account Type</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Merchant Account Type">
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Merchant Country Code</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Merchant Country Code">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Available Balance</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Available Balance">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Amount to Add</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Amount to Add">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Add Comment to Merchant</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Add Comment to Merchant">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Add Comment as (role)</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Add Comment as (role)">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-left mt-3">
+                        <button type="submit" class="btn btn-primary btnDark">Credit Amount</button>
+                        <button type="reset" class="btn btn-secondary ms-2">Clear</button>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="addproccingDetails" *ngIf="debitPage">
+    <div class="card cardA">
+        <div class="card-header align-items-center d-flex justify-content-between">
+            <h3> Debit Adjustment
+            </h3>
+            <button type="button" class="btn-close float-end closebtn" (click)="closeCredit()" aria-label="Close"></button>
+        </div>
+        <div class="card-body perfect-scrollbar-example" [perfectScrollbar]>
+            <form>
+
+                <div class="row">
+
+                    <!-- processor name     -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="form-group list-filter-item">
+                            <label>Merchant ID</label>
+                            <input type="text" name="id" class="form-control input-sm" placeholder="Merchant ID">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Merchant Account Type</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Merchant Account Type">
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Merchant Country Code</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Merchant Country Code">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Available Balance</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Available Balance">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Amount to Reduce</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Amount to Reduce">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Add Comment to Merchant</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Add Comment to Merchant">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Add Comment to Merchant</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Add Comment to Merchant">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mb-3">
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group list-filter-item">
+                                <label>Add Comment as (role)</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Add Comment as (role)">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-left mt-3">
+                        <button type="submit" class="btn btn-primary btnDark">Debit Amount</button>
+                        <button type="reset" class="btn btn-secondary ms-2">Clear</button>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </form>
+
+        </div>
+    </div>
+
+
 </div>

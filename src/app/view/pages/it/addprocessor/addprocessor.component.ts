@@ -79,7 +79,7 @@ export class AddprocessorComponent implements OnInit {
 }
 
   createSubItemList(){
-    console.log(Object.keys)
+    // console.log(Object.keys)
     // Object.entries(this.addproccingForm.value.processor_data.api_fields).map((element:any) => {
     //     console.log(element)
     //   });

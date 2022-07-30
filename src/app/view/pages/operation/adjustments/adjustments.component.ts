@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adjustments.component.scss']
 })
 export class AdjustmentsComponent implements OnInit {
-
-
+  creditPage: boolean = false;
+  debitPage: boolean = false;
 
   constructor() {
     
@@ -17,7 +17,18 @@ export class AdjustmentsComponent implements OnInit {
   ngOnInit(): void {
     
   }
+  openCredit(){
+    this.creditPage = true;
+    this.debitPage = false;
+  }
+  openDebit(){
+    this.creditPage = false;
+    this.debitPage = true;
+  }
 
-
+  closeCredit(){
+    this.creditPage = false;
+    this.debitPage = false;
+  }
 
 }

@@ -14,4 +14,8 @@ import { ActivityComponent } from './activity.component';
     ActivityRoutingModule
   ]
 })
-export class ActivityModule { }
+export class ActivityModule {
+  constructor(){
+    console.log('Activity Module Run');
+  }
+ }

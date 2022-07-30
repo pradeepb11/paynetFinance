@@ -208,47 +208,19 @@
 
                                 <div class="example">
                                     <ul ngbNav #defaultNav="ngbNav" [(activeId)]="defaultNavActiveId" class="nav-tabs">
-                                        <li [ngbNavItem]="1">
+
+
+                                        <li [ngbNavItem]="1" (click)="processorType('CC')">
                                             <a ngbNavLink>Credit Card</a>
                                             <ng-template ngbNavContent>
+                                                <input type="hidden" value="CC" formControlName="processor_type">
+                                                <div class="col-sm-12 mb-3">
 
-                                                <div class="col-sm-12 mb-3" formArrayName="processor_data">
-
-                                                    <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
-
-                                                        <div [formGroupName]="i">
-                                                            <!-- processor Type -->
-                                                            <div class="col-sm-12 mb-2">
-                                                                <input type="hidden" name="" formControlName="processor_type" value="CC">
-
-                                                            </div>
-                                                            <!-- /processor Type -->
-
-
-                                                            <div formArrayName="api_fields">
-
-                                                                <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
-
-                                                                    <div [formGroupName]="j" class="d-flex">
-                                                                        <div class="col-sm-6 mb-2 me-2">
-                                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
-                                                                        </div>
-                                                                        <div class="col-sm-6 mb-2">
-                                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-
-
-                                                            </div>
-                                                            <button type="button" class="badge bg-primary float-end border-0" (click)="addapi_fields(i)">
-                            + Add Field
-                            </button>
-                                                            <div style="clear:both"></div>
-                                                        </div>
+                                                    <div class="col-sm-6 mb-2 me-2">
+                                                        <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title">
+                                                    </div>
+                                                    <div class="col-sm-6 mb-2">
+                                                        <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name">
 
                                                     </div>
 
@@ -256,55 +228,29 @@
 
                                             </ng-template>
                                         </li>
-                                        <li [ngbNavItem]="2">
+                                        <li [ngbNavItem]="2" (click)="processorType('DC')">
                                             <a ngbNavLink>Debit Card</a>
                                             <ng-template ngbNavContent>
 
-                                                <div class="col-sm-12 mb-3" formArrayName="processor_data">
+                                                <div class="col-sm-12 mb-3">
+                                                    <div class="col-sm-12 mb-3">
 
-                                                    <div *ngFor="let processorData of processor_data().controls; let i =index " class="card-body mb-3 border p-2">
+                                                        <div class="col-sm-6 mb-2 me-2">
+                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title">
+                                                        </div>
+                                                        <div class="col-sm-6 mb-2">
+                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name">
 
-                                                        <div [formGroupName]="i">
-                                                            <!-- processor Type -->
-                                                            <div class="col-sm-12 mb-2">
-                                                                <input type="hidden" name="" formControlName="processor_type" value="CC">
-
-                                                            </div>
-                                                            <!-- /processor Type -->
-
-
-                                                            <div formArrayName="api_fields">
-
-                                                                <div *ngFor="let apifield of employeeSkills(i).controls ; let j=index ">
-
-                                                                    <div [formGroupName]="j" class="d-flex">
-                                                                        <div class="col-sm-6 mb-2 me-2">
-                                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Title" formControlName="key">
-                                                                        </div>
-                                                                        <div class="col-sm-6 mb-2">
-                                                                            <input type="text" name="id" class="form-control input-sm" placeholder="API Field Element Name" formControlName="value">
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-
-
-                                                            </div>
-                                                            <button type="button" class="badge bg-primary float-end border-0" (click)="addapi_fields(i)">
-                            + Add Field
-                            </button>
-                                                            <div style="clear:both"></div>
                                                         </div>
 
                                                     </div>
+
 
                                                 </div>
 
                                             </ng-template>
                                         </li>
-                                        <li [ngbNavItem]="3">
+                                        <li [ngbNavItem]="3" (click)="processorType('NB')">
                                             <a ngbNavLink>Net Banking</a>
                                             <ng-template ngbNavContent>
 
@@ -325,7 +271,7 @@
 
                                             </ng-template>
                                         </li>
-                                        <li [ngbNavItem]="4">
+                                        <li [ngbNavItem]="4" (click)="processorType('UPI')">
                                             <a ngbNavLink>Third Party</a>
                                             <ng-template ngbNavContent>
 
@@ -346,7 +292,7 @@
 
                                             </ng-template>
                                         </li>
-                                        <li [ngbNavItem]="5">
+                                        <li [ngbNavItem]="5" (click)="processorType('PO')">
                                             <a ngbNavLink>Pay Out</a>
                                             <ng-template ngbNavContent>
 
