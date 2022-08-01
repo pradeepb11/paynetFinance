@@ -59,10 +59,10 @@
                                         <td>P10002320</td>
                                         <td>View </td>
                                         <td>
-                                            <a href="">
+                                            <a (click)="openCredit()">
                                                 <span class="text-sucess me-3">+ Credit</span>
                                             </a>
-                                            <a href="">
+                                            <a (click)="openDebit()">
                                                 <span class="text-danger">- Debit</span>
                                             </a>
 
@@ -78,10 +78,10 @@
                                         <td>P10002320</td>
                                         <td><a routerLink="/adjustment/activity">View</a> </td>
                                         <td>
-                                            <a href="">
+                                            <a (click)="openCredit()">
                                                 <span class="text-sucess me-3">+ Credit</span>
                                             </a>
-                                            <a href="">
+                                            <a (click)="openDebit()">
                                                 <span class="text-danger">- Debit</span>
                                             </a>
 
@@ -144,14 +144,18 @@
 
                     <!-- processor name     -->
                     <div class="col-sm-12 mb-3">
-                        <div class="form-group list-filter-item">
-                            <label>Merchant ID</label>
-                            <input type="text" name="id" class="form-control input-sm" placeholder="Merchant ID">
+                        <div class="col-sm-6">
+                            <div class="form-group list-filter-item">
+                                <label>Merchant ID</label>
+                                <input type="text" name="id" class="form-control input-sm" placeholder="Merchant ID">
+
+                            </div>
 
                         </div>
+
                     </div>
 
-                    <div class="col-sm-12 mb-3">
+                    <div class="col-sm-12 mb-3 row">
 
                         <div class="col-sm-6 mb-3">
                             <div class="form-group list-filter-item">

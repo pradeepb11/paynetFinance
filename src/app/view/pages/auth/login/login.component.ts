@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
+import {AuthService} from '../../../../service/auth.service';
+import {NotificationService} from '../../../../service/notification.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers:[AuthService]
 })
 export class LoginComponent implements OnInit {
 
@@ -25,6 +29,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private authService: AuthService,
+    private notifiactionService: NotificationService
 
   ) { }
 
@@ -51,11 +57,31 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(){
-    console.log(this.loginForm.value)
- localStorage.setItem('loggedInUserFin', 'true');
-  if (localStorage.getItem('loggedInUserFin')) {
-    this.router.navigate(['./dashboard']);
-  }
+
+    const {email, password} = this.loginForm.value;
+    // console.log(email, password)
+    this.authService.loginUser(email, password)
+    .subscribe(
+      (res) =>{
+        // console.log(res)
+         
+      if(res.Status === 'error'){
+        this.notifiactionService.showError('', 'Username & Password Do not Match');
+        this.loginForm.reset();
+      }else if (res.Status === 'Success') {
+        this.notifiactionService.showSuccess('', 'Login Successfully');
+        this.router.navigate(['/dashboard'], {relativeTo: this.route})
+      } 
+      },
+      (error:any)=>{
+        this.notifiactionService.showError('', error.error.detail.Details);
+        this.loginForm.reset();
+        window.console.clear();
+        // console.log(err.error.detail.Details)
+      }
+    )
+
+
   }
 
 }

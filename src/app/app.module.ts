@@ -8,6 +8,9 @@ import { AuthGuard } from './helper/guard/auth.guard';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
+import { ToastrModule } from 'ngx-toastr';
+
+import { authInterceptorProviders } from './helper/interceptor/auth.interceptor';
 
 
 
@@ -25,9 +28,11 @@ import { HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

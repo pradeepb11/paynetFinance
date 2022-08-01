@@ -10,37 +10,38 @@
                         <li [ngbNavItem]="1">
                             <a ngbNavLink>Personal Details</a>
                             <ng-template ngbNavContent>
-                                <form class="forms-sample">
+                                <form class="forms-sample" [formGroup]="personaInfoDataForm">
                                     <div class=" col-sm-6 mt-5 mb-5">
                                         <div class="row mb-3">
+                                            <input type="hidden" name="" formControlName="user_id">
                                             <label for="FirstName" class="col-sm-3 col-form-label">First Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="FirstName" placeholder="First Name">
+                                                <input type="text" class="form-control" id="FirstName" placeholder="First Name" formControlName="first_name" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="LastName" class="col-sm-3 col-form-label">Last Name</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="LastName" autocomplete="off" placeholder="Last Name">
+                                                <input type="email" class="form-control" id="LastName" autocomplete="off" placeholder="Last Name" formControlName="last_name" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="DateofBirth" class="col-sm-3 col-form-label">Date of Birth</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DateofBirth" placeholder="Date of Birth" onfocus="(this.type='date')">
+                                                <input type="text" class="form-control" id="DateofBirth" placeholder="Date of Birth" onfocus="(this.type='date')" formControlName="dob" readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="email" class="col-sm-3 col-form-label">Email</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email">
+                                                <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email" formControlName="email" readonly>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="Phoneno" class="col-sm-3 col-form-label">Phone no.</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="Phoneno" autocomplete="off" placeholder="Phone no.">
+                                                <input type="email" class="form-control" id="Phoneno" autocomplete="off" placeholder="Phone no." formControlName="phone_number" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -58,88 +59,104 @@
                         <li [ngbNavItem]="2">
                             <a ngbNavLink>Store Details</a>
                             <ng-template ngbNavContent>
-                                <form class="forms-sample row">
+                                <form class="forms-sample row" [formGroup]="storeDetailsForm">
+                                    <input type="hidden" name="" formControlName="paynet_merchant_id">
                                     <div class=" col-sm-6 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="FirstName" class="col-sm-4 col-form-label">Account Type</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="FirstName" placeholder="Account Type">
+                                                <input readonly type="text" class="form-control" id="FirstName" placeholder="Account Type" formControlName="account_type">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="Webpage" class="col-sm-4 col-form-label">Web page</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page">
+                                                <input readonly type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page" formControlName="web_url">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 1</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" onfocus="(this.type='date')">
+                                                <input readonly type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" formControlName="address1">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 2</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 2">
+                                                <input readonly type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 2" formControlName="address2">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 3</label>
+                                            <label for="City" class="col-sm-4 col-form-label">City</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 3">
+                                                <input readonly type="text" class="form-control" id="City" autocomplete="off" placeholder="City" formControlName="city">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="pincode" class="col-sm-4 col-form-label">Pincode</label>
+                                            <div class="col-sm-8">
+                                                <input readonly type="text" class="form-control" id="pincode" autocomplete="off" placeholder="Pincode" formControlName="pincode">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="State" class="col-sm-4 col-form-label">State</label>
+                                            <div class="col-sm-8">
+                                                <input readonly type="text" class="form-control" id="State" autocomplete="off" placeholder="State" formControlName="state">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="StoreName" class="col-sm-4 col-form-label">Store Name</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="StoreName" autocomplete="off" placeholder="Store Name">
+                                                <input readonly type="text" class="form-control" id="StoreName" autocomplete="off" placeholder="Store Name" formControlName="store_name">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="CustomerServiceContactNo" class="col-sm-4 col-form-label">Customer Service Contact No</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="CustomerServiceContactNo" autocomplete="off" placeholder="Customer Service Contact No">
+                                                <input readonly type="text" class="form-control" id="CustomerServiceContactNo" autocomplete="off" placeholder="Customer Service Contact No" formControlName="cust_service_no">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="CustomerServiceEmailAddress" class="col-sm-4 col-form-label">Customer Service Email Address</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="CustomerServiceEmailAddress" autocomplete="off" placeholder="Customer Service Email Address">
+                                                <input readonly type="text" class="form-control" id="CustomerServiceEmailAddress" autocomplete="off" placeholder="Customer Service Email Address" formControlName="cust_service_email">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="Terms&ConditionsURL" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
+                                            <label for="Terms&ConditionsURL_a" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Terms&ConditionsURL" autocomplete="off" placeholder="Terms & Conditions URL">
+                                                <!-- <input readonly type="text" class="form-control" id="Terms&ConditionsURL_a" autocomplete="off" placeholder="Terms & Conditions URL" formControlName="terms_conditions_url"> -->
+                                                <img src="{{terms_conditions_url}}" alt="" style="width: 100px">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From">
+                                                <input readonly type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="WorkingDays" class="col-sm-4 col-form-label">Working Days</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="WorkingDays" autocomplete="off" placeholder="Working Days">
+                                                <input readonly type="text" class="form-control" id="WorkingDays" autocomplete="off" placeholder="Working Days" formControlName="work_days">
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
+                                        <!-- <div class="row mb-3">
                                             <label for="ProductDescription" class="col-sm-4 col-form-label">Product Description</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="ProductDescription" autocomplete="off" placeholder="Product Description">
+                                                <input readonly type="text" class="form-control" id="ProductDescription" autocomplete="off" placeholder="Product Description" formControlName="">
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </div>
 
@@ -147,47 +164,32 @@
                                         <div class="row mb-3">
                                             <label for="StoreLogo" class="col-sm-4 col-form-label">Store Logo</label>
                                             <div class="col-sm-8">
-                                                <img src="https://via.placeholder.com/100" alt="">
-                                                <!-- <input type="text" class="form-control" id="StoreLogo" placeholder="Store Logo"> -->
+                                                <img src="{{storelogo}}" alt="" style="width:100px">
+                                                <!-- <input readonly type="text" class="form-control" id="StoreLogo" placeholder="Store Logo"> -->
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Webpage" class="col-sm-4 col-form-label">Web page</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 1</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" onfocus="(this.type='date')">
-                                            </div>
-                                        </div>
+
+
                                         <div class="row mb-3">
                                             <label for="Charge-backContactNo" class="col-sm-4 col-form-label">Charge-back Contact No</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Charge-backContactNo" autocomplete="off" placeholder="Charge-back Contact No">
+                                                <input readonly type="text" class="form-control" id="Charge-backContactNo" autocomplete="off" placeholder="Charge-back Contact No" formControlName="charge_back_no">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="Charge-backEmailAddress" class="col-sm-4 col-form-label">Charge-back Email Address</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Charge-backEmailAddress" autocomplete="off" placeholder="Charge-back Email Address">
+                                                <input readonly type="text" class="form-control" id="Charge-backEmailAddress" autocomplete="off" placeholder="Charge-back Email Address" formControlName="charge_back_email">
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label for="Terms&ConditionsURL_a" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="Terms&ConditionsURL_a" autocomplete="off" placeholder="Terms & Conditions URL">
-                                            </div>
-                                        </div>
+
 
                                         <div class="row mb-3">
                                             <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From">
+                                                <input readonly type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
                                             </div>
                                         </div>
 
@@ -209,7 +211,7 @@
                             <a ngbNavLink>Bank Details</a>
                             <ng-template ngbNavContent>
 
-                                <form class="forms-sample">
+                                <form class="forms-sample" [formGroup]="bankDetailsForm">
                                     <div class=" col-sm-9 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="BankName" class="col-sm-3 col-form-label">Bank Name</label>
