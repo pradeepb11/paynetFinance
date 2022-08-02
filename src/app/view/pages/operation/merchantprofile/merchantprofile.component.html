@@ -4,7 +4,9 @@
             <a ngbNavLink>Merchant Profile</a>
             <ng-template ngbNavContent>
 
-                <div class="col-sm-12 mb-3">
+                <div class="col-sm-12 mb-3 position-relative">
+
+                    <a class="text-primary" (click)="EditMerchantProfile()" style="position:absolute; right:0">Edit</a>
 
                     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
                         <li [ngbNavItem]="1">
@@ -16,32 +18,32 @@
                                             <input type="hidden" name="" formControlName="user_id">
                                             <label for="FirstName" class="col-sm-3 col-form-label">First Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="FirstName" placeholder="First Name" formControlName="first_name" readonly>
+                                                <input type="text" class="form-control" id="FirstName" placeholder="First Name" formControlName="first_name" [readonly]="!childmessage">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="LastName" class="col-sm-3 col-form-label">Last Name</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="LastName" autocomplete="off" placeholder="Last Name" formControlName="last_name" readonly>
+                                                <input type="email" class="form-control" id="LastName" autocomplete="off" placeholder="Last Name" formControlName="last_name" [readonly]="!childmessage">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="DateofBirth" class="col-sm-3 col-form-label">Date of Birth</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DateofBirth" placeholder="Date of Birth" onfocus="(this.type='date')" formControlName="dob" readonly>
+                                                <input type="text" class="form-control" id="DateofBirth" placeholder="Date of Birth" onfocus="(this.type='date')" formControlName="dob" [readonly]="!childmessage">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="email" class="col-sm-3 col-form-label">Email</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email" formControlName="email" readonly>
+                                                <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email" formControlName="email" [readonly]="!childmessage">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="Phoneno" class="col-sm-3 col-form-label">Phone no.</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="Phoneno" autocomplete="off" placeholder="Phone no." formControlName="phone_number" readonly>
+                                                <input type="email" class="form-control" id="Phoneno" autocomplete="off" placeholder="Phone no." formControlName="phone_number" [readonly]="!childmessage">
                                             </div>
                                         </div>
                                     </div>
@@ -65,74 +67,74 @@
                                         <div class="row mb-3">
                                             <label for="FirstName" class="col-sm-4 col-form-label">Account Type</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="FirstName" placeholder="Account Type" formControlName="account_type">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="FirstName" placeholder="Account Type" formControlName="account_type">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="Webpage" class="col-sm-4 col-form-label">Web page</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page" formControlName="web_url">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="Webpage" autocomplete="off" placeholder="Web page" formControlName="web_url">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 1</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" formControlName="address1">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="AddressLine" placeholder="Address Line 1" formControlName="address1">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AddressLine" class="col-sm-4 col-form-label">Address Line 2</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 2" formControlName="address2">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="AddressLine" autocomplete="off" placeholder="Address Line 2" formControlName="address2">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="City" class="col-sm-4 col-form-label">City</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="City" autocomplete="off" placeholder="City" formControlName="city">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="City" autocomplete="off" placeholder="City" formControlName="city">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="pincode" class="col-sm-4 col-form-label">Pincode</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="pincode" autocomplete="off" placeholder="Pincode" formControlName="pincode">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="pincode" autocomplete="off" placeholder="Pincode" formControlName="pincode">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="State" class="col-sm-4 col-form-label">State</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="State" autocomplete="off" placeholder="State" formControlName="state">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="State" autocomplete="off" placeholder="State" formControlName="state">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="StoreName" class="col-sm-4 col-form-label">Store Name</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="StoreName" autocomplete="off" placeholder="Store Name" formControlName="store_name">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="StoreName" autocomplete="off" placeholder="Store Name" formControlName="store_name">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="CustomerServiceContactNo" class="col-sm-4 col-form-label">Customer Service Contact No</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="CustomerServiceContactNo" autocomplete="off" placeholder="Customer Service Contact No" formControlName="cust_service_no">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="CustomerServiceContactNo" autocomplete="off" placeholder="Customer Service Contact No" formControlName="cust_service_no">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="CustomerServiceEmailAddress" class="col-sm-4 col-form-label">Customer Service Email Address</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="CustomerServiceEmailAddress" autocomplete="off" placeholder="Customer Service Email Address" formControlName="cust_service_email">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="CustomerServiceEmailAddress" autocomplete="off" placeholder="Customer Service Email Address" formControlName="cust_service_email">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="Terms&ConditionsURL_a" class="col-sm-4 col-form-label">Terms & Conditions URL</label>
                                             <div class="col-sm-8">
-                                                <!-- <input readonly type="text" class="form-control" id="Terms&ConditionsURL_a" autocomplete="off" placeholder="Terms & Conditions URL" formControlName="terms_conditions_url"> -->
+                                                <!-- <input [readonly]="!childmessage" type="text" class="form-control" id="Terms&ConditionsURL_a" autocomplete="off" placeholder="Terms & Conditions URL" formControlName="terms_conditions_url"> -->
                                                 <img src="{{terms_conditions_url}}" alt="" style="width: 100px">
                                             </div>
                                         </div>
@@ -140,21 +142,21 @@
                                         <div class="row mb-3">
                                             <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="WorkingDays" class="col-sm-4 col-form-label">Working Days</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="WorkingDays" autocomplete="off" placeholder="Working Days" formControlName="work_days">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="WorkingDays" autocomplete="off" placeholder="Working Days" formControlName="work_days">
                                             </div>
                                         </div>
 
                                         <!-- <div class="row mb-3">
                                             <label for="ProductDescription" class="col-sm-4 col-form-label">Product Description</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="ProductDescription" autocomplete="off" placeholder="Product Description" formControlName="">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="ProductDescription" autocomplete="off" placeholder="Product Description" formControlName="">
                                             </div>
                                         </div> -->
 
@@ -165,7 +167,7 @@
                                             <label for="StoreLogo" class="col-sm-4 col-form-label">Store Logo</label>
                                             <div class="col-sm-8">
                                                 <img src="{{storelogo}}" alt="" style="width:100px">
-                                                <!-- <input readonly type="text" class="form-control" id="StoreLogo" placeholder="Store Logo"> -->
+                                                <!-- <input [readonly]="!childmessage" type="text" class="form-control" id="StoreLogo" placeholder="Store Logo"> -->
                                             </div>
                                         </div>
 
@@ -173,14 +175,14 @@
                                         <div class="row mb-3">
                                             <label for="Charge-backContactNo" class="col-sm-4 col-form-label">Charge-back Contact No</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="Charge-backContactNo" autocomplete="off" placeholder="Charge-back Contact No" formControlName="charge_back_no">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="Charge-backContactNo" autocomplete="off" placeholder="Charge-back Contact No" formControlName="charge_back_no">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="Charge-backEmailAddress" class="col-sm-4 col-form-label">Charge-back Email Address</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="Charge-backEmailAddress" autocomplete="off" placeholder="Charge-back Email Address" formControlName="charge_back_email">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="Charge-backEmailAddress" autocomplete="off" placeholder="Charge-back Email Address" formControlName="charge_back_email">
                                             </div>
                                         </div>
 
@@ -189,7 +191,7 @@
                                         <div class="row mb-3">
                                             <label for="WorkingTimingsFrom" class="col-sm-4 col-form-label">Working Timings From</label>
                                             <div class="col-sm-8">
-                                                <input readonly type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
+                                                <input [readonly]="!childmessage" type="text" class="form-control" id="WorkingTimingsFrom" autocomplete="off" placeholder="Working Timings From" formControlName="timings_from">
                                             </div>
                                         </div>
 
@@ -212,71 +214,81 @@
                             <ng-template ngbNavContent>
 
                                 <form class="forms-sample" [formGroup]="bankDetailsForm">
+                                    <input type="hidden" name="" formControlName="paynet_merchant_id">
                                     <div class=" col-sm-9 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="BankName" class="col-sm-3 col-form-label">Bank Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="BankName" placeholder="Bank Name">
+                                                <select name="status" class="form-control form-select input-sm" formControlName="bank_id">
+                                                    <option selected disabled>Please Select Customer</option>
+                                                <option value="{{item.bank_id}}" *ngFor="let item of banksNamelist">{{item.bank_name}}</option>
+                                               
+                                            </select>
+                                                <!-- <input type="text" [readonly]="!childmessage" class="form-control" id="BankName" placeholder="Bank Name" formControlName="bank_id"> -->
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AccountHolderName" class="col-sm-3 col-form-label">Account Holder Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="AccountHolderName" autocomplete="off" placeholder="Account Holder Name">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="AccountHolderName" autocomplete="off" placeholder="Account Holder Name" formControlName="account_holder_name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AccountNumber" class="col-sm-3 col-form-label">Account Number</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="AccountNumber" placeholder="Account Number" onfocus="(this.type='date')">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="AccountNumber" placeholder="Account Number" formControlName="account_number">
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="IFSCCode" class="col-sm-3 col-form-label">IFSC Code</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="IFSCCode" autocomplete="off" placeholder="IFSC Code">
+                                        <div formGroupName="bank_info">
+                                            <div class="row mb-3">
+                                                <label for="IFSCCode" class="col-sm-3 col-form-label">IFSC Code</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" [readonly]="!childmessage" class="form-control" id="IFSCCode" autocomplete="off" placeholder="IFSC Code" formControlName="IFSC">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="BranchName" class="col-sm-3 col-form-label">Branch Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" [readonly]="!childmessage" class="form-control" id="BranchName" autocomplete="off" placeholder="Branch Name" formControlName="Branch">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="Address" class="col-sm-3 col-form-label">Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" [readonly]="!childmessage" class="form-control" id="Address" autocomplete="off" placeholder="Address" formControlName="Address">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="State" class="col-sm-3 col-form-label">State</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" [readonly]="!childmessage" class="form-control" id="State" autocomplete="off" placeholder="State" formControlName="State">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="District" class="col-sm-3 col-form-label">District</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" [readonly]="!childmessage" class="form-control" id="District" autocomplete="off" placeholder="District" formControlName="District">
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label for="BranchName" class="col-sm-3 col-form-label">Branch Name</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="BranchName" autocomplete="off" placeholder="Branch Name">
-                                            </div>
-                                        </div>
 
                                         <div class="row mb-3">
-                                            <label for="Address" class="col-sm-3 col-form-label">Address</label>
+                                            <label for="BankTransactionDetails" class="col-sm-3 col-form-label">Bank Statement</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="Address" autocomplete="off" placeholder="Address">
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="State" class="col-sm-3 col-form-label">State</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="State" autocomplete="off" placeholder="State">
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="District" class="col-sm-3 col-form-label">District</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="District" autocomplete="off" placeholder="District">
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="BankTransactionDetails" class="col-sm-3 col-form-label">Bank Transaction Details</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="BankTransactionDetails" autocomplete="off" placeholder="Bank Transaction Details">
+                                                <img src="{{bank_stmt_url}}" style="width:100px;border:3px solid #e1e1e1" alt="">
+                                                <!-- <input type="text" class="form-control" id="BankTransactionDetails" autocomplete="off" placeholder="Bank Transaction Details"> -->
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="CancelledCHQ" class="col-sm-3 col-form-label">Cancelled CHQ</label>
                                             <div class="col-sm-9">
-                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <img src="{{cancelled_chq_url}}" alt="" style="width:100px;border:3px solid #e1e1e1">
                                                 <!-- <input type="text" class="form-control" id="CancelledCHQ" autocomplete="off" placeholder="Cancelled CHQ"> -->
                                             </div>
                                         </div>
@@ -301,45 +313,46 @@
                             <a ngbNavLink>KYC Details</a>
                             <ng-template ngbNavContent>
 
-                                <form class="forms-sample">
+                                <form class="forms-sample" [formGroup]="kycDetailsForm">
+                                    <input type="hidden" name="" formControlName="paynet_merchant_id">
                                     <div class=" col-sm-9 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="PANCardNumber" class="col-sm-3 col-form-label">PAN Card Number</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="PANCardNumber" placeholder="PAN Card Number">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="PANCardNumber" placeholder="PAN Card Number" formControlName="pan_no">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="PANCardHolderName" class="col-sm-3 col-form-label">PAN Card Holder Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="PANCardHolderName" autocomplete="off" placeholder="PAN Card Holder Name">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="PANCardHolderName" autocomplete="off" placeholder="PAN Card Holder Name" formControlName="pan_holder_name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="PANCardPhoto" class="col-sm-3 col-form-label">PAN Card Photo</label>
                                             <div class="col-sm-9">
-                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <img src="{{pan_url}}" style="width:100px; border:2px solid #e1e1e1" alt="">
                                                 <!-- <input type="text" class="form-control" id="PANCardPhoto" placeholder="PAN Card Photo"> -->
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="AadharCardNumber" class="col-sm-3 col-form-label">Aadhar Card Number</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="AadharCardNumber" autocomplete="off" placeholder="Aadhar Card Number">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="AadharCardNumber" autocomplete="off" placeholder="Aadhar Card Number" formControlName="aadhar_no">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="AadharCardName" class="col-sm-3 col-form-label">Aadhar Card Name</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="AadharCardName" autocomplete="off" placeholder="Aadhar Card Name">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="AadharCardName" autocomplete="off" placeholder="Aadhar Card Name" formControlName="aadhar_holder_name">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="AadharCardPhoto" class="col-sm-3 col-form-label">Aadhar Card Photo</label>
                                             <div class="col-sm-9">
-                                                <img src="https://via.placeholder.com/100" alt="">
+                                                <img src="{{aadhar_url}}" style="width:100px; border:2px solid #e1e1e1" alt="">
                                                 <!-- <input type="text" class="form-control" id="AadharCardPhoto" autocomplete="off" placeholder="Aadhar Card Photo"> -->
                                             </div>
                                         </div>
@@ -362,38 +375,39 @@
                             <a ngbNavLink>Questionnaire</a>
                             <ng-template ngbNavContent>
 
-                                <form class="forms-sample">
+                                <form class="forms-sample" [formGroup]="questionnaireForm">
+                                    <input type="hidden" name="" formControlName="paynet_merchant_id">
                                     <div class=" col-sm-9 mt-5 mb-5">
                                         <div class="row mb-3">
                                             <label for="NatureofYourBusiness" class="col-sm-3 col-form-label">Nature of Your Business</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="NatureofYourBusiness" placeholder="Nature of Your Business">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="NatureofYourBusiness" placeholder="Nature of Your Business" formControlName="nature_of_business">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="NatureofYearsinBusiness" class="col-sm-3 col-form-label">Nature of Years in Business</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="NatureofYearsinBusiness" autocomplete="off" placeholder="Nature of Years in Business">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="NatureofYearsinBusiness" autocomplete="off" placeholder="Nature of Years in Business" formControlName="number_of_years_in_business">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="NumberofTransactionsPerMonth" class="col-sm-3 col-form-label">Number of Transactions Per Month</label>
                                             <div class="col-sm-9">
                                                 <!-- <img src="https://via.placeholder.com/100" alt=""> -->
-                                                <input type="text" class="form-control" id="NumberofTransactionsPerMonth" placeholder="Number of Transactions Per Month">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="NumberofTransactionsPerMonth" placeholder="Number of Transactions Per Month" formControlName="number_of_transactions_per_month">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="ValueofTransactionPerMonth" class="col-sm-3 col-form-label">Value of Transaction Per Month (in ₹)</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="ValueofTransactionPerMonth" autocomplete="off" placeholder="Value of Transaction Per Month (in ₹)">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="ValueofTransactionPerMonth" autocomplete="off" placeholder="Value of Transaction Per Month (in ₹)" formControlName="value_of_transaction_per_month">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="DoyouhaveaphysicalstoreLocation" class="col-sm-3 col-form-label">Do you have a physical store Location</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DoyouhaveaphysicalstoreLocation" autocomplete="off" placeholder="Do you have a physical store Location">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="DoyouhaveaphysicalstoreLocation" autocomplete="off" placeholder="Do you have a physical store Location" formControlName="physical_store_location">
                                             </div>
                                         </div>
 
@@ -401,14 +415,14 @@
                                             <label for="CountriesDeliveringto" class="col-sm-3 col-form-label">Countries Delivering to</label>
                                             <div class="col-sm-9">
                                                 <!-- <img src="https://via.placeholder.com/100" alt=""> -->
-                                                <input type="text" class="form-control" id="CountriesDeliveringto" autocomplete="off" placeholder="Countries Delivering to">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="CountriesDeliveringto" autocomplete="off" placeholder="Countries Delivering to" formControlName="countries_delivering_to">
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <label for="DeliveryMethodsUsed" class="col-sm-3 col-form-label">Delivery Methods Used</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DeliveryMethodsUsed" autocomplete="off" placeholder="Delivery Methods Used">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="DeliveryMethodsUsed" autocomplete="off" placeholder="Delivery Methods Used" formControlName="delivery_methods_used">
                                             </div>
                                         </div>
 
@@ -419,7 +433,7 @@
                                                 experienced</label>
                                             <div class="col-sm-9">
                                                 <!-- <img src="https://via.placeholder.com/100" alt=""> -->
-                                                <input type="text" class="form-control" id="Fraudmerchant" autocomplete="off" placeholder="No">
+                                                <input type="text" [readonly]="!childmessage" class="form-control" id="Fraudmerchant" autocomplete="off" placeholder="No" formControlName="fraud_experienced">
                                             </div>
                                         </div>
 
@@ -429,8 +443,8 @@
 
                                     <hr>
                                     <div class="group mt-3 ">
-                                        <button type="submit" class="btn btn-primary me-2">Approve</button>
-                                        <button class="btn btn-secondary">Reject</button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="approveMerchant(RefundData)">Approve</button>
+                                        <button class="btn btn-secondary" (click)="rejectMerchant(RejectMerchantData)">Reject</button>
                                     </div>
 
                                 </form>
@@ -441,7 +455,7 @@
 
                     <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-                    <pre>Active: {{ active }}</pre>
+                    <!-- <pre>Active: {{ active }}</pre> -->
 
                 </div>
 
@@ -828,7 +842,7 @@
 
                 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-                <pre>Active: {{ active }}</pre>
+                <!-- <pre>Active: {{ active }}</pre> -->
             </ng-template>
         </li>
 
@@ -837,3 +851,48 @@
     <div [ngbNavOutlet]="defaultNav" class="p-3"></div>
 
 </div>
+
+
+<!-- model popup -->
+<ng-template #RefundData let-modal class="border-0">
+
+    <div class="modal-footer bg-primary border-0">
+        <form [formGroup]="approveAccountForm" class="col-sm-12 d-flex justify-content-between">
+            <input type="hidden" name="" formControlName="approved">
+            <input type="hidden" name="" formControlName="rejected">
+            <input type="hidden" name="" formControlName="comment">
+
+            <h5 class="text-white">Are you sure you want to Approve account</h5>
+            <button class="btn btn-light me-3" (click)="approveAccountYes()">Yes</button>
+            <button class="btn btn-outline-light me-3" (click)="modal.dismiss('Cross click')">Cancel</button>
+
+        </form>
+
+    </div>
+
+</ng-template>
+
+
+
+<!-- model popup  Reject Mercahnt -->
+<ng-template #RejectMerchantData let-modal class="border-0">
+
+    <div class="modal-footer bg-primary border-0">
+        <form [formGroup]="approveAccountForm" class="col-sm-12 ">
+            <input type="hidden" name="" formControlName="approved">
+            <input type="hidden" name="" formControlName="rejected">
+            <!-- <input type="hidden" name="" formControlName="comment"> -->
+            <textarea name="" id="" cols="55" rows="3" class="form-control mb-3" formControlName="comment"></textarea>
+
+            <div class="d-flex justify-content-between">
+                <h5 class="text-white">Are you sure you want to Approve account</h5>
+                <button class="btn btn-danger me-3 text-white" (click)="rejectMerchantAccountYes()">Yes</button>
+                <button class="btn btn-outline-danger me-3 text-white" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</ng-template>

@@ -11,7 +11,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { authInterceptorProviders } from './helper/interceptor/auth.interceptor';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -29,6 +29,7 @@ import { authInterceptorProviders } from './helper/interceptor/auth.interceptor'
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    NgbModule
   ],
   providers: [
     AuthGuard,
