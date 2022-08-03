@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MerchantprofileService } from 'src/app/service/merchantprofile.service';
 
 @Component({
   selector: 'app-merchantlist',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./merchantlist.component.scss']
 })
 export class MerchantlistComponent implements OnInit {
+  merchantlistData: any;
 
-  constructor() { }
+  constructor(
+    private merchantService: MerchantprofileService,
+  ) { }
 
   ngOnInit(): void {
+    this.getAllMerchantList();
+  }
+
+  getAllMerchantList(){
+    this.merchantService.getMerchantList()
+    .subscribe(
+      (res) =>{
+        console.log(res);
+        this.merchantlistData = res;
+      }
+    )
   }
 
 }

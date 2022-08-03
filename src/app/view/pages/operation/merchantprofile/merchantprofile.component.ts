@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MerchantprofileService} from '../../../../service/merchantprofile.service';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import {TokenstorageService} from '../../../../service/tokenstorage.service';
@@ -55,6 +55,8 @@ export class MerchantprofileComponent implements OnInit {
   closeResult = '';
 
   approveAccountForm: FormGroup;
+
+
 
   constructor(
     private merchantService: MerchantprofileService,
@@ -220,7 +222,6 @@ setvalidateStoreDate(){
       approved: new FormControl(''),
       rejected: new FormControl(''),
       comment: new FormControl('')
-
     })
    }
 
@@ -279,7 +280,7 @@ setvalidateStoreDate(){
       this.merchantService.getKYCDetails(merchant_id.Data.merchant_id)
       .subscribe(
         (res) =>{
-          console.log(res)
+          // console.log(res)
           if(res.status === 'success'){
             this.kycDetailsForm.patchValue(res.detail);
             this.aadhar_url = res.detail.aadhar_url;
@@ -357,9 +358,6 @@ setvalidateStoreDate(){
   }
 
 
-  EditMerchantProfile(){
-    this.childmessage = true;
-  }
 
   approveMerchant(RefundData:any){
     console.log('working')
@@ -391,12 +389,13 @@ setvalidateStoreDate(){
      // console.log(this.merchant_id)
      const merchant_id = JSON.parse(this.merchant_id);
      // console.log(merchant_id.Data.merchant_id)
-
+    let commentValueApproveYes = this.approveAccountForm.controls['comment'].value;
+    // console.log(commentValueApproveYes)
      
     this.approveAccountForm = this.fb.group({
       approved: new FormControl(1),
       rejected: new FormControl(0),
-      comment: new FormControl('')
+      comment:  new FormControl(commentValueApproveYes)
     })
     
      this.merchantService.verrifyMerchant(merchant_id.Data.merchant_id, this.approveAccountForm.value)
@@ -404,7 +403,7 @@ setvalidateStoreDate(){
       (res) => {
         console.log(res)
         if(res.Status === 'Success'){
-          // console.log(this.approveAccountForm.value)
+          console.log(this.approveAccountForm.value)
           this.notification.showSuccess('',res.Message)
         }
       }
@@ -442,10 +441,13 @@ setvalidateStoreDate(){
      const merchant_id = JSON.parse(this.merchant_id);
      // console.log(merchant_id.Data.merchant_id)
 
+     let commentValueRejectedMerchant = this.approveAccountForm.controls['comment'].value;
+     // console.log(commentValueApproveYes)
+
      this.approveAccountForm = this.fb.group({
       approved: new FormControl(0),
       rejected: new FormControl(1),
-      comment: new FormControl('')
+      comment: new FormControl(commentValueRejectedMerchant)
     })
 
     
@@ -462,6 +464,15 @@ setvalidateStoreDate(){
     this.modalService.dismissAll();
 
 
+    }
+
+    updateNext(){
+      let next = (this.active += 1);
+      console.log(next)
+    }
+  
+    updatePrev(){
+      let next = (this.active -= 1);
     }
 
 

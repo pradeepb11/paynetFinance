@@ -6,7 +6,7 @@
 
                 <div class="col-sm-12 mb-3 position-relative">
 
-                    <a class="text-primary" (click)="EditMerchantProfile()" style="position:absolute; right:0">Edit</a>
+
 
                     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
                         <li [ngbNavItem]="1">
@@ -51,8 +51,8 @@
 
                                     <hr>
                                     <div class="group mt-3 ">
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                        <button class="btn btn-secondary">Cancel</button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="updateNext()">Next</button>
+
                                     </div>
 
                                 </form>
@@ -202,8 +202,9 @@
 
                                     <hr>
                                     <div class="group mt-3 ">
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                        <button class="btn btn-secondary">Cancel</button>
+                                        <button class="btn btn-secondary me-3" (click)="updatePrev()"> Previous </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="updateNext()">Next</button>
+
                                     </div>
 
                                 </form>
@@ -301,8 +302,9 @@
 
                                     <hr>
                                     <div class="group mt-3 ">
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                        <button class="btn btn-secondary">Cancel</button>
+                                        <button class="btn btn-secondary me-3" (click)="updatePrev()"> Previous </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="updateNext()">Next</button>
+
                                     </div>
 
                                 </form>
@@ -363,8 +365,9 @@
 
                                     <hr>
                                     <div class="group mt-3 ">
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                        <button class="btn btn-secondary">Cancel</button>
+                                        <button class="btn btn-secondary me-3" (click)="updatePrev()"> Previous </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="updateNext()">Next</button>
+
                                     </div>
 
                                 </form>
@@ -857,15 +860,18 @@
 <ng-template #RefundData let-modal class="border-0">
 
     <div class="modal-footer bg-primary border-0">
-        <form [formGroup]="approveAccountForm" class="col-sm-12 d-flex justify-content-between">
+        <form [formGroup]="approveAccountForm" class="col-sm-12">
             <input type="hidden" name="" formControlName="approved">
             <input type="hidden" name="" formControlName="rejected">
-            <input type="hidden" name="" formControlName="comment">
+            <!-- <input type="hidden" name="" formControlName="comment"> -->
+            <textarea name="" id="" cols="55" rows="3" class="form-control mb-3" formControlName="comment"></textarea>
 
-            <h5 class="text-white">Are you sure you want to Approve account</h5>
-            <button class="btn btn-light me-3" (click)="approveAccountYes()">Yes</button>
-            <button class="btn btn-outline-light me-3" (click)="modal.dismiss('Cross click')">Cancel</button>
-
+            <div class="d-flex justify-content-between">
+                <h5 class="text-white">Are you sure you want to Approve account</h5>
+                <button class="btn btn-light me-3" (click)="approveAccountYes()">Yes</button>
+                <button class="btn btn-outline-light me-3" (click)="modal.dismiss('Cross click')">Cancel</button>
+            </div>
+            <!-- {{approveAccountForm.value | json}} -->
         </form>
 
     </div>
@@ -875,7 +881,7 @@
 
 
 <!-- model popup  Reject Mercahnt -->
-<ng-template #RejectMerchantData let-modal class="border-0">
+<ng-template #RejectMerchantData let-modal>
 
     <div class="modal-footer bg-primary border-0">
         <form [formGroup]="approveAccountForm" class="col-sm-12 ">
@@ -885,7 +891,7 @@
             <textarea name="" id="" cols="55" rows="3" class="form-control mb-3" formControlName="comment"></textarea>
 
             <div class="d-flex justify-content-between">
-                <h5 class="text-white">Are you sure you want to Approve account</h5>
+                <h5 class="text-white">Are you sure you want to reject account</h5>
                 <button class="btn btn-danger me-3 text-white" (click)="rejectMerchantAccountYes()">Yes</button>
                 <button class="btn btn-outline-danger me-3 text-white" (click)="modal.dismiss('Cross click')">Cancel</button>
             </div>

@@ -35,6 +35,11 @@ input {
 //  ::placeholder {
 //     color: #000;
 // }
-.modal-content {
-    border: 1px solid transparent !important;
+.modal.show .modal-dialog {
+    .modal-content {
+        border: 1px solid transparent !important;
+    }
+    .modal-footer {
+        background-color: red;
+    }
 }

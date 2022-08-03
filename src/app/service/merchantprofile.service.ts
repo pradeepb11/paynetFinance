@@ -22,6 +22,12 @@ export class MerchantprofileService {
     private _http: HttpClient
   ) { }
 
+  //mercahnt list Display
+  getMerchantList(): Observable<any>{
+    return this._http.get<any>(`${baseUrl_py}merchant_list`, httpOptions)
+    .pipe(map(res=>res))
+  }
+
   // merchant Profile Get
   getPersonalDetails(id:any): Observable<PerosnalInformation>{
     return this._http.get<PerosnalInformation>(`${baseUrl_py}user/${id}`, httpOptions)
