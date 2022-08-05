@@ -464,7 +464,7 @@
 
             </ng-template>
         </li>
-        <li [ngbNavItem]="2">
+        <li [ngbNavItem]="2" *ngIf="mercahntSettingActive">
             <a ngbNavLink>Merchant Settings</a>
             <ng-template ngbNavContent>
 
@@ -475,54 +475,54 @@
 
 
 
-                            <form action="">
+                            <form [formGroup]="merchantchekpayinpayoutForm" (ngSubmit)="onSubmitchkPayinPayout()">
 
                                 <div class=" col-sm-9 mt-5 mb-5">
 
                                     <div class="mb-3 d-flex">
-
+                                        <input type="hidden" name="" formControlName="gateway_type">
                                         <div class="form-check mb-2 me-3">
-                                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                                            <input type="checkbox" class="form-check-input" id="checkDefault" checked (change)="isCheckedpayin()" #payincheckbox>
                                             <label class="form-check-label" for="checkDefault">
                                                 Pay In
                                         </label>
                                         </div>
 
                                         <div class="form-check mb-2">
-                                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                                            <label class="form-check-label" for="checkDefault">
+                                            <input type="checkbox" class="form-check-input" id="checkDefaultpayout" checked (change)="isCheckedpayout()" #payoutcheckbox>
+                                            <label class="form-check-label" for="checkDefaultpayout">
                                                 Pay Out
                                         </label>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="SecurityDeposit" autocomplete="off" placeholder="Security Deposit">
+                                                    <input type="number" class="form-control" id="SecurityDeposit" autocomplete="off" placeholder="Security Deposit" formControlName="security_deposit">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="MerchantBalance" autocomplete="off" placeholder="Merchant Balance">
+                                                    <input type="number" class="form-control" id="MerchantBalance" autocomplete="off" placeholder="Merchant Balance" formControlName="merchant_balance">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayInCommittedVolume" autocomplete="off" placeholder="Pay In Committed Volume">
+                                                    <input type="number" class="form-control" id="PayInCommittedVolume" autocomplete="off" placeholder="Pay In Committed Volume" formControlName="payin_committed_volume">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" *ngIf="payout">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayOutCommittedVolume" autocomplete="off" placeholder="Pay Out Committed Volume">
+                                                    <input type="number" class="form-control" id="PayOutCommittedVolume" autocomplete="off" placeholder="Pay Out Committed Volume" formControlName="payout_committed_volume">
                                                 </div>
                                             </div>
                                         </div>
@@ -537,7 +537,7 @@
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
 
                                 </div>
-
+                                <!-- {{merchantchekpayinpayoutForm.value | json}} -->
                             </form>
 
                         </ng-template>
@@ -546,28 +546,28 @@
                         <a ngbNavLink>Webhooks</a>
                         <ng-template ngbNavContent>
 
-                            <form>
+                            <form [formGroup]="webhookurlForm" (ngSubmit)="onSubmitWebHookURL">
                                 <div class=" col-sm-9 mt-5 mb-5">
 
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook">
+                                                    <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook" formControlName="payin_webhook_url" readonly>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook">
+                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook" formControlName="payout_webhook_url" readonly>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="MerchantAppID" autocomplete="off" placeholder="Merchant App ID">
+                                                    <input type="text" class="form-control" id="MerchantAppID" autocomplete="off" placeholder="Merchant App ID" formControlName="merchant_appid" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -575,7 +575,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Merchant Secret Key">
+                                                    <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Merchant Secret Key" formControlName="merchant_secret_key" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -584,7 +584,7 @@
                                 </div>
                                 <hr>
                                 <div class="group mt-3 ">
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                    <!-- <button type="submit" class="btn btn-primary me-2">Submit</button> -->
 
                                 </div>
 
@@ -596,36 +596,29 @@
                         <a ngbNavLink>Limit</a>
                         <ng-template ngbNavContent>
 
-                            <form>
+                            <form [formGroup]="merchantLimitForm" (ngSubmit)="onSubmitMerchantLimit()">
                                 <div class=" col-sm-9 mt-5 mb-5">
-
+                                    <input type="hidden" formControlName="paynet_merchant_id">
+                                    <input type="hidden" formControlName="payment_type">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit">
+                                                    <input type="number" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit" formControlName="daily_payin_volume_limit">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit">
+                                                    <input type="number" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit" formControlName="daily_payout_volume_limit">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit">
+                                                    <input type="number" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit" formControlName="daily_payin_transaction_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -633,7 +626,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit">
+                                                    <input type="number" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit" formControlName="daily_payout_transaction_limit">
                                                 </div>
                                             </div>
                                         </div>
@@ -641,7 +634,15 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit">
+                                                    <input type="number" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit" formControlName="daily_payin_withdrawal">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit" formControlName="daily_payout_withdrawal">
                                                 </div>
                                             </div>
                                         </div>
@@ -656,6 +657,7 @@
 
                                 </div>
                             </form>
+                            {{merchantLimitForm.value | json}}
 
                         </ng-template>
                     </li>
@@ -663,66 +665,64 @@
                         <a ngbNavLink>Pricing</a>
                         <ng-template ngbNavContent>
 
-                            <form>
+                            <form [formGroup]="merchantPricingForm" (ngSubmit)="onSubmitMerchantPricing()">
                                 <div class=" col-sm-12 mt-5 mb-5">
+                                    <input type="hidden" name="" formControlName="paynet_merchant_id">
+                                    <div formArrayName="pricing_data">
+                                        <div *ngFor="let data of pricingDATA().controls; let i =index">
+                                            <div [formGroupName]="i" class="row">
 
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
 
-                                                    <select class="form-select" id="exampleFormControlSelect2">
+                                                            <select class="form-select" id="exampleFormControlSelect2" formControlName="payment_processor_id" (change)="onChangepaymentprocessorid($event.target.value)">
                                                         <option selected disabled>Please Select processor</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-                                                        <option>8</option>
+                                                        <option value="{{data.payment_processor_id}}" *ngFor="let data of processorList">{{data.payment_processor_name}}</option>
+                                                        
                                                       </select>
 
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <select class="form-select" id="exampleFormControlSelect2">
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
+                                                            <select class="form-select" id="exampleFormControlSelect2" formControlName="processor_method_id">
                                                         <option selected disabled>Please Select Payment Method</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-                                                        <option>8</option>
+                                                        <option value="{{item.payment_processor_methods_id}}"  *ngFor="let item of profileMethod">{{item.method_type}}</option>
+                                                      
                                                       </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="EnterPercentageAmount" autocomplete="off" placeholder="Enter Percentage Amount">
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <input type="hidden" name="" formControlName="processor_type">
 
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="EnterFlatAmount" autocomplete="off" placeholder="Enter Flat Amount">
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
+                                                            <input type="number" class="form-control" id="EnterPercentageAmount" autocomplete="off" placeholder="Enter Percentage Amount" formControlName="percentage">
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
+                                                            <input type="number" class="form-control" id="EnterFlatAmount" autocomplete="off" placeholder="Enter Flat Amount" formControlName="flat_amount">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
+
+
                                         </div>
 
 
                                     </div>
-                                    <button class="btn btn-outline-primary btn-sm">+ Add More Method</button>
+                                    <button class="btn btn-outline-primary btn-sm" (click)="addmoremerchantPrice()">+ Add More Method</button>
 
                                 </div>
 
@@ -733,6 +733,7 @@
 
                                 </div>
                             </form>
+                            {{merchantPricingForm.value | json}}
 
                         </ng-template>
                     </li>

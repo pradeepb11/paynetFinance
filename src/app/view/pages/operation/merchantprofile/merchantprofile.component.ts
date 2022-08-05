@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MerchantprofileService} from '../../../../service/merchantprofile.service';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, FormArray } from '@angular/forms';
 import {TokenstorageService} from '../../../../service/tokenstorage.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/service/notification.service';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -56,6 +58,31 @@ export class MerchantprofileComponent implements OnInit {
 
   approveAccountForm: FormGroup;
 
+  mercahntSettingActive: boolean= true;
+
+  @ViewChild("payincheckbox") payincheckbox: any;
+  @ViewChild("payoutcheckbox") payoutcheckbox: any;
+
+  payin:boolean = false;
+  payout:boolean = false;
+
+  merchantchekpayinpayoutForm: FormGroup;
+
+  webhookurlForm: FormGroup;
+ 
+  merchantLimitForm: FormGroup;
+
+  /********payment Type */
+  payment_Type = new Subject();
+  paymentType: any;
+
+  merchantPricingForm: FormGroup;
+  pricing_data: FormArray;
+
+  processorList: any;
+  selectvaluepaymentprocessorid:any;
+  profileMethod:any;
+  
 
 
   constructor(
@@ -79,17 +106,133 @@ export class MerchantprofileComponent implements OnInit {
     this.setquestionnaireForm();
     /*******approveForm */
     this.setverifyAccountForm();
+    /******** merchant Chek payin payout Form*/
+    this.setmerchantchekpayinpayoutForm();
+    /********** Web Hoook Url form */
+    this.setwebhookurlForm();
+    /***********merchantLimit */
+    this.setmerchantLimitForm();
+    /************Merchant Pricing Form */
+    this.setMerchantPricingForm();
 
-    this.getMerchantProfile();
-    this.getStoreData();
-    this.getBankData();
-    this.getKYCData();
-    this.getQuestionnaire();
-    this.getAllBanksList();
 
+
+    /*********verifying merchant verified or rejected */
+    this.getVerifyingMerchantStatusverifynReject(); // Merchant Reject
+    this.getMerchantProfile(); // merchat Profile
+    this.getStoreData(); // Store Data
+    this.getBankData(); // Bank Data
+    this.getKYCData(); //KYC Data
+    this.getQuestionnaire(); // Questionnaire 
+    this.getAllBanksList(); // Bank List 
+    this.getmerchantsettingDetailspayinpayout(); // merchant setting payin payout
+    this.getWebhookurl();  //webhook URL get
+    this.getMerchantProfileList(); // Merchant Profile List
     
 
 
+
+    /****************************** */
+   
+ 
+
+
+  }
+
+
+  /********************
+   * set Merchant Pricing Form
+   */
+  setMerchantPricingForm(){
+
+    //merchant id global
+    this.merchant_id = this.tokenStorage.getToken();
+    // console.log(this.merchant_id)
+    const merchant_id = JSON.parse(this.merchant_id);
+    // console.log(merchant_id.Data.merchant_id)
+
+
+    this.merchantPricingForm = this.fb.group({
+      paynet_merchant_id: new FormControl(merchant_id.Data.merchant_id),
+      pricing_data: this.fb.array([this.createItemFeild()])
+    })
+  }
+
+   pricingDATA(): FormArray{
+    return <FormArray> this.merchantPricingForm.get('pricing_data');
+  }
+  
+
+  createItemFeild(){
+    
+    return this.fb.group({
+      payment_processor_id: new FormControl(''),
+      processor_method_id: new FormControl(''),
+      processor_type: new FormControl('Both'),
+      percentage: new FormControl(''),
+      flat_amount:  new FormControl('')
+    
+     
+  })
+}
+
+ /**********************
+        * add more pricing button click event
+        */
+  addmoremerchantPrice(){
+    this.pricingDATA().push(this.createItemFeild())
+  }
+
+
+
+
+  /*********************
+   * Set Merchant Limit
+   */
+   setmerchantLimitForm(){
+    //merchant id global
+    this.merchant_id = this.tokenStorage.getToken();
+    // console.log(this.merchant_id)
+    const merchant_id = JSON.parse(this.merchant_id);
+    // console.log(merchant_id.Data.merchant_id)
+ 
+    this.merchantLimitForm = this.fb.group({
+      paynet_merchant_id: new FormControl(merchant_id.Data.merchant_id),
+      payment_type: new FormControl('Both'),
+      daily_payin_volume_limit: new FormControl(''),
+      daily_payout_volume_limit: new FormControl(''),
+      daily_payin_transaction_limit: new FormControl(''),
+      daily_payout_transaction_limit: new FormControl(''),
+      daily_payin_withdrawal: new FormControl(''),
+      daily_payout_withdrawal: new FormControl('')
+    })
+   }
+
+
+
+  /*********************
+   * WebHook URl 
+   */
+  setwebhookurlForm(){
+    this.webhookurlForm = this.fb.group({
+      payin_webhook_url: new FormControl(''),
+      payout_webhook_url: new FormControl(''),
+      merchant_appid: new FormControl(''),
+      merchant_secret_key: new FormControl('')
+    })
+  }
+
+  /********************
+   * set validate merchantchekpayinpayoutForm
+   */
+  setmerchantchekpayinpayoutForm(){
+    this.merchantchekpayinpayoutForm = this.fb.group({
+      gateway_type: new FormControl(''),
+      security_deposit: new FormControl(''),
+      merchant_balance: new FormControl(''),
+      payin_committed_volume: new FormControl(''),
+      payout_committed_volume: new FormControl('')
+    })
   }
 
 
@@ -226,6 +369,42 @@ setvalidateStoreDate(){
    }
 
 
+   /************************
+    * get Merchant Profile Lisit
+    */
+  getMerchantProfileList(){
+    this.merchantService.getmerchantProcessorList()
+    .subscribe(
+      (res) =>{
+        console.log(res);
+        this.processorList = res
+      }
+    )
+  }
+
+  /*********************
+   * on change paymentProcessorId
+   */
+   onChangepaymentprocessorid(selectedValue:string){
+    console.log(selectedValue);
+    this.selectvaluepaymentprocessorid = selectedValue;
+    this.getmerchantProfileMethodList() // Merchant Profile Method List
+   }
+
+  /************************
+   * get Merchant Profile Method List
+   */
+  getmerchantProfileMethodList(){
+    this.merchantService.getmerchantProcessorMethodList(this.selectvaluepaymentprocessorid)
+    .subscribe(
+      (res) =>{
+        console.log(res);
+        this.profileMethod= res;
+      }
+    )
+  }
+
+
   /***************
    * bank name liist
    */
@@ -255,7 +434,7 @@ setvalidateStoreDate(){
      this.merchantService.getquestionnaire(merchant_id.Data.merchant_id)
      .subscribe(
       (res)=>{
-        console.log(res);
+        // console.log(res);
         if(res.status === 'success'){
           this.questionnaireForm.patchValue(res.detail);
         
@@ -404,7 +583,8 @@ setvalidateStoreDate(){
         console.log(res)
         if(res.Status === 'Success'){
           console.log(this.approveAccountForm.value)
-          this.notification.showSuccess('',res.Message)
+          this.notification.showSuccess('',res.Message);
+          this.mercahntSettingActive = true;
         }
       }
      )
@@ -456,7 +636,8 @@ setvalidateStoreDate(){
       (res) =>{
         if(res.Status === 'Success'){
           console.log(this.approveAccountForm.value)
-          this.notification.showSuccess('',res.Message)
+          this.notification.showSuccess('',res.Message);
+          this.mercahntSettingActive = false;
         }
       }
     )
@@ -475,6 +656,204 @@ setvalidateStoreDate(){
       let next = (this.active -= 1);
     }
 
+    /************
+     * VerifyingMerchant status 'Pending', 'Verified', 'Rejected'
+     */
+    getVerifyingMerchantStatusverifynReject(){
+
+     //merchant id global
+     this.merchant_id = this.tokenStorage.getToken();
+     // console.log(this.merchant_id)
+     const merchant_id = JSON.parse(this.merchant_id);
+     // console.log(merchant_id.Data.merchant_id)
+
+     this.merchantService.getVertifymerchantStatus(merchant_id.Data.merchant_id)
+     .subscribe(
+      (res) =>{
+        // console.log(res)
+        // console.log(res.L2_verified);
+        if(res.L2_verified === 'Verified'){
+          this.mercahntSettingActive = true;
+        } else if(res.L2_verified === 'Pending'){
+          this.mercahntSettingActive = false;
+        } else if(res.L2_verified === 'Rejected'){
+          this.mercahntSettingActive = false;
+        }
+      }
+     )
+
+    }
+
+
+    isCheckedpayin(){
+      
+     
+
+      if(this.payincheckbox.nativeElement.checked === true && this.payoutcheckbox.nativeElement.checked === true){
+        this.payin = true;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both')
+      } else if(this.payincheckbox.nativeElement.checked === true){
+        this.payin = true;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payin')
+      } else{
+        this.payin = false;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('')
+      }
+
+    }
+
+
+
+    isCheckedpayout(){
+      console.log(this.payoutcheckbox.nativeElement.checked);
+      
+      if(this.payoutcheckbox.nativeElement.checked === true && this.payincheckbox.nativeElement.checked ){
+        this.payout = true;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both')
+      }else if(this.payoutcheckbox.nativeElement.checked === true){
+        this.payout = true;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payout')
+      }else{
+
+        this.payout = false;
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('')
+      }
+    }
+
+    onSubmitchkPayinPayout(){
+      console.log(this.merchantchekpayinpayoutForm.value);
+      //merchant id global
+     this.merchant_id = this.tokenStorage.getToken();
+     // console.log(this.merchant_id)
+     const merchant_id = JSON.parse(this.merchant_id);
+     // console.log(merchant_id.Data.merchant_id)
+
+
+      this.merchantService.putmerchantdetailsPayinPayout(merchant_id.Data.merchant_id, this.merchantchekpayinpayoutForm.value)
+      .subscribe(
+        (res) =>{
+          console.log(res);
+          if(res.Status === 'Success'){
+            this.notification.showSuccess('','Merchant Setting Details Successfully');
+            this.merchantchekpayinpayoutForm.reset();
+          }
+        }
+      )
+    }
+
+
+    /************************
+     * merchant setting Details
+     */
+    getmerchantsettingDetailspayinpayout(){
+     //merchant id global
+     this.merchant_id = this.tokenStorage.getToken();
+     // console.log(this.merchant_id)
+     const merchant_id = JSON.parse(this.merchant_id);
+     // console.log(merchant_id.Data.merchant_id)
+
+      this.merchantService.getOnemerchantdetailsPayinPayout(merchant_id.Data.merchant_id)
+      .subscribe(
+        (res) =>{
+          // console.log(res);
+          // console.log(res.Details)
+          // console.log(res.Details.gateway_type)
+
+          this.payment_Type.next(res.Details.gateway_type);
+``
+         
+
+          if(res.Status === 'Success'){
+            this.merchantchekpayinpayoutForm.patchValue(res.Details);
+            // console.log(res.Details.gateway_type === 'Both')
+            
+            if(res.Details.gateway_type === 'Both'){
+              // console.log('Working')
+              this.payout = true;
+              this.payin = true;
+              
+
+
+            } else if(res.Details.gateway_type === 'Payout'){
+              this.payout = true;
+              this.payin = false;
+            } else if(res.Details.gateway_type === 'Payin'){
+              this.payout = false;
+              this.payin = true;
+            }
+          }
+        }
+      )
+    }
+
+    /*******************
+     * Get Webhook URl GET
+     */
+    getWebhookurl(){
+      //merchant id global
+     this.merchant_id = this.tokenStorage.getToken();
+     // console.log(this.merchant_id)
+     const merchant_id = JSON.parse(this.merchant_id);
+     // console.log(merchant_id.Data.merchant_id)
+
+   
+
+      this.merchantService.getWebhookurl(merchant_id.Data.merchant_id)
+      .subscribe(
+        (res) =>{
+          // console.log(res);
+          // console.log(res.Details);
+        
+
+          if(res.Status === 'Success'){
+            this.webhookurlForm.patchValue(res.Details)
+          }
+        }
+      )
+    }
+
+    /******************************
+     * On Submit Web Hook URL
+     */
+     onSubmitWebHookURL(){
+
+     }
+
+
+     /*****************************
+      * Merchant Limit
+      */
+      onSubmitMerchantLimit(){
+        this.merchantService.merchantLimitPost(this.merchantLimitForm.value)
+        .subscribe(
+          (res) =>{
+            console.log(res);
+            if(res){
+              this.notification.showSuccess('','Merchant Limit Insert Sucessfully');
+              this.merchantLimitForm.reset();
+            }
+          }
+        )
+      } 
+
+
+      /*************************
+       * Merchant Pricing On Submit 
+       */
+       onSubmitMerchantPricing(){
+        this.merchantService.postmerchantPriceDetails(this.merchantPricingForm.value)
+        .subscribe(
+          (res) => {
+            if(res.Status === 'Success'){
+              this.notification.showSuccess('','Merchant Pricing Insert Sucessfully');
+
+              this.merchantPricingForm.reset();
+            }
+          }
+        )
+       }
+
+      
 
 
 

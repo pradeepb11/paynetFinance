@@ -72,6 +72,73 @@ verrifyMerchant(id:any, dataStatus:Verify_merchant): Observable<any>{
   .pipe(map(res=>res))
 }
 
+/******************
+ * Merchant verify_merchant ang get 'Pending', 'Verified', 'Rejected'
+ */
+
+getVertifymerchantStatus(id:any): Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}verify_merchant/${id}`, httpOptions)
+  .pipe(map(res=>res))
+}
+
+
+/*******************
+ * Merchant DeTails payin PyOut PUT
+ */
+putmerchantdetailsPayinPayout(id: any, merchantpayinpayout:mercahntpayinpayout): Observable<any>{
+  return this._http.put<any>(`${baseUrl_py}merchant/${id}`, merchantpayinpayout, httpOptions)
+  .pipe(map(res=>res))
+}
+
+/*******************
+ * Merchant DeTails payin PyOut GET ONE
+ */
+getOnemerchantdetailsPayinPayout(id:any): Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}merchant/${id}`, httpOptions)
+  .pipe(map(res=>res))
+}
+
+/*******************
+ * 
+ * Webhook URL Get
+ */
+getWebhookurl(id:any): Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}webhook/${id}`, httpOptions)
+  .pipe(map(res=>res))
+}
+
+/*******************
+ * mERCHANT LIMIT
+ */
+merchantLimitPost(mchtLimit: merchantLimit): Observable<merchantLimit>{
+return this._http.post<merchantLimit>(`${baseUrl_py}merchant_limit`, mchtLimit, httpOptions)
+.pipe(map(res=>res))
+}
+
+/******************
+ * merchant ProcessorList
+ */
+getmerchantProcessorList():Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}payment_processor_master/ProcessorList/`, httpOptions)
+  .pipe(map(res=>res))
+} 
+
+/********************
+ * Get Merchant ProcessorMethodList
+ */
+getmerchantProcessorMethodList(id:any): Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}payment_processor_master/ProcessorMethodList/${id}`, httpOptions)
+  .pipe(map(res => res))
+}
+
+/*******************
+ * POST Merchant Price Details
+ */
+  postmerchantPriceDetails(priceDetails: merchantPriceDetails): Observable<any>{
+    return this._http.post<any>(`${baseUrl_py}merchant_pricing_details`, priceDetails, httpOptions)
+    .pipe(map(res => res))
+  }
+
 
 
 
@@ -173,4 +240,40 @@ export interface Verify_merchant{
   approved: number;
   rejected: number;
   comment: string;
+}
+
+export interface mercahntpayinpayout{
+  gateway_type: string;
+  security_deposit: number;
+  merchant_balance: number;
+  payin_committed_volume: string;
+  payout_committed_volume: string;
+  status: number;
+}
+
+
+export interface merchantLimit{
+  Status: string;
+  paynet_merchant_id: number;
+  payment_type: string;
+  daily_payin_volume_limit: string;
+  daily_payin_transaction_limit: string;
+  daily_payout_volume_limit: string;
+  daily_payout_transaction_limit: string;
+  daily_payin_withdrawal: string;
+  daily_payout_withdrawal: string;
+}
+
+export interface merchantPriceDetails{
+
+  paynet_merchant_id: number;
+  pricing_data:[
+    payment_processor_id: number,
+    processor_method_id: number,
+    processor_type: string,
+    percentage: string,
+    flat_amount: number
+  ]
+
+  
 }

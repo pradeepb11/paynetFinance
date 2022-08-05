@@ -107,13 +107,16 @@ nav {
 }
 
 @media (max-width: 576px) {
-    .invoicedetails {
-        width: 100%;
-        height: auto;
-        position: absolute;
+    .invoicedetails,
+    .addproccingDetails {
+        width: 100vw;
+        height: 100vh;
+        // position: absolute;
+        overflow: scroll;
+        min-height: 100vh;
     }
     .cardA {
-        height: auto;
+        height: 100vh;
     }
 }
 
