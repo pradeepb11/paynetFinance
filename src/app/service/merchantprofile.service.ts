@@ -115,6 +115,14 @@ return this._http.post<merchantLimit>(`${baseUrl_py}merchant_limit`, mchtLimit, 
 .pipe(map(res=>res))
 }
 
+/*******************
+ * Get One Merchant LIMIT
+ */
+getOneMerchantLimit(id:any):Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}merchant_limit/${id}`, httpOptions)
+  .pipe(map(res =>res))
+}
+
 /******************
  * merchant ProcessorList
  */
@@ -137,6 +145,21 @@ getmerchantProcessorMethodList(id:any): Observable<any>{
   postmerchantPriceDetails(priceDetails: merchantPriceDetails): Observable<any>{
     return this._http.post<any>(`${baseUrl_py}merchant_pricing_details`, priceDetails, httpOptions)
     .pipe(map(res => res))
+  }
+
+  /*************************
+   * MIDCreation GET
+   */
+  getMIDCreation(id:any): Observable<any>{
+    return this._http.get<any>(`${baseUrl_py}merchant_pricing_details/MIDCreation/${id}`, httpOptions)
+    .pipe(map(res => res))
+  }
+
+  /**************************
+   * MIDCreation PUT
+   */
+  PUTMIDCreation(id:any, midcreationData:MIDcreation): Observable<any>{
+    return this._http.put<any>(`${baseUrl_py}merchant_pricing_details/MIDCreation/${id}`, midcreationData, httpOptions)
   }
 
 
@@ -276,4 +299,20 @@ export interface merchantPriceDetails{
   ]
 
   
+}
+
+
+export interface MIDcreation{
+  
+  pricing_data:[
+    {
+      payment_processor_id: string,
+      processor_method_id: string;
+      api_fields_value:[
+        string
+      ]
+    }
+  ]
+
+ 
 }

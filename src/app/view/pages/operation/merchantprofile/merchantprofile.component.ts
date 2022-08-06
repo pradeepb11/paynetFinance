@@ -82,6 +82,11 @@ export class MerchantprofileComponent implements OnInit {
   processorList: any;
   selectvaluepaymentprocessorid:any;
   profileMethod:any;
+
+  element: HTMLElement;
+
+  midcreationForm: FormGroup;
+
   
 
 
@@ -114,7 +119,8 @@ export class MerchantprofileComponent implements OnInit {
     this.setmerchantLimitForm();
     /************Merchant Pricing Form */
     this.setMerchantPricingForm();
-
+  /**************MID Creation Form */
+    this.setMidCreationForm();
 
 
     /*********verifying merchant verified or rejected */
@@ -128,6 +134,8 @@ export class MerchantprofileComponent implements OnInit {
     this.getmerchantsettingDetailspayinpayout(); // merchant setting payin payout
     this.getWebhookurl();  //webhook URL get
     this.getMerchantProfileList(); // Merchant Profile List
+    this.getOneMerchantLimit();
+    this.getmidCreation();
     
 
 
@@ -138,6 +146,19 @@ export class MerchantprofileComponent implements OnInit {
 
 
   }
+
+
+  /*********************
+   * ser MID Creation Form 
+   */
+  setMidCreationForm(){
+    this.midcreationForm = this.fb.group({
+      processor_method_id: new FormControl(''),
+      payment_processor_name: new FormControl(''),
+      processor_method_name: new FormControl('')
+    })
+  }
+
 
 
   /********************
@@ -164,11 +185,12 @@ export class MerchantprofileComponent implements OnInit {
   
 
   createItemFeild(){
-    
+
+ 
     return this.fb.group({
       payment_processor_id: new FormControl(''),
       processor_method_id: new FormControl(''),
-      processor_type: new FormControl('Both'),
+      processor_type: new FormControl(''),
       percentage: new FormControl(''),
       flat_amount:  new FormControl('')
     
@@ -195,10 +217,12 @@ export class MerchantprofileComponent implements OnInit {
     // console.log(this.merchant_id)
     const merchant_id = JSON.parse(this.merchant_id);
     // console.log(merchant_id.Data.merchant_id)
+
  
+
     this.merchantLimitForm = this.fb.group({
       paynet_merchant_id: new FormControl(merchant_id.Data.merchant_id),
-      payment_type: new FormControl('Both'),
+      payment_type: new FormControl(''),
       daily_payin_volume_limit: new FormControl(''),
       daily_payout_volume_limit: new FormControl(''),
       daily_payin_transaction_limit: new FormControl(''),
@@ -369,6 +393,31 @@ setvalidateStoreDate(){
    }
 
 
+   /**************************
+    * MID Creation GET
+    */
+   getmidCreation(){
+    //merchant id global
+    this.merchant_id = this.tokenStorage.getToken();
+    // console.log(this.merchant_id)
+    const merchant_id = JSON.parse(this.merchant_id);
+    // console.log(merchant_id.Data.merchant_id)
+
+    this.merchantService.getMIDCreation(merchant_id.Data.merchant_id)
+    .subscribe(
+      (res) =>{
+        console.log(res);
+        for(let i=0; i<res.length; i++){
+          console.log(res[i])
+          this.midcreationForm.patchValue(res[i]);
+        }
+        
+      }
+    )
+
+   }
+
+
    /************************
     * get Merchant Profile Lisit
     */
@@ -376,7 +425,7 @@ setvalidateStoreDate(){
     this.merchantService.getmerchantProcessorList()
     .subscribe(
       (res) =>{
-        console.log(res);
+        // console.log(res);
         this.processorList = res
       }
     )
@@ -691,10 +740,10 @@ setvalidateStoreDate(){
 
       if(this.payincheckbox.nativeElement.checked === true && this.payoutcheckbox.nativeElement.checked === true){
         this.payin = true;
-        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both')
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both');
       } else if(this.payincheckbox.nativeElement.checked === true){
         this.payin = true;
-        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payin')
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payin');
       } else{
         this.payin = false;
         this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('')
@@ -709,12 +758,14 @@ setvalidateStoreDate(){
       
       if(this.payoutcheckbox.nativeElement.checked === true && this.payincheckbox.nativeElement.checked ){
         this.payout = true;
-        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both')
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Both');
+     
       }else if(this.payoutcheckbox.nativeElement.checked === true){
         this.payout = true;
-        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payout')
+        this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('Payout');
+      
       }else{
-
+ 
         this.payout = false;
         this.merchantchekpayinpayoutForm.controls['gateway_type'].patchValue('')
       }
@@ -768,18 +819,34 @@ setvalidateStoreDate(){
             // console.log(res.Details.gateway_type === 'Both')
             
             if(res.Details.gateway_type === 'Both'){
-              // console.log('Working')
+              console.log('0')
               this.payout = true;
               this.payin = true;
-              
-
+              this.merchantLimitForm.controls['payment_type'].patchValue('Both');
+              this.merchantPricingForm.controls['payment_type'].patchValue('Both');
 
             } else if(res.Details.gateway_type === 'Payout'){
+              console.log('1')
               this.payout = true;
               this.payin = false;
+              this.merchantLimitForm.controls['payment_type'].patchValue('Payout');
+              // this.merchantPricingForm.controls['payment_type'].patchValue('Payout');
+              
             } else if(res.Details.gateway_type === 'Payin'){
+              console.log('2')
               this.payout = false;
               this.payin = true;
+              this.merchantLimitForm.controls['payment_type'].patchValue('Payin');
+             
+              // this.merchantPricingForm.controls['payment_type'].patchValue('Payin');
+              // this.payoutcheckbox
+           
+              
+            }else{
+              console.log('3')
+              // this.payout = false;
+              // this.payin = false;
+              // this.mercahntSettingActive = false;
             }
           }
         }
@@ -836,6 +903,24 @@ setvalidateStoreDate(){
         )
       } 
 
+      /****************************
+       * Get One Merchant Limit
+       */
+      getOneMerchantLimit(){
+        //merchant id global
+        this.merchant_id = this.tokenStorage.getToken();
+        // console.log(this.merchant_id)
+        const merchant_id = JSON.parse(this.merchant_id);
+        // console.log(merchant_id.Data.merchant_id)
+        this.merchantService.getOneMerchantLimit(merchant_id.Data.merchant_id)
+        .subscribe(
+          (res) => {
+            console.log(res);
+            this.merchantLimitForm.patchValue(res)
+          }
+        )
+      }
+
 
       /*************************
        * Merchant Pricing On Submit 
@@ -852,6 +937,15 @@ setvalidateStoreDate(){
           }
         )
        }
+
+
+  /*************************
+   *MID Creation On Submit
+   * */     
+
+       onSUbmitMidCreateion(){
+
+       }      
 
       
 

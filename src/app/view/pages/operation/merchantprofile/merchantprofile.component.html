@@ -482,14 +482,14 @@
                                     <div class="mb-3 d-flex">
                                         <input type="hidden" name="" formControlName="gateway_type">
                                         <div class="form-check mb-2 me-3">
-                                            <input type="checkbox" class="form-check-input" id="checkDefault" checked (change)="isCheckedpayin()" #payincheckbox>
+                                            <input type="checkbox" class="form-check-input" id="checkDefault" (change)="isCheckedpayin()" #payincheckbox>
                                             <label class="form-check-label" for="checkDefault">
                                                 Pay In
                                         </label>
                                         </div>
 
                                         <div class="form-check mb-2">
-                                            <input type="checkbox" class="form-check-input" id="checkDefaultpayout" checked (change)="isCheckedpayout()" #payoutcheckbox>
+                                            <input type="checkbox" class="form-check-input" id="checkDefaultpayout" (change)="isCheckedpayout()" #payoutcheckbox>
                                             <label class="form-check-label" for="checkDefaultpayout">
                                                 Pay Out
                                         </label>
@@ -537,7 +537,7 @@
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
 
                                 </div>
-                                <!-- {{merchantchekpayinpayoutForm.value | json}} -->
+                                {{merchantchekpayinpayoutForm.value | json}}
                             </form>
 
                         </ng-template>
@@ -553,14 +553,14 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook" formControlName="payin_webhook_url" readonly>
+                                                    <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook" formControlName="payin_webhook_url" readonly *ngIf="payin">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook" formControlName="payout_webhook_url" readonly>
+                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook" formControlName="payout_webhook_url" readonly *ngIf="payout">
                                                 </div>
                                             </div>
                                         </div>
@@ -604,29 +604,21 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit" formControlName="daily_payin_volume_limit">
+                                                    <input type="number" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit" formControlName="daily_payin_volume_limit" *ngIf="payin">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit" formControlName="daily_payout_volume_limit">
+                                                    <input type="number" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit" formControlName="daily_payout_volume_limit" *ngIf="payout">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit" formControlName="daily_payin_transaction_limit">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit" formControlName="daily_payout_transaction_limit">
+                                                    <input type="number" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit" formControlName="daily_payin_transaction_limit" *ngIf="payin">
                                                 </div>
                                             </div>
                                         </div>
@@ -634,7 +626,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit" formControlName="daily_payin_withdrawal">
+                                                    <input type="number" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit" formControlName="daily_payout_transaction_limit" *ngIf="payout">
                                                 </div>
                                             </div>
                                         </div>
@@ -642,7 +634,15 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit" formControlName="daily_payout_withdrawal">
+                                                    <input type="number" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit" formControlName="daily_payin_withdrawal" *ngIf="payin">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit" formControlName="daily_payout_withdrawal" *ngIf="payout">
                                                 </div>
                                             </div>
                                         </div>
@@ -741,15 +741,16 @@
                         <a ngbNavLink>MID Creation</a>
                         <ng-template ngbNavContent>
 
-                            <form>
+                            <form [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()">
                                 <div class=" col-sm-12 mt-5 mb-3">
 
                                     <div class="row">
+                                        <input type="hidden" name="" formControlName="processor_method_id">
                                         <div class="col-sm-3">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="ProcessorName" class="form-label">Processor Name</label>
-                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="CashFree">
+                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="CashFree" formControlName="payment_processor_name">
                                                 </div>
                                             </div>
                                         </div>
@@ -757,7 +758,7 @@
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="CreditCard" class="form-label">Payment Type</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="Credit Card">
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="Credit Card" formControlName="processor_method_name">
                                                 </div>
                                             </div>
                                         </div>
@@ -788,50 +789,7 @@
                                 </div>
 
 
-                                <div class=" col-sm-12 mt-2 mb-3">
 
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="ProcessorName" class="form-label">Processor Name</label>
-                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="ISG">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="DebitCard" class="form-label">Payment Type</label>
-                                                    <input type="text" class="form-control" id="DebitCard" autocomplete="off" value="Debit Card">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="CreditCard" class="form-label">API Field Title</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="CreditCard" class="form-label">API Field Title</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                    </div>
-
-                                </div>
 
                                 <!-- <hr>
                                 <div class="group mt-3 ">
