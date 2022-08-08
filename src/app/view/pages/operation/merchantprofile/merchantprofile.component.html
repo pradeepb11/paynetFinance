@@ -741,16 +741,18 @@
                         <a ngbNavLink>MID Creation</a>
                         <ng-template ngbNavContent>
 
-                            <form [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()">
-                                <div class=" col-sm-12 mt-5 mb-3">
-
+                            <form>
+                                <!-- [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()" -->
+                                <div class=" col-sm-12 mt-5 mb-3" *ngFor="let item of midData">
+                                    <!-- {{item.processor_method_name}} -->
+                                    <!-- *ngFor="let item of midData" -->
                                     <div class="row">
-                                        <input type="hidden" name="" formControlName="processor_method_id">
+                                        <input type="hidden" name="">
                                         <div class="col-sm-3">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="ProcessorName" class="form-label">Processor Name</label>
-                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="CashFree" formControlName="payment_processor_name">
+                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="{{item.payment_processor_name}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -758,28 +760,40 @@
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="CreditCard" class="form-label">Payment Type</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="Credit Card" formControlName="processor_method_name">
+                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{item.processor_method_name}}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="CreditCard" class="form-label">API Field Title</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div *ngFor="let app of item.api_fields" class="row">
+                                            <!-- *ngFor="let app of item.api_field "-->
+                                            <!-- {{app.key}} {{app.value}} -->
 
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="CreditCard" class="form-label">API Field Title</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value">
+                                            <div class="col-sm-3">
+                                                <div class=" mb-3">
+                                                    <div class="col-sm-12">
+                                                        <label for="CreditCard" class="form-label">App Id</label>
+                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{app.app_id}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class=" mb-3">
+                                                    <div class="col-sm-12">
+                                                        <label for="CreditCard" class="form-label">Secret Key</label>
+                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.secret_key}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class=" mb-3">
+                                                    <div class="col-sm-12">
+                                                        <label for="CreditCard" class="form-label">Version</label>
+                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.version}}">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
 
 
 

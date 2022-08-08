@@ -168,13 +168,14 @@ export class AddprocessorComponent implements OnInit {
   //  this.display.push(this.addproccingForm.value);
  
 
-  //   console.log(this.addproccingForm.value)
+    console.log(this.addproccingForm.value)
 
 console.log(this.addproccingForm.value);
   this.paymentProcessorService.postPaymentProcessor(this.addproccingForm.value)
   .subscribe(
     (res) =>{
       console.log(res);
+      
     }
   )
 

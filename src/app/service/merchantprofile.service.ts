@@ -146,6 +146,14 @@ getmerchantProcessorMethodList(id:any): Observable<any>{
     return this._http.post<any>(`${baseUrl_py}merchant_pricing_details`, priceDetails, httpOptions)
     .pipe(map(res => res))
   }
+/*********************
+ * GET One Merchant Price Details
+ * */  
+getmerchantPricingDetails(id: any): Observable<any>{
+  return this._http.get<any>(`${baseUrl_py}merchant_pricing_details/${id}`, httpOptions)
+  .pipe(map(res => res))
+}
+
 
   /*************************
    * MIDCreation GET

@@ -87,6 +87,8 @@ export class MerchantprofileComponent implements OnInit {
 
   midcreationForm: FormGroup;
 
+  midData:any;
+
   
 
 
@@ -120,7 +122,7 @@ export class MerchantprofileComponent implements OnInit {
     /************Merchant Pricing Form */
     this.setMerchantPricingForm();
   /**************MID Creation Form */
-    this.setMidCreationForm();
+    // this.setMidCreationForm();
 
 
     /*********verifying merchant verified or rejected */
@@ -136,6 +138,7 @@ export class MerchantprofileComponent implements OnInit {
     this.getMerchantProfileList(); // Merchant Profile List
     this.getOneMerchantLimit();
     this.getmidCreation();
+    this.getOneMerchantPricing();
     
 
 
@@ -155,10 +158,18 @@ export class MerchantprofileComponent implements OnInit {
     this.midcreationForm = this.fb.group({
       processor_method_id: new FormControl(''),
       payment_processor_name: new FormControl(''),
-      processor_method_name: new FormControl('')
+      processor_method_name: new FormControl(''),
+      api_fields: this.fb.array([this.createSubItemList()])
     })
   }
-
+  createSubItemList(){
+   
+    return this.fb.group({
+      
+      key: [],
+      value: []
+    })
+  }
 
 
   /********************
@@ -397,25 +408,40 @@ setvalidateStoreDate(){
     * MID Creation GET
     */
    getmidCreation(){
+    console.log('Working')
     //merchant id global
     this.merchant_id = this.tokenStorage.getToken();
     // console.log(this.merchant_id)
     const merchant_id = JSON.parse(this.merchant_id);
     // console.log(merchant_id.Data.merchant_id)
 
+
     this.merchantService.getMIDCreation(merchant_id.Data.merchant_id)
     .subscribe(
       (res) =>{
         console.log(res);
-        for(let i=0; i<res.length; i++){
-          console.log(res[i])
-          this.midcreationForm.patchValue(res[i]);
-        }
+        this.midData = res;   
+      
+       
         
       }
     )
 
    }
+
+
+   /*****************************
+    * MID creation PUT
+    */
+   putmidCreation(){
+     //merchant id global
+     this.merchant_id = this.tokenStorage.getToken();
+     // console.log(this.merchant_id)
+     const merchant_id = JSON.parse(this.merchant_id);
+     // console.log(merchant_id.Data.merchant_id)
+      
+      
+    }
 
 
    /************************
@@ -837,7 +863,7 @@ setvalidateStoreDate(){
               this.payout = false;
               this.payin = true;
               this.merchantLimitForm.controls['payment_type'].patchValue('Payin');
-             
+              this.mercahntSettingActive = true;
               // this.merchantPricingForm.controls['payment_type'].patchValue('Payin');
               // this.payoutcheckbox
            
@@ -846,7 +872,7 @@ setvalidateStoreDate(){
               console.log('3')
               // this.payout = false;
               // this.payin = false;
-              // this.mercahntSettingActive = false;
+              this.mercahntSettingActive = true;
             }
           }
         }
@@ -915,7 +941,7 @@ setvalidateStoreDate(){
         this.merchantService.getOneMerchantLimit(merchant_id.Data.merchant_id)
         .subscribe(
           (res) => {
-            console.log(res);
+            // console.log(res);
             this.merchantLimitForm.patchValue(res)
           }
         )
@@ -937,6 +963,24 @@ setvalidateStoreDate(){
           }
         )
        }
+
+       /**************************
+        * Get One Merchant Pricing 
+        */
+      getOneMerchantPricing(){
+        //merchant id global
+        this.merchant_id = this.tokenStorage.getToken();
+        // console.log(this.merchant_id)
+        const merchant_id = JSON.parse(this.merchant_id);
+        // console.log(merchant_id.Data.merchant_id)
+        this.merchantService.getmerchantPricingDetails(merchant_id.Data.merchant_id)
+        .subscribe(
+          (res) =>{
+            // console.log(res);
+            // this.merchantPricingForm.patchValue(res)
+          }
+        )
+      } 
 
 
   /*************************

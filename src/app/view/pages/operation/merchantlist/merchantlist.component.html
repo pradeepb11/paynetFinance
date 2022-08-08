@@ -64,7 +64,7 @@
                                         <th>Store Name</th>
                                         <th>Merchant Name </th>
                                         <th>Email</th>
-                                        <th>Country</th>
+                                        <!-- <th>Country</th> -->
                                         <th>Application Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -73,17 +73,18 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td>2110</td>
-                                        <td>Niks-Vasai </td>
-                                        <td>Harsh</td>
-                                        <td>harsh@paynet.co.in</td>
-                                        <td>India </td>
-                                        <td>23rd Mar 2016 12:29:33 pm </td>
+                                    <tr *ngFor="let data of merchantlistData">
+                                        <td>{{data.merchant_id}}</td>
+                                        <td>{{data.store_name}} </td>
+                                        <td>{{data.first_name}} {{data.last_name}}</td>
+                                        <td>{{data.email}}</td>
+                                        <!-- <td>India </td> -->
+                                        <td>{{data.created_date}} </td>
                                         <td> <span class="text-danger">Rejected</span> </td>
                                         <td> <a class="text-primary" routerLink="/merchantlist/merchantprofile"> Approve</a> </td>
                                     </tr>
-                                    <tr>
+
+                                    <!-- <tr>
                                         <td>2110</td>
                                         <td>Niks-Vasai </td>
                                         <td>Harsh</td>
@@ -123,7 +124,7 @@
                                         <td>23rd Mar 2016 12:29:33 pm </td>
                                         <td> <span class="text-danger">Frozen</span> </td>
                                         <td> <a class="text-primary"> View</a> </td>
-                                    </tr>
+                                    </tr> -->
 
 
 
