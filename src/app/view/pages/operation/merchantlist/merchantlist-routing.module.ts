@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MerchantlistComponent } from './merchantlist.component';
 
 const routes: Routes = [{ path: '', component: MerchantlistComponent  },
-{ path: 'merchantprofile', loadChildren: () => import('../merchantprofile/merchantprofile.module').then(m => m.MerchantprofileModule) },
+{ path: 'merchantprofile/:id', loadChildren: () => import('../merchantprofile/merchantprofile.module').then(m => m.MerchantprofileModule) },
 ];
 
 @NgModule({

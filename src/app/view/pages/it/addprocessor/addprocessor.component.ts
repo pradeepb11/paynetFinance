@@ -10,6 +10,8 @@ import {
 import { Subject } from 'rxjs';
 
 import {ItprocessorService, paymentprocessor} from '../../../../service/itprocessor.service';
+import { NotificationService } from 'src/app/service/notification.service';
+
 
 
 
@@ -25,10 +27,18 @@ export class AddprocessorComponent implements OnInit {
   submitted = false;
   // formgroup
   addproccingForm: FormGroup;
-  myFormValueChanges$:any;
+  myFormValueChanges$:boolean= false;
   display: any;
   empForm: FormGroup;
   selectedValueProcessor = new Subject;
+  PaymentProcessorList:any;
+  methodCC:boolean= false;
+  methodDC:boolean= false;
+  methodNB:boolean= false;
+  methodTP:boolean= false;
+  methodPO:boolean= false;
+
+  
 
 
   
@@ -38,7 +48,8 @@ export class AddprocessorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private paymentProcessorService: ItprocessorService
+    private paymentProcessorService: ItprocessorService,
+    private notification: NotificationService
   ) { 
 
   }
@@ -46,6 +57,7 @@ export class AddprocessorComponent implements OnInit {
   ngOnInit(): void {
 
   this.setValidateAddprocessor();
+  this.getpaymentProcessor();
  
  
 
@@ -175,12 +187,66 @@ console.log(this.addproccingForm.value);
   .subscribe(
     (res) =>{
       console.log(res);
-      
+      this.notification.showSuccess('','Payment Processor Add Succesfully');
+      this.addproccingForm.reset();
+      this.addbankPage= false;
+      this.getpaymentProcessor();
+
     }
   )
 
 
   }
+
+
+/*****************************************************
+ * Get Payment Processor 
+ * */ 
+getpaymentProcessor(){
+  this.paymentProcessorService.getPaymentProcessor()
+  .subscribe(
+    (res) =>{
+      console.log(res);
+      this.PaymentProcessorList = res;
+      this.PaymentProcessorList.forEach((element:any) => {
+          console.log(element.method_type)
+          if(element.method_type[0] ==='CC'){
+            // console.log('CC');
+            this.methodCC = true;
+            // console.log(this.methodCC)
+          }else if(element.method_type[1] ==='DC'){
+            // console.log('DC');
+            this.methodDC =true;
+            this.methodCC = false;
+            console.log(this.methodDC)
+          }else if(element.method_type[2] ==='NB'){
+            console.log('NB');
+            this.methodNB = true;
+            this.methodCC= false;
+            this.methodDC= false;
+          }else if(element.method_type[3] ==='TP'){
+            console.log('TP');
+            this.methodTP = true;
+            this.methodCC = false;
+            this.methodDC= false;
+            this.methodNB =false;
+          }else if(element.method_type[4] ==='PO'){
+            console.log('PO');
+            this.methodPO= true;
+            this.methodCC= false;
+            this.methodDC = false;
+            this.methodNB= false;
+            this.methodTP= false;
+          }
+      });
+    }
+  )
+  
+} 
+
+editPaymentProcessor(){
+
+}
 
 
 

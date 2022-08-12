@@ -6,6 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/service/notification.service';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -89,6 +90,7 @@ export class MerchantprofileComponent implements OnInit {
 
   midData:any;
 
+  mid!: number;
   
 
 
@@ -97,10 +99,17 @@ export class MerchantprofileComponent implements OnInit {
     private fb: FormBuilder,
     private tokenStorage:TokenstorageService,
     private modalService: NgbModal,
-    private notification:NotificationService
+    private notification:NotificationService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+
+    this.mid = this.route.snapshot.params['id'];
+    console.log(this.mid)
+    /********************************************************* */
+
     /***validateForm */
     this.setValidatepersonaInfoData();
     /*****Store Detials */
@@ -141,7 +150,7 @@ export class MerchantprofileComponent implements OnInit {
     this.getOneMerchantPricing();
     
 
-
+    
 
     /****************************** */
    
@@ -408,20 +417,15 @@ setvalidateStoreDate(){
     * MID Creation GET
     */
    getmidCreation(){
-    console.log('Working')
-    //merchant id global
-    this.merchant_id = this.tokenStorage.getToken();
-    // console.log(this.merchant_id)
-    const merchant_id = JSON.parse(this.merchant_id);
-    // console.log(merchant_id.Data.merchant_id)
-
-
-    this.merchantService.getMIDCreation(merchant_id.Data.merchant_id)
+   
+    this.merchantService.getMIDCreation(this.mid)
     .subscribe(
       (res) =>{
         console.log(res);
         this.midData = res;   
-      
+        // this.midData.forEach((element:any) => {
+        //     console.log(element.api_fields[0])
+        // });
        
         
       }
@@ -553,7 +557,9 @@ setvalidateStoreDate(){
     // console.log(this.merchant_id)
     const merchant_id = JSON.parse(this.merchant_id);
     // console.log(merchant_id.Data.merchant_id)
-    this.merchantService.getPersonalDetails(merchant_id.Data.merchant_id)
+
+   console.log(this.mid)
+    this.merchantService.getPersonalDetails(this.mid)
     .subscribe(
       (res) =>{
         // console.log(res);
@@ -568,12 +574,8 @@ setvalidateStoreDate(){
    * get Store Data 
    */
   getStoreData(){
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
-    this.merchantService.getStoreDetails(merchant_id.Data.merchant_id)
+   
+    this.merchantService.getStoreDetails(this.mid)
     .subscribe(
       (res) =>{
         // console.log(res);
@@ -591,12 +593,8 @@ setvalidateStoreDate(){
    * get Bank Data
    */
   getBankData(){
-      //merchant id global
-      this.merchant_id = this.tokenStorage.getToken();
-      // console.log(this.merchant_id)
-      const merchant_id = JSON.parse(this.merchant_id);
-      // console.log(merchant_id.Data.merchant_id)
-    this.merchantService.getBankDetails(merchant_id.Data.merchant_id)
+    
+    this.merchantService.getBankDetails(this.mid)
     .subscribe(
       (res) =>{
         // console.log(res);
@@ -637,12 +635,7 @@ setvalidateStoreDate(){
  *  Approve account Yes
  */
   approveAccountYes(){
-    // alert('Confirm to approver Your Account');
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
+  
     let commentValueApproveYes = this.approveAccountForm.controls['comment'].value;
     // console.log(commentValueApproveYes)
      
@@ -652,7 +645,7 @@ setvalidateStoreDate(){
       comment:  new FormControl(commentValueApproveYes)
     })
     
-     this.merchantService.verrifyMerchant(merchant_id.Data.merchant_id, this.approveAccountForm.value)
+     this.merchantService.verrifyMerchant(this.mid, this.approveAccountForm.value)
      .subscribe(
       (res) => {
         console.log(res)
@@ -690,11 +683,7 @@ setvalidateStoreDate(){
     */
     rejectMerchantAccountYes(){
       
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
+    
 
      let commentValueRejectedMerchant = this.approveAccountForm.controls['comment'].value;
      // console.log(commentValueApproveYes)
@@ -706,7 +695,7 @@ setvalidateStoreDate(){
     })
 
     
-    this.merchantService.verrifyMerchant(merchant_id.Data.merchant_id, this.approveAccountForm.value)
+    this.merchantService.verrifyMerchant(this.mid, this.approveAccountForm.value)
     .subscribe(
       (res) =>{
         if(res.Status === 'Success'){
@@ -736,13 +725,9 @@ setvalidateStoreDate(){
      */
     getVerifyingMerchantStatusverifynReject(){
 
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
+   
 
-     this.merchantService.getVertifymerchantStatus(merchant_id.Data.merchant_id)
+     this.merchantService.getVertifymerchantStatus(this.mid)
      .subscribe(
       (res) =>{
         // console.log(res)
@@ -798,15 +783,11 @@ setvalidateStoreDate(){
     }
 
     onSubmitchkPayinPayout(){
-      console.log(this.merchantchekpayinpayoutForm.value);
-      //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
+      // console.log(this.merchantchekpayinpayoutForm.value);
+    
 
 
-      this.merchantService.putmerchantdetailsPayinPayout(merchant_id.Data.merchant_id, this.merchantchekpayinpayoutForm.value)
+      this.merchantService.putmerchantdetailsPayinPayout(this.mid, this.merchantchekpayinpayoutForm.value)
       .subscribe(
         (res) =>{
           console.log(res);
@@ -823,13 +804,9 @@ setvalidateStoreDate(){
      * merchant setting Details
      */
     getmerchantsettingDetailspayinpayout(){
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
+    
 
-      this.merchantService.getOnemerchantdetailsPayinPayout(merchant_id.Data.merchant_id)
+      this.merchantService.getOnemerchantdetailsPayinPayout(this.mid)
       .subscribe(
         (res) =>{
           // console.log(res);
@@ -883,15 +860,7 @@ setvalidateStoreDate(){
      * Get Webhook URl GET
      */
     getWebhookurl(){
-      //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
-
-   
-
-      this.merchantService.getWebhookurl(merchant_id.Data.merchant_id)
+     this.merchantService.getWebhookurl(this.mid)
       .subscribe(
         (res) =>{
           // console.log(res);
@@ -933,12 +902,8 @@ setvalidateStoreDate(){
        * Get One Merchant Limit
        */
       getOneMerchantLimit(){
-        //merchant id global
-        this.merchant_id = this.tokenStorage.getToken();
-        // console.log(this.merchant_id)
-        const merchant_id = JSON.parse(this.merchant_id);
-        // console.log(merchant_id.Data.merchant_id)
-        this.merchantService.getOneMerchantLimit(merchant_id.Data.merchant_id)
+       
+        this.merchantService.getOneMerchantLimit(this.mid)
         .subscribe(
           (res) => {
             // console.log(res);
@@ -968,12 +933,8 @@ setvalidateStoreDate(){
         * Get One Merchant Pricing 
         */
       getOneMerchantPricing(){
-        //merchant id global
-        this.merchant_id = this.tokenStorage.getToken();
-        // console.log(this.merchant_id)
-        const merchant_id = JSON.parse(this.merchant_id);
-        // console.log(merchant_id.Data.merchant_id)
-        this.merchantService.getmerchantPricingDetails(merchant_id.Data.merchant_id)
+       
+        this.merchantService.getmerchantPricingDetails(this.mid)
         .subscribe(
           (res) =>{
             // console.log(res);

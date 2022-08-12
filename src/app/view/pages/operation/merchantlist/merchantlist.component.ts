@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MerchantprofileService } from 'src/app/service/merchantprofile.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class MerchantlistComponent implements OnInit {
 
   constructor(
     private merchantService: MerchantprofileService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -21,10 +24,17 @@ export class MerchantlistComponent implements OnInit {
     this.merchantService.getMerchantList()
     .subscribe(
       (res) =>{
-        console.log(res);
+        // console.log(res);
         this.merchantlistData = res;
       }
     )
   }
+
+  approve(data:any){
+    // console.log(data);
+    // console.log(data.merchant_id)
+    this.router.navigate([`/merchantlist/merchantprofile/${data.merchant_id}`], { relativeTo: this.route })
+  }
+
 
 }

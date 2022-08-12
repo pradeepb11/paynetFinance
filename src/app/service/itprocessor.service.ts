@@ -33,6 +33,14 @@ export class ItprocessorService {
     catchError(this.handleError)
   }
 
+  /****************************
+   * GET Payment Processor MAster
+   */
+  getPaymentProcessor(): Observable<any>{
+    return this._http.get<any>(`${baseUrl_py}payment_processor_master`, httpOptions)
+    .pipe(map(res => res))
+  }
+
 
 
   private handleError(err: HttpErrorResponse){

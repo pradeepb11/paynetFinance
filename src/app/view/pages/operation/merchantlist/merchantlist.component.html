@@ -80,8 +80,14 @@
                                         <td>{{data.email}}</td>
                                         <!-- <td>India </td> -->
                                         <td>{{data.created_date}} </td>
-                                        <td> <span class="text-danger">Rejected</span> </td>
-                                        <td> <a class="text-primary" routerLink="/merchantlist/merchantprofile"> Approve</a> </td>
+                                        <td> <span [ngClass]="{
+                                            'text-primary':data.merchant_status==='Demo',
+                                            'text-danger':data.merchant_status==='Rejected',
+                                            'text-success':data.merchant_status==='Active',
+                                            'text-warning':data.merchant_status==='Dormant'
+                                        }">{{data.merchant_status}}</span> </td>
+                                        <td> <a class="text-primary" (click)="approve(data)"> Approve</a> </td>
+                                        <!-- routerLink="/merchantlist/merchantprofile" -->
                                     </tr>
 
                                     <!-- <tr>
