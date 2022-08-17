@@ -28,6 +28,12 @@ export class MerchantprofileService {
     .pipe(map(res=>res))
   }
 
+  // search Merchant POST
+  searchMerchant(searchM: merchatSearch): Observable<any>{
+    return this._http.post<any>(`${baseUrl_py}merchant_list`, searchM, httpOptions )
+    .pipe(map(res => res))
+  }
+
   // merchant Profile Get
   getPersonalDetails(id:any): Observable<PerosnalInformation>{
     return this._http.get<PerosnalInformation>(`${baseUrl_py}user/${id}`, httpOptions)
@@ -323,4 +329,11 @@ export interface MIDcreation{
   ]
 
  
+}
+
+export interface merchatSearch{
+  merchant_status: string;
+  paynet_merchant_id: number;
+  merchant_store_name: string;
+  merchant_email: string;
 }

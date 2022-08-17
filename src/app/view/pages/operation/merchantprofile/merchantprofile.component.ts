@@ -809,7 +809,7 @@ setvalidateStoreDate(){
       this.merchantService.getOnemerchantdetailsPayinPayout(this.mid)
       .subscribe(
         (res) =>{
-          // console.log(res);
+          console.log(res);
           // console.log(res.Details)
           // console.log(res.Details.gateway_type)
 
@@ -820,27 +820,45 @@ setvalidateStoreDate(){
           if(res.Status === 'Success'){
             this.merchantchekpayinpayoutForm.patchValue(res.Details);
             // console.log(res.Details.gateway_type === 'Both')
+
+            if(res.Details.l2_verified === 'Verified'){
+              this.mercahntSettingActive = true;
+            }else{
+              this.mercahntSettingActive = false;
+            }
             
-            if(res.Details.gateway_type === 'Both'){
+            if(res.Details.gateway_type === 'Both' ){
               console.log('0')
               this.payout = true;
               this.payin = true;
               this.merchantLimitForm.controls['payment_type'].patchValue('Both');
               this.merchantPricingForm.controls['payment_type'].patchValue('Both');
+              
 
-            } else if(res.Details.gateway_type === 'Payout'){
+            } else if(res.Details.gateway_type === 'Payout' ){
               console.log('1')
               this.payout = true;
               this.payin = false;
               this.merchantLimitForm.controls['payment_type'].patchValue('Payout');
               // this.merchantPricingForm.controls['payment_type'].patchValue('Payout');
+              // this.mercahntSettingActive = true;
               
             } else if(res.Details.gateway_type === 'Payin'){
               console.log('2')
               this.payout = false;
               this.payin = true;
               this.merchantLimitForm.controls['payment_type'].patchValue('Payin');
-              this.mercahntSettingActive = true;
+              // this.mercahntSettingActive = true;
+              // this.merchantPricingForm.controls['payment_type'].patchValue('Payin');
+              // this.payoutcheckbox
+           
+              
+            }else if(res.Details.gateway_type === null){
+              console.log('blank')
+              this.payout = false;
+              this.payin = true;
+              // this.merchantLimitForm.controls['payment_type'].patchValue('Payin');
+              // this.mercahntSettingActive = false;
               // this.merchantPricingForm.controls['payment_type'].patchValue('Payin');
               // this.payoutcheckbox
            
@@ -849,7 +867,7 @@ setvalidateStoreDate(){
               console.log('3')
               // this.payout = false;
               // this.payin = false;
-              this.mercahntSettingActive = true;
+              // this.mercahntSettingActive = true;
             }
           }
         }

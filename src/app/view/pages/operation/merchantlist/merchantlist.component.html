@@ -4,46 +4,57 @@
             <div class="card p-3">
                 <section class="invoicebody">
                     <div class="content-wrapper">
-                        <form action="">
+                        <form [formGroup]="merchatFilterForm" (ngSubmit)="onSubmitfilter()">
 
                             <div class="row">
 
 
                                 <div class="col-sm-3">
                                     <div class="form-group list-filter-item">
-                                        <select name="" id="" class="form-select ">
+                                        <select name="" id="" class="form-select " formControlName="merchant_status">
                                       <option selected disabled>Please Select Merchant Status</option>
-                                      <option value="Payin">Payin</option>
-                                      <option value="Payout">Payout</option>
-                                  </select>
+                                      <option value="1">Demo</option>
+                                      <option value="2">Active</option>
+                                      <option value="3">Closed</option>
+                                      <option value="4">Terminated</option>
+                                      <option value="5">Suspended</option>
+                                      <option value="6">Dormant</option>
+                                      <option value="7">Activatation Step 1 - Sales</option>
+                                      <option value="8">Activatation Step 2 - Country Sales</option>
+                                      <option value="9">Rejected</option>
+                                      <option value="10">Disable</option>
+                                      <option value="11">On Hold</option>
+                                      <option value="12">Activatation Step 3 - Operations</option>
+                                      <option value="13">Active - Pending Payment</option>
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group list-filter-item">
                                         <!-- <label>Start Date</label> -->
-                                        <input type="text" name="" class="form-control input-sm" placeholder="Store Name">
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Store Name" formControlName="merchant_store_name">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <div class="form-group list-filter-item">
                                         <!-- <label>End Date</label> -->
-                                        <input type="text" name="" class="form-control input-sm" placeholder="Merchant ID" value="">
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Merchant ID" formControlName="paynet_merchant_id">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <div class="form-group list-filter-item">
                                         <!-- <label>End Date</label> -->
-                                        <input type="text" name="" class="form-control input-sm" placeholder="Email" value="">
+                                        <input type="text" name="" class="form-control input-sm" placeholder="Email" formControlName="merchant_email">
                                     </div>
                                 </div>
-                                <!-- 
+
                                 <div class="d-flex justify-content-left mt-3">
-                                    <button type="submit" class="btn btn-primary btnDark">Generate Report</button>
+                                    <button type="submit" class="btn btn-primary btnDark">Search</button>
 
-                                    <button type="submit" class="btn btn-secondary ms-2">Clear</button>
-                                </div> -->
+                                    <button type="submit" (click)="clearFilter()" class="btn btn-secondary ms-2">Clear</button>
+                                </div>
 
                             </div>
 
@@ -54,7 +65,7 @@
 
 
                         </form>
-
+                        <!-- {{merchatFilterForm.value | json}} -->
                         <hr>
                         <div class="table-responsive pt-1 ">
                             <table class="table table-bordered table-sm table-hover" id="dataTableReport">
