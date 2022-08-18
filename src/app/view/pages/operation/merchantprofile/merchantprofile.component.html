@@ -500,6 +500,7 @@
                                         <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="SecurityDeposit">Security Deposit</label>
                                                     <input type="number" class="form-control" id="SecurityDeposit" autocomplete="off" placeholder="Security Deposit" formControlName="security_deposit">
                                                 </div>
                                             </div>
@@ -507,6 +508,7 @@
                                         <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="MerchantBalance">Merchant Balance</label>
                                                     <input type="number" class="form-control" id="MerchantBalance" autocomplete="off" placeholder="Merchant Balance" formControlName="merchant_balance">
                                                 </div>
                                             </div>
@@ -514,6 +516,7 @@
                                         <div class="col-sm-6" *ngIf="payin">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="PayInCommittedVolume">Pay In Committed Volume</label>
                                                     <input type="number" class="form-control" id="PayInCommittedVolume" autocomplete="off" placeholder="Pay In Committed Volume" formControlName="payin_committed_volume">
                                                 </div>
                                             </div>
@@ -522,6 +525,7 @@
                                         <div class="col-sm-6" *ngIf="payout">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="PayOutCommittedVolume">Pay Out Committed Volume</label>
                                                     <input type="number" class="form-control" id="PayOutCommittedVolume" autocomplete="off" placeholder="Pay Out Committed Volume" formControlName="payout_committed_volume">
                                                 </div>
                                             </div>
@@ -553,6 +557,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="PayInWebhook" *ngIf="payin">Pay In Webhook</label>
                                                     <input type="text" class="form-control" id="PayInWebhook" autocomplete="off" placeholder="Pay In Webhook" formControlName="payin_webhook_url" readonly *ngIf="payin">
                                                 </div>
                                             </div>
@@ -560,13 +565,15 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook" formControlName="payout_webhook_url" readonly *ngIf="payout">
+                                                    <label for="PayOutWebhook" *ngIf="payout">Pay Out Webhook</label>
+                                                    <input type="text" class="form-control" id="PayOutWebhook" autocomplete="off" placeholder="Pay Out Webhook" formControlName="payout_webhook_url" *ngIf="payout">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="MerchantAppID">Merchant App ID</label>
                                                     <input type="text" class="form-control" id="MerchantAppID" autocomplete="off" placeholder="Merchant App ID" formControlName="merchant_appid" readonly>
                                                 </div>
                                             </div>
@@ -575,6 +582,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="MerchantSecretKey">Merchant Secret Key</label>
                                                     <input type="text" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Merchant Secret Key" formControlName="merchant_secret_key" readonly>
                                                 </div>
                                             </div>
@@ -604,6 +612,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="DailyPayInLimit" *ngIf="payin">Daily Pay In Limit</label>
                                                     <input type="number" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit" formControlName="daily_payin_volume_limit" *ngIf="payin">
                                                 </div>
                                             </div>
@@ -611,6 +620,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="DailyPayOutLimit" *ngIf="payout">Daily Pay Out Limit</label>
                                                     <input type="number" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit" formControlName="daily_payout_volume_limit" *ngIf="payout">
                                                 </div>
                                             </div>
@@ -618,6 +628,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="DailyPayInTransactionLimit" *ngIf="payin">Daily Pay In Transaction Limit</label>
                                                     <input type="number" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit" formControlName="daily_payin_transaction_limit" *ngIf="payin">
                                                 </div>
                                             </div>
@@ -626,6 +637,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="MerchantSecretKey" *ngIf="payout">Daily Pay Out Transaction Limit</label>
                                                     <input type="number" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit" formControlName="daily_payout_transaction_limit" *ngIf="payout">
                                                 </div>
                                             </div>
@@ -634,6 +646,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="DailyPayInWithdrawalLimit" *ngIf="payin">Daily Pay In Withdrawal Limit</label>
                                                     <input type="number" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit" formControlName="daily_payin_withdrawal" *ngIf="payin">
                                                 </div>
                                             </div>
@@ -642,6 +655,7 @@
                                         <div class="col-sm-6">
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
+                                                    <label for="DailyPayOutWithdrawalLimit" *ngIf="payout">Daily Pay Out Withdrawal Limit</label>
                                                     <input type="number" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit" formControlName="daily_payout_withdrawal" *ngIf="payout">
                                                 </div>
                                             </div>
@@ -675,7 +689,7 @@
                                                 <div class="col-sm-3">
                                                     <div class=" mb-3">
                                                         <div class="col-sm-12">
-
+                                                            <label for="exampleFormControlSelect2">Select processor</label>
                                                             <select class="form-select" id="exampleFormControlSelect2" formControlName="payment_processor_id" (change)="onChangepaymentprocessorid($event.target.value)">
                                                         <option selected disabled>Please Select processor</option>
                                                         <option value="{{data.payment_processor_id}}" *ngFor="let data of processorList">{{data.payment_processor_name}}</option>
@@ -688,7 +702,8 @@
                                                 <div class="col-sm-3">
                                                     <div class=" mb-3">
                                                         <div class="col-sm-12">
-                                                            <select class="form-select" id="exampleFormControlSelect2" formControlName="processor_method_id">
+                                                            <label for="processor_method_id">Select Payment Method</label>
+                                                            <select class="form-select" id="processor_method_id" formControlName="processor_method_id">
                                                         <option selected disabled>Please Select Payment Method</option>
                                                         <option value="{{item.payment_processor_methods_id}}"  *ngFor="let item of profileMethod">{{item.method_type}}</option>
                                                       
@@ -702,6 +717,7 @@
                                                 <div class="col-sm-3">
                                                     <div class=" mb-3">
                                                         <div class="col-sm-12">
+                                                            <label for="EnterPercentageAmount">Enter Percentage Amount</label>
                                                             <input type="number" class="form-control" id="EnterPercentageAmount" autocomplete="off" placeholder="Enter Percentage Amount" formControlName="percentage">
                                                         </div>
                                                     </div>
@@ -710,6 +726,7 @@
                                                 <div class="col-sm-3">
                                                     <div class=" mb-3">
                                                         <div class="col-sm-12">
+                                                            <label for="EnterFlatAmount">Enter Flat Amount</label>
                                                             <input type="number" class="form-control" id="EnterFlatAmount" autocomplete="off" placeholder="Enter Flat Amount" formControlName="flat_amount">
                                                         </div>
                                                     </div>

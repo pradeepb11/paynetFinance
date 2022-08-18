@@ -504,13 +504,7 @@ setvalidateStoreDate(){
    * Questionnaire
    */
   getQuestionnaire(){
-     //merchant id global
-     this.merchant_id = this.tokenStorage.getToken();
-     // console.log(this.merchant_id)
-     const merchant_id = JSON.parse(this.merchant_id);
-     // console.log(merchant_id.Data.merchant_id)
-
-     this.merchantService.getquestionnaire(merchant_id.Data.merchant_id)
+     this.merchantService.getquestionnaire(this.mid)
      .subscribe(
       (res)=>{
         // console.log(res);
@@ -529,13 +523,7 @@ setvalidateStoreDate(){
    */
   getKYCData(){
 
-      //merchant id global
-      this.merchant_id = this.tokenStorage.getToken();
-      // console.log(this.merchant_id)
-      const merchant_id = JSON.parse(this.merchant_id);
-      // console.log(merchant_id.Data.merchant_id)
-      
-      this.merchantService.getKYCDetails(merchant_id.Data.merchant_id)
+      this.merchantService.getKYCDetails(this.mid)
       .subscribe(
         (res) =>{
           // console.log(res)
@@ -552,12 +540,7 @@ setvalidateStoreDate(){
 
   // get Merchant Profile 
   getMerchantProfile(){
-    //merchant id global
-    this.merchant_id = this.tokenStorage.getToken();
-    // console.log(this.merchant_id)
-    const merchant_id = JSON.parse(this.merchant_id);
-    // console.log(merchant_id.Data.merchant_id)
-
+   
    console.log(this.mid)
     this.merchantService.getPersonalDetails(this.mid)
     .subscribe(
@@ -924,7 +907,7 @@ setvalidateStoreDate(){
         this.merchantService.getOneMerchantLimit(this.mid)
         .subscribe(
           (res) => {
-            // console.log(res);
+            console.log(res);
             this.merchantLimitForm.patchValue(res)
           }
         )

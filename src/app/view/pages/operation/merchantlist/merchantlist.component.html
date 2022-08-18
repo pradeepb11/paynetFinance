@@ -84,22 +84,41 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr *ngFor="let data of merchantlistData">
-                                        <td>{{data.merchant_id}}</td>
-                                        <td>{{data.store_name}} </td>
-                                        <td>{{data.first_name}} {{data.last_name}}</td>
-                                        <td>{{data.email}}</td>
-                                        <!-- <td>India </td> -->
-                                        <td>{{data.created_date}} </td>
-                                        <td> <span [ngClass]="{
+
+                                    <tr class="text-center" role="status" *ngIf="loading; else showWhenLoaded">
+                                        <td colspan="9" class="text-center p-0">
+                                            <div class="spinner-border text-primary text-center"></div>
+                                        </td>
+                                    </tr>
+
+                                    <ng-template #showWhenLoaded>
+
+                                        <tr *ngFor="let data of merchantlistData">
+                                            <td>{{data.merchant_id}}</td>
+                                            <td>{{data.store_name}} </td>
+                                            <td>{{data.first_name}} {{data.last_name}}</td>
+                                            <td>{{data.email}}</td>
+                                            <!-- <td>India </td> -->
+                                            <td>{{data.created_date}} </td>
+                                            <td> <span [ngClass]="{
                                             'text-primary':data.merchant_status==='Demo',
                                             'text-danger':data.merchant_status==='Rejected',
                                             'text-success':data.merchant_status==='Active',
                                             'text-warning':data.merchant_status==='Dormant'
                                         }">{{data.merchant_status}}</span> </td>
-                                        <td> <a class="text-primary" (click)="approve(data)"> Approve</a> </td>
-                                        <!-- routerLink="/merchantlist/merchantprofile" -->
-                                    </tr>
+                                            <td> <a class="text-primary" (click)="approve(data)"> Approve</a> </td>
+                                            <!-- routerLink="/merchantlist/merchantprofile" -->
+                                        </tr>
+
+                                    </ng-template>
+
+                                    <ng-container *ngIf="MessageDataInfo">
+                                        <tr>
+                                            <td colspan="9" class="text-info text-center">
+                                                No Data Found
+                                            </td>
+                                        </tr>
+                                    </ng-container>
 
                                     <!-- <tr>
                                         <td>2110</td>
