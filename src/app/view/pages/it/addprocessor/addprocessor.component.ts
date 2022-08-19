@@ -37,6 +37,14 @@ export class AddprocessorComponent implements OnInit {
   methodNB:boolean= false;
   methodTP:boolean= false;
   methodPO:boolean= false;
+  
+  p: number = 1;
+  total: number = 0;
+  filterTerm: string;
+  loading: boolean = false;
+  MessageDataInfo: boolean = true;
+  MessageDataError: boolean = false;
+  searchText: boolean = true;
 
   
 
@@ -66,7 +74,7 @@ export class AddprocessorComponent implements OnInit {
   
   setValidateAddprocessor(){
     this.addproccingForm = this.fb.group({
-      payment_processor_name: new FormControl(''),
+      payment_processor_name : new FormControl(''),
       avail_for_merchant: new FormControl(''),
       processor_data: this.fb.array([this.createItemFeild()]),
       country: new FormControl(''),
@@ -206,7 +214,7 @@ getpaymentProcessor(){
   this.paymentProcessorService.getPaymentProcessor()
   .subscribe(
     (res) =>{
-      console.log(res);
+      // console.log(res);
       this.PaymentProcessorList = res;
       this.PaymentProcessorList.forEach((element:any) => {
           console.log(element.method_type)
@@ -245,6 +253,12 @@ getpaymentProcessor(){
 } 
 
 editPaymentProcessor(){
+
+}
+
+pageChangeEvent(event: number){
+  this.p = event;
+
 
 }
 

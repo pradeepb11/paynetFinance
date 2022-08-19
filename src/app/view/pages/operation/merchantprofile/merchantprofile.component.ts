@@ -107,7 +107,7 @@ export class MerchantprofileComponent implements OnInit {
   ngOnInit(): void {
 
     this.mid = this.route.snapshot.params['id'];
-    console.log(this.mid)
+    // console.log(this.mid)
     /********************************************************* */
 
     /***validateForm */
@@ -421,7 +421,7 @@ setvalidateStoreDate(){
     this.merchantService.getMIDCreation(this.mid)
     .subscribe(
       (res) =>{
-        console.log(res);
+        // console.log(res);
         this.midData = res;   
         // this.midData.forEach((element:any) => {
         //     console.log(element.api_fields[0])
@@ -541,7 +541,7 @@ setvalidateStoreDate(){
   // get Merchant Profile 
   getMerchantProfile(){
    
-   console.log(this.mid)
+  //  console.log(this.mid)
     this.merchantService.getPersonalDetails(this.mid)
     .subscribe(
       (res) =>{
@@ -894,6 +894,7 @@ setvalidateStoreDate(){
             if(res){
               this.notification.showSuccess('','Merchant Limit Insert Sucessfully');
               this.merchantLimitForm.reset();
+              this.getOneMerchantLimit();
             }
           }
         )
@@ -903,7 +904,7 @@ setvalidateStoreDate(){
        * Get One Merchant Limit
        */
       getOneMerchantLimit(){
-       
+       console.log(this.mid)
         this.merchantService.getOneMerchantLimit(this.mid)
         .subscribe(
           (res) => {
