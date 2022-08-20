@@ -421,11 +421,14 @@ setvalidateStoreDate(){
     this.merchantService.getMIDCreation(this.mid)
     .subscribe(
       (res) =>{
-        // console.log(res);
-        this.midData = res;   
-        // this.midData.forEach((element:any) => {
-        //     console.log(element.api_fields[0])
-        // });
+        console.log(res);
+        this.midData = res;  
+     
+        this.midData.forEach((value: string, key: string) => {
+            // console.log(element.api_fields[0])
+            console.log(key, value);
+            this.midData = value;   
+        });
        
         
       }

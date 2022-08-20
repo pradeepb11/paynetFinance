@@ -781,35 +781,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div *ngFor="let app of item.api_fields" class="row">
+                                        <div class="row">
                                             <!-- *ngFor="let app of item.api_field "-->
                                             <!-- {{app.key}} {{app.value}} -->
 
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3" *ngFor="let app of item.api_fields | keyvalue; let i = index">
+                                                {{app.value}}
                                                 <div class=" mb-3">
                                                     <div class="col-sm-12">
-                                                        <label for="CreditCard" class="form-label">{{app}}App Id</label>
-                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{app.app_id}}">
+                                                        <label for="CreditCard" class="form-label">{{app.key}}</label>
+                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-3">
+                                            <!-- <div class="col-sm-3">
                                                 <div class=" mb-3">
                                                     <div class="col-sm-12">
                                                         <label for="CreditCard" class="form-label">Secret Key</label>
                                                         <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.secret_key}}">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-3">
+                                            </div> -->
+                                            <!-- <div class="col-sm-3">
                                                 <div class=" mb-3">
                                                     <div class="col-sm-12">
                                                         <label for="CreditCard" class="form-label">Version</label>
                                                         <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.version}}">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
 
 

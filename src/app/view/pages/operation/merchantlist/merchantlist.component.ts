@@ -15,6 +15,11 @@ export class MerchantlistComponent implements OnInit {
   loading: boolean = true;
   MessageDataInfo: boolean = false;
 
+  p: number = 1;
+  total: number = 0;
+  filterTerm: string;
+  // loading: boolean = false;
+
   constructor(
     private merchantService: MerchantprofileService,
     private router: Router,
@@ -32,6 +37,13 @@ export class MerchantlistComponent implements OnInit {
     this.setvalidatemerchatFilterForm();
 
   }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+  
+  
+  }
+
 
   setvalidatemerchatFilterForm(){
     this.merchatFilterForm = this.fb.group({

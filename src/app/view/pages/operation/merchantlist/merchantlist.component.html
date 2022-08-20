@@ -68,6 +68,9 @@
                         <!-- {{merchatFilterForm.value | json}} -->
                         <hr>
                         <div class="table-responsive pt-1 ">
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control w-100 mb-3" placeholder="Search..." name="customer" [(ngModel)]="filterTerm">
+                            </div>
                             <table class="table table-bordered table-sm table-hover" id="dataTableReport">
                                 <thead>
                                     <tr>
@@ -93,7 +96,7 @@
 
                                     <ng-template #showWhenLoaded>
 
-                                        <tr *ngFor="let data of merchantlistData">
+                                        <tr *ngFor="let data of merchantlistData  | filter: filterTerm | paginate: { itemsPerPage:10, currentPage: p, totalItems: total }  let i = index">
                                             <td>{{data.merchant_id}}</td>
                                             <td>{{data.store_name}} </td>
                                             <td>{{data.first_name}} {{data.last_name}}</td>
@@ -171,6 +174,8 @@
                                 </tbody>
                             </table>
                         </div>
+                        <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
 
 
                     </div>

@@ -11,6 +11,10 @@
 
                             <button type="submit" class="btn btn-primary btnDark float-end mb-3" (click)="addpricing()"> <i class="mdi mdi-plus"></i> Add Pricing</button>
 
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control w-100" placeholder="Search..." name="customer" [(ngModel)]="filterTerm">
+                            </div>
+
                             <table class="table table-bordered table-sm table-hover tbl-addpricingProccessor">
                                 <thead>
                                     <tr>
@@ -25,78 +29,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>CashFree</td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
+                                    <tr *ngFor="let item of Dataaddpricing | filter: filterTerm | paginate: { itemsPerPage:10, currentPage: p, totalItems: total }  let i = index">
+                                        <td style="text-align:left">{{item.processor_name}}</td>
+
+                                        <td class="text-success">
+                                            <i class="text-success"></i> <span placement="top" ngbTooltip="Credit Card">{{item.method_type[0] ? 'CC': '-'}} </span></td>
+                                        <!-- [ngClass]=" item.method_type[0]==='CC' || item.method_type[0]==='' ? 'mdi mdi-check text-success' : 'mdi mdi mdi-close text-danger'" -->
+                                        <td class="text-success"><i class=""></i>
+                                            <span placement="top" ngbTooltip="Debit Card">{{item.method_type[1] ? 'DC': '-'}}</span> </td>
+                                        <!-- [ngClass]=" item.method_type[1]==='DC' || item.method_type[1]==='' ? 'mdi mdi-check text-success' : 'mdi mdi mdi-close text-danger'" -->
+                                        <td class="text-success"><i class=""></i>
+                                            <span placement="top" ngbTooltip="Net Banking">{{item.method_type[2] ? 'NB':'-'}}</span></td>
+                                        <!-- [ngClass]=" item.method_type[2]==='NB' || item.method_type[2]==='' ? 'mdi mdi-check text-success' : 'mdi mdi mdi-close text-danger'" -->
+                                        <td class="text-success"><i class=""></i>
+                                            <span placement="top" ngbTooltip="Third Party">{{item.method_type[3] ? 'TP': '-'}}</span></td>
+                                        <!-- [ngClass]=" item.method_type[3]==='TP' || item.method_type[3]==='' ? 'mdi mdi-check text-success' : 'mdi mdi mdi-close text-danger'" -->
+
+                                        <td class="text-success"><i class=""></i> <span placement="top" ngbTooltip="Payout">{{item.method_type[4] ? 'PO': '-'}}</span></td>
+                                        <!-- [ngClass]=" item.method_type[4]==='PO' || item.method_type[4]==='' ? 'mdi mdi-check text-success' : 'mdi mdi mdi-close text-danger'" -->
+
                                         <td>
                                             <div ngbDropdown class="mb-2">
                                                 <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton">
                                               <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-                                            </button>
-                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Lyra</td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td>
-                                            <div ngbDropdown class="mb-2">
-                                                <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton">
-                                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-                                          </button>
-                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>ISG</td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td>
-                                            <div ngbDropdown class="mb-2">
-                                                <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton">
-                                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-                                        </button>
-                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
-                                                    <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Nupay</td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi-check text-success"></i> </td>
-                                        <td><i class="mdi mdi mdi-close text-danger"></i> </td>
-                                        <td>
-                                            <div ngbDropdown class="mb-2">
-                                                <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" id="dropdownMenuButton">
-                                        <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
-                                      </button>
+                                              </button>
                                                 <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
                                                     <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="eye" appFeatherIcon class="icon-sm me-2"></i> <span class="">View</span></a>
                                                     <a ngbDropdownItem class="d-flex align-items-center" href="" (click)="false"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
@@ -113,7 +69,7 @@
                             </table>
                         </div>
 
-
+                        <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
                     </div>
                 </section>
             </div>
