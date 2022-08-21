@@ -61,6 +61,9 @@ export class MerchantprofileComponent implements OnInit {
 
   mercahntSettingActive: boolean= true;
 
+  Obje1:any;
+  Obje1Key:any =[];
+
   @ViewChild("payincheckbox") payincheckbox: any;
   @ViewChild("payoutcheckbox") payoutcheckbox: any;
 
@@ -194,7 +197,7 @@ export class MerchantprofileComponent implements OnInit {
 
 
     this.merchantPricingForm = this.fb.group({
-      paynet_merchant_id: new FormControl(merchant_id.Data.merchant_id),
+      paynet_merchant_id: new FormControl(this.mid),
       pricing_data: this.fb.array([this.createItemFeild()])
     })
   }
@@ -241,7 +244,7 @@ export class MerchantprofileComponent implements OnInit {
  
 
     this.merchantLimitForm = this.fb.group({
-      paynet_merchant_id: new FormControl(merchant_id.Data.merchant_id),
+      paynet_merchant_id: new FormControl(this.mid),
       payment_type: new FormControl(''),
       daily_payin_volume_limit: new FormControl(''),
       daily_payout_volume_limit: new FormControl(''),
@@ -421,16 +424,9 @@ setvalidateStoreDate(){
     this.merchantService.getMIDCreation(this.mid)
     .subscribe(
       (res) =>{
-        console.log(res);
+        // console.log(res);
         this.midData = res;  
-     
-        this.midData.forEach((value: string, key: string) => {
-            // console.log(element.api_fields[0])
-            console.log(key, value);
-            this.midData = value;   
-        });
-       
-        
+      
       }
     )
 
@@ -780,6 +776,8 @@ setvalidateStoreDate(){
           if(res.Status === 'Success'){
             this.notification.showSuccess('','Merchant Setting Details Successfully');
             this.merchantchekpayinpayoutForm.reset();
+            this.getmerchantsettingDetailspayinpayout();
+
           }
         }
       )
@@ -795,7 +793,7 @@ setvalidateStoreDate(){
       this.merchantService.getOnemerchantdetailsPayinPayout(this.mid)
       .subscribe(
         (res) =>{
-          console.log(res);
+          // console.log(res);
           // console.log(res.Details)
           // console.log(res.Details.gateway_type)
 
@@ -867,7 +865,7 @@ setvalidateStoreDate(){
      this.merchantService.getWebhookurl(this.mid)
       .subscribe(
         (res) =>{
-          // console.log(res);
+          console.log(res);
           // console.log(res.Details);
         
 
@@ -929,6 +927,7 @@ setvalidateStoreDate(){
               this.notification.showSuccess('','Merchant Pricing Insert Sucessfully');
 
               this.merchantPricingForm.reset();
+              this.getOneMerchantPricing();
             }
           }
         )

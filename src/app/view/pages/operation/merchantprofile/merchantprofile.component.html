@@ -760,8 +760,8 @@
 
                             <form>
                                 <!-- [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()" -->
-                                <div class=" col-sm-12 mt-5 mb-3" *ngFor="let item of midData">
-                                    <!-- {{item.processor_method_name}} -->
+                                <div class=" col-sm-12 mt-5 mb-3" *ngFor="let item of midData" >
+                                  
                                     <!-- *ngFor="let item of midData" -->
                                     <div class="row">
                                         <input type="hidden" name="">
@@ -769,7 +769,7 @@
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="ProcessorName" class="form-label">Processor Name</label>
-                                                    <input type="text" class="form-control" id="ProcessorName" autocomplete="off" value="{{item.payment_processor_name}}">
+                                                    <input type="text" class="form-control" readonly id="ProcessorName" autocomplete="off" value="{{item.payment_processor_name}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -777,20 +777,24 @@
                                             <div class=" mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="CreditCard" class="form-label">Payment Type</label>
-                                                    <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{item.processor_method_name}}">
+                                                    <input type="text" class="form-control" readonly id="CreditCard" autocomplete="off"  value="{{item.processor_method_name}}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <!-- *ngFor="let app of item.api_field "-->
                                             <!-- {{app.key}} {{app.value}} -->
-
-                                            <div class="col-sm-3" *ngFor="let app of item.api_fields | keyvalue; let i = index">
-                                                {{app.value}}
+                                          
+                                            <div class="col-sm-3"  *ngFor="let app of  item.api_fields[0] | keyvalue ;let i =index">
+                                              
+                                         
+                                                <!-- *ngFor="let app of Obje1Key; let i = index" -->
+                                                <!-- *ngFor="let app of item.api_fields | keyvalue; let i = index" -->
+                                              
                                                 <div class=" mb-3">
                                                     <div class="col-sm-12">
                                                         <label for="CreditCard" class="form-label">{{app.key}}</label>
-                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off">
+                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{app.value}}">
                                                     </div>
                                                 </div>
                                             </div>
