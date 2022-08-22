@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Input, ViewChild, AfterViewInit, ElementRef,  ViewEncapsulation  } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import {
   animate,
@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 
 import {ItprocessorService, paymentprocessor} from '../../../../service/itprocessor.service';
 import { NotificationService } from 'src/app/service/notification.service';
-
+import { DOCUMENT } from '@angular/common'; 
 
 
 
@@ -46,6 +46,7 @@ export class AddprocessorComponent implements OnInit {
   MessageDataError: boolean = false;
   searchText: boolean = true;
 
+  element: HTMLElement;
   
 
 
@@ -160,6 +161,8 @@ export class AddprocessorComponent implements OnInit {
   addBank(){
     console.log('working')
     this.addbankPage = true;
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "block";
+    
 
   }
 
@@ -168,6 +171,7 @@ export class AddprocessorComponent implements OnInit {
 
   cloneAddBank(){
     this.addbankPage = false;
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "none";
   }
 
   addproccingSubmit(){

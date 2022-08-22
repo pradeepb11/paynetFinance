@@ -64,7 +64,7 @@ export class BanklistComponent implements OnInit {
     this.addbankPage = true;
     this.addbank = true;
     this.updatebank = false;
-
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "block";
 
   }
 
@@ -85,6 +85,7 @@ export class BanklistComponent implements OnInit {
 
   cloneAddBank(){
     this.addbankPage = false;
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "none";
   }
 
   getAllBankList(){

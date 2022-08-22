@@ -69,6 +69,7 @@ export class AddpricingComponent implements OnInit {
 
   addpricing(){
     this.Add_Pricing = true;
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "block";
   }
 
   addproccingSubmit(){
@@ -77,6 +78,7 @@ export class AddpricingComponent implements OnInit {
 
   cloneAddBank(){
     this.Add_Pricing = false;
+    (document.getElementById('popup1') as HTMLFormElement).style.display = "none";
   }
 
   

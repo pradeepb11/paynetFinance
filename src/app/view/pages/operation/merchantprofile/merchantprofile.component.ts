@@ -134,7 +134,7 @@ export class MerchantprofileComponent implements OnInit {
     /************Merchant Pricing Form */
     this.setMerchantPricingForm();
   /**************MID Creation Form */
-    // this.setMidCreationForm();
+    this.setMidCreationForm();
 
 
     /*********verifying merchant verified or rejected */
@@ -168,19 +168,31 @@ export class MerchantprofileComponent implements OnInit {
    */
   setMidCreationForm(){
     this.midcreationForm = this.fb.group({
-      processor_method_id: new FormControl(''),
-      payment_processor_name: new FormControl(''),
-      processor_method_name: new FormControl(''),
-      api_fields: this.fb.array([this.createSubItemList()])
+      pricing_data: this.fb.array([this.processnmetho()]),
+     
     })
   }
+
+  processnmetho(){
+    return this.fb.group({
+      payment_processor_id: new FormControl(''),
+      processor_method_id: new FormControl(''),
+      api_fields: this.fb.array([this.createSubItemList()])
+    })
+
+    
+  }
+
   createSubItemList(){
    
     return this.fb.group({
-      
-      key: [],
-      value: []
+      value: new FormControl('')
     })
+  }
+
+
+  pricingDATAMID(): FormArray{
+    return <FormArray> this.midcreationForm.get('pricing_data');
   }
 
 
@@ -205,6 +217,7 @@ export class MerchantprofileComponent implements OnInit {
    pricingDATA(): FormArray{
     return <FormArray> this.merchantPricingForm.get('pricing_data');
   }
+
   
 
   createItemFeild(){
@@ -424,7 +437,7 @@ setvalidateStoreDate(){
     this.merchantService.getMIDCreation(this.mid)
     .subscribe(
       (res) =>{
-        // console.log(res);
+        console.log(res);
         this.midData = res;  
       
       }
@@ -909,8 +922,8 @@ setvalidateStoreDate(){
         this.merchantService.getOneMerchantLimit(this.mid)
         .subscribe(
           (res) => {
-            console.log(res);
-            this.merchantLimitForm.patchValue(res)
+            console.log(res.Details);
+            this.merchantLimitForm.patchValue(res.Details[0])
           }
         )
       }

@@ -758,68 +758,58 @@
                         <a ngbNavLink>MID Creation</a>
                         <ng-template ngbNavContent>
 
-                            <form>
-                                <!-- [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()" -->
-                                <div class=" col-sm-12 mt-5 mb-3" *ngFor="let item of midData" >
-                                  
-                                    <!-- *ngFor="let item of midData" -->
-                                    <div class="row">
-                                        <input type="hidden" name="">
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="ProcessorName" class="form-label">Processor Name</label>
-                                                    <input type="text" class="form-control" readonly id="ProcessorName" autocomplete="off" value="{{item.payment_processor_name}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class=" mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="CreditCard" class="form-label">Payment Type</label>
-                                                    <input type="text" class="form-control" readonly id="CreditCard" autocomplete="off"  value="{{item.processor_method_name}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!-- *ngFor="let app of item.api_field "-->
-                                            <!-- {{app.key}} {{app.value}} -->
-                                          
-                                            <div class="col-sm-3"  *ngFor="let app of  item.api_fields[0] | keyvalue ;let i =index">
-                                              
-                                         
-                                                <!-- *ngFor="let app of Obje1Key; let i = index" -->
-                                                <!-- *ngFor="let app of item.api_fields | keyvalue; let i = index" -->
-                                              
-                                                <div class=" mb-3">
-                                                    <div class="col-sm-12">
-                                                        <label for="CreditCard" class="form-label">{{app.key}}</label>
-                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{app.value}}">
+                            <form [formGroup]="midcreationForm" (ngSubmit)="onSUbmitMidCreateion()">
+
+                                <div class=" col-sm-12 mt-5 mb-3" *ngFor="let item of midData; let k=index">
+                                    <div formArrayName="pricing_data">
+
+
+                                        <div *ngFor="let data of pricingDATAMID().controls; let i =index">
+                                            <!-- {{k}} -->
+                                            <!-- *ngFor="let item of midData" -->
+                                            <div class="row" [formGroupName]="i">
+
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
+                                                            <label for="ProcessorName" class="form-label">Processor Name</label>
+                                                            <input type="text" class="form-control" readonly id="ProcessorName" autocomplete="off" value="{{item.payment_processor_name}}">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-3">
+                                                    <div class=" mb-3">
+                                                        <div class="col-sm-12">
+                                                            <label for="CreditCard" class="form-label">Payment Type</label>
+                                                            <input type="text" class="form-control" readonly id="CreditCard" autocomplete="off" value="{{item.processor_method_name}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- *ngFor="let app of item.api_field "-->
+                                                    <!-- {{app.key}} {{app.value}} -->
+
+                                                    <div class="col-sm-3" *ngFor="let app of  item.api_fields[0] | keyvalue ;let i =index">
+
+
+                                                        <!-- *ngFor="let app of Obje1Key; let i = index" -->
+                                                        <!-- *ngFor="let app of item.api_fields | keyvalue; let i = index" -->
+
+                                                        <div class=" mb-3">
+                                                            <div class="col-sm-12">
+                                                                <label for="CreditCard" class="form-label">{{app.key}}</label>
+                                                                <input type="text" class="form-control" id="CreditCard" autocomplete="off" value="{{app.value}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+
                                             </div>
-
-                                            <!-- <div class="col-sm-3">
-                                                <div class=" mb-3">
-                                                    <div class="col-sm-12">
-                                                        <label for="CreditCard" class="form-label">Secret Key</label>
-                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.secret_key}}">
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-3">
-                                                <div class=" mb-3">
-                                                    <div class="col-sm-12">
-                                                        <label for="CreditCard" class="form-label">Version</label>
-                                                        <input type="text" class="form-control" id="CreditCard" autocomplete="off" placeholder="App Field Value" value="{{app.version}}">
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
-
-
-
-
                                     </div>
 
                                 </div>
@@ -827,13 +817,12 @@
 
 
 
-                                <!-- <hr>
+                                <hr>
                                 <div class="group mt-3 ">
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-
-                                </div> -->
+                                </div>
                             </form>
-
+                            {{midcreationForm.value | json}}
                         </ng-template>
                     </li>
                 </ul>

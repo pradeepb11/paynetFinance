@@ -9,7 +9,7 @@
 
                         <div class="table-responsive pt-1 ">
 
-                            <button type="submit" class="btn btn-primary btnDark float-end mb-3" (click)="addpricing()"> <i class="mdi mdi-plus"></i> Add Pricing</button>
+                            <button type="submit" class="btn btn-primary btnDark float-end mb-3" (click)="addpricing()"> <i class="mdi mdi-plus"></i>  Add Costing</button>
 
                             <div class="col-sm-3">
                                 <input type="text" class="form-control w-100" placeholder="Search..." name="customer" [(ngModel)]="filterTerm">
@@ -72,7 +72,7 @@
                         <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
                     </div>
                 </section>
-            </div>s
+            </div>
         </div>
     </div>
 </div>
@@ -85,7 +85,7 @@
 <div class="addproccingDetails" *ngIf="Add_Pricing">
     <div class="card cardA">
         <div class="card-header align-items-center d-flex justify-content-between">
-            <h3> Add Pricing</h3>
+            <h3 class="TopTitile"> Add Costing</h3>
             <button type="button" class="btn-close float-end closebtn" (click)="cloneAddBank()" aria-label="Close"></button>
         </div>
         <div class="card-body perfect-scrollbar-example" [perfectScrollbar]>
@@ -239,9 +239,10 @@
 
 
             </form>
-            {{addpricingForm.value | json}}
+
         </div>
     </div>
 
 
 </div>
+<div class="popup" id="popup1"></div>

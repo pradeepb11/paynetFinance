@@ -11,7 +11,7 @@ export const MENU: MenuItem[] = [
     link: '/dashboard',
   },
   {
-    label: 'Add Pricing',
+    label: 'Add Costing',
     icon: 'dollar-sign',
     link: '/addpricing'
   },
