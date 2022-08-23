@@ -177,6 +177,8 @@ export class MerchantprofileComponent implements OnInit {
     return this.fb.group({
       payment_processor_id: new FormControl(''),
       processor_method_id: new FormControl(''),
+      payment_processor_name: [],
+      processor_method_name:[],
       api_fields: this.fb.array([this.createSubItemList()])
     })
 
@@ -186,14 +188,20 @@ export class MerchantprofileComponent implements OnInit {
   createSubItemList(){
    
     return this.fb.group({
-      value: new FormControl('')
+      value:[]
     })
   }
 
-
   pricingDATAMID(): FormArray{
-    return <FormArray> this.midcreationForm.get('pricing_data');
+    return this.midcreationForm.get('pricing_data') as FormArray;
   }
+
+  employeeSkills(i: number): FormArray {
+    return this.pricingDATAMID()
+      .at(i)
+      .get('api_fields') as FormArray;
+  }
+
 
 
   /********************
@@ -438,8 +446,30 @@ setvalidateStoreDate(){
     .subscribe(
       (res) =>{
         console.log(res);
+     
+     
         this.midData = res;  
-      
+       
+     
+        
+        // this.pricingDATAMID().patchValue(res);
+        // this.midcreationForm.patchValue(res)
+        // this.pricingDATAMID().at(index:any).patchValue(res);
+        // this.pricingDATAMID().patchValue(res);
+        this.midcreationForm.get('pricing_data')?.patchValue(res);
+        // this.employeeSkills(0).patchValue(res.api_fields)
+
+        
+
+
+     
+
+        // res.forEach((element:any, index:any) => {
+        //   console.log(element, ':'+ index);
+        //   console.log(this.pricingDATAMID())
+        //   // this.pricingDATAMID().at(index).patchValue(element)
+        // })
+     
       }
     )
 
