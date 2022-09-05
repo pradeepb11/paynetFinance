@@ -83,13 +83,12 @@ export class MerchantprofileComponent implements OnInit {
   merchantPricingForm: FormGroup;
   pricing_data: FormArray;
 
-  processorList: any;
-  selectvaluepaymentprocessorid:any;
-  profileMethod:any;
+
+
 
   element: HTMLElement;
 
-  midcreationForm: FormGroup;
+
 
   midData:any;
 
@@ -131,10 +130,8 @@ export class MerchantprofileComponent implements OnInit {
     this.setwebhookurlForm();
     /***********merchantLimit */
     this.setmerchantLimitForm();
-    /************Merchant Pricing Form */
-    this.setMerchantPricingForm();
-  /**************MID Creation Form */
-    this.setMidCreationForm();
+
+
 
 
     /*********verifying merchant verified or rejected */
@@ -147,10 +144,10 @@ export class MerchantprofileComponent implements OnInit {
     this.getAllBanksList(); // Bank List 
     this.getmerchantsettingDetailspayinpayout(); // merchant setting payin payout
     this.getWebhookurl();  //webhook URL get
-    this.getMerchantProfileList(); // Merchant Profile List
+  
     this.getOneMerchantLimit();
-    this.getmidCreation();
-    this.getOneMerchantPricing();
+
+ 
     
 
     
@@ -160,93 +157,6 @@ export class MerchantprofileComponent implements OnInit {
  
 
 
-  }
-
-
-  /*********************
-   * ser MID Creation Form 
-   */
-  setMidCreationForm(){
-    this.midcreationForm = this.fb.group({
-      pricing_data: this.fb.array([this.processnmetho()]),
-     
-    })
-  }
-
-  processnmetho(){
-    return this.fb.group({
-      payment_processor_id: new FormControl(''),
-      processor_method_id: new FormControl(''),
-      payment_processor_name: [],
-      processor_method_name:[],
-      api_fields: this.fb.array([this.createSubItemList()])
-    })
-
-    
-  }
-
-  createSubItemList(){
-   
-    return this.fb.group({
-      value:[]
-    })
-  }
-
-  pricingDATAMID(): FormArray{
-    return this.midcreationForm.get('pricing_data') as FormArray;
-  }
-
-  employeeSkills(i: number): FormArray {
-    return this.pricingDATAMID()
-      .at(i)
-      .get('api_fields') as FormArray;
-  }
-
-
-
-  /********************
-   * set Merchant Pricing Form
-   */
-  setMerchantPricingForm(){
-
-    //merchant id global
-    this.merchant_id = this.tokenStorage.getToken();
-    // console.log(this.merchant_id)
-    const merchant_id = JSON.parse(this.merchant_id);
-    // console.log(merchant_id.Data.merchant_id)
-
-
-    this.merchantPricingForm = this.fb.group({
-      paynet_merchant_id: new FormControl(this.mid),
-      pricing_data: this.fb.array([this.createItemFeild()])
-    })
-  }
-
-   pricingDATA(): FormArray{
-    return <FormArray> this.merchantPricingForm.get('pricing_data');
-  }
-
-  
-
-  createItemFeild(){
-
- 
-    return this.fb.group({
-      payment_processor_id: new FormControl(''),
-      processor_method_id: new FormControl(''),
-      processor_type: new FormControl(''),
-      percentage: new FormControl(''),
-      flat_amount:  new FormControl('')
-    
-     
-  })
-}
-
- /**********************
-        * add more pricing button click event
-        */
-  addmoremerchantPrice(){
-    this.pricingDATA().push(this.createItemFeild())
   }
 
 
@@ -437,44 +347,6 @@ setvalidateStoreDate(){
    }
 
 
-   /**************************
-    * MID Creation GET
-    */
-   getmidCreation(){
-   
-    this.merchantService.getMIDCreation(this.mid)
-    .subscribe(
-      (res) =>{
-        console.log(res);
-     
-     
-        this.midData = res;  
-       
-     
-        
-        // this.pricingDATAMID().patchValue(res);
-        // this.midcreationForm.patchValue(res)
-        // this.pricingDATAMID().at(index:any).patchValue(res);
-        // this.pricingDATAMID().patchValue(res);
-        this.midcreationForm.get('pricing_data')?.patchValue(res);
-        // this.employeeSkills(0).patchValue(res.api_fields)
-
-        
-
-
-     
-
-        // res.forEach((element:any, index:any) => {
-        //   console.log(element, ':'+ index);
-        //   console.log(this.pricingDATAMID())
-        //   // this.pricingDATAMID().at(index).patchValue(element)
-        // })
-     
-      }
-    )
-
-   }
-
 
    /*****************************
     * MID creation PUT
@@ -490,40 +362,9 @@ setvalidateStoreDate(){
     }
 
 
-   /************************
-    * get Merchant Profile Lisit
-    */
-  getMerchantProfileList(){
-    this.merchantService.getmerchantProcessorList()
-    .subscribe(
-      (res) =>{
-        // console.log(res);
-        this.processorList = res
-      }
-    )
-  }
+ 
 
-  /*********************
-   * on change paymentProcessorId
-   */
-   onChangepaymentprocessorid(selectedValue:string){
-    console.log(selectedValue);
-    this.selectvaluepaymentprocessorid = selectedValue;
-    this.getmerchantProfileMethodList() // Merchant Profile Method List
-   }
 
-  /************************
-   * get Merchant Profile Method List
-   */
-  getmerchantProfileMethodList(){
-    this.merchantService.getmerchantProcessorMethodList(this.selectvaluepaymentprocessorid)
-    .subscribe(
-      (res) =>{
-        console.log(res);
-        this.profileMethod= res;
-      }
-    )
-  }
 
 
   /***************
@@ -959,45 +800,11 @@ setvalidateStoreDate(){
       }
 
 
-      /*************************
-       * Merchant Pricing On Submit 
-       */
-       onSubmitMerchantPricing(){
-        this.merchantService.postmerchantPriceDetails(this.merchantPricingForm.value)
-        .subscribe(
-          (res) => {
-            if(res.Status === 'Success'){
-              this.notification.showSuccess('','Merchant Pricing Insert Sucessfully');
-
-              this.merchantPricingForm.reset();
-              this.getOneMerchantPricing();
-            }
-          }
-        )
-       }
-
-       /**************************
-        * Get One Merchant Pricing 
-        */
-      getOneMerchantPricing(){
-       
-        this.merchantService.getmerchantPricingDetails(this.mid)
-        .subscribe(
-          (res) =>{
-            // console.log(res);
-            // this.merchantPricingForm.patchValue(res)
-          }
-        )
-      } 
-
+     
 
   /*************************
    *MID Creation On Submit
    * */     
-
-       onSUbmitMidCreateion(){
-
-       }      
 
       
 

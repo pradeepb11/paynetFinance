@@ -12,6 +12,9 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MidcreationComponent } from './midcreation/midcreation.component';
+import { MerchantpricingComponent } from './merchantpricing/merchantpricing.component';
+import { LimitComponent } from './limit/limit.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -20,7 +23,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 @NgModule({
   declarations: [
-    MerchantprofileComponent
+    MerchantprofileComponent,
+    MidcreationComponent,
+    MerchantpricingComponent,
+    LimitComponent
   ],
   imports: [
     CommonModule,

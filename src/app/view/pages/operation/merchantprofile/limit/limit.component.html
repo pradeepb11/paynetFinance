@@ -1,0 +1,68 @@
+<form [formGroup]="merchantLimitForm" (ngSubmit)="onSubmitMerchantLimit()">
+    <div class=" col-sm-9 mt-5 mb-5">
+        <input type="hidden" formControlName="paynet_merchant_id">
+        <input type="hidden" formControlName="payment_type">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="DailyPayInLimit" *ngIf="payin">Daily Pay In Limit</label>
+                        <input type="number" class="form-control" id="DailyPayInLimit" autocomplete="off" placeholder="Daily Pay In Limit" formControlName="daily_payin_volume_limit" *ngIf="payin">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="DailyPayOutLimit" *ngIf="payout">Daily Pay Out Limit</label>
+                        <input type="number" class="form-control" id="DailyPayOutLimit" autocomplete="off" placeholder="Daily Pay Out Limit" formControlName="daily_payout_volume_limit" *ngIf="payout">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="DailyPayInTransactionLimit" *ngIf="payin">Daily Pay In Transaction Limit</label>
+                        <input type="number" class="form-control" id="DailyPayInTransactionLimit" autocomplete="off" placeholder="Daily Pay In Transaction Limit" formControlName="daily_payin_transaction_limit" *ngIf="payin">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="MerchantSecretKey" *ngIf="payout">Daily Pay Out Transaction Limit</label>
+                        <input type="number" class="form-control" id="MerchantSecretKey" autocomplete="off" placeholder="Daily Pay Out Transaction Limit" formControlName="daily_payout_transaction_limit" *ngIf="payout">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="DailyPayInWithdrawalLimit" *ngIf="payin">Daily Pay In Withdrawal Limit</label>
+                        <input type="number" class="form-control" id="DailyPayInWithdrawalLimit" autocomplete="off" placeholder="Daily Pay In Withdrawal Limit" formControlName="daily_payin_withdrawal" *ngIf="payin">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class=" mb-3">
+                    <div class="col-sm-12">
+                        <label for="DailyPayOutWithdrawalLimit" *ngIf="payout">Daily Pay Out Withdrawal Limit</label>
+                        <input type="number" class="form-control" id="DailyPayOutWithdrawalLimit" autocomplete="off" placeholder="Daily Pay Out Withdrawal Limit" formControlName="daily_payout_withdrawal" *ngIf="payout">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="group mt-3 ">
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+    </div>
+</form>
+{{merchantLimitForm.value | json}}

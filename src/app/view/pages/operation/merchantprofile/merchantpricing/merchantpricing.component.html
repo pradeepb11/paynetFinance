@@ -1,0 +1,72 @@
+<form [formGroup]="merchantPricingForm" (ngSubmit)="onSubmitMerchantPricing()">
+    <div class=" col-sm-12 mt-5 mb-5">
+        <input type="hidden" name="" formControlName="paynet_merchant_id">
+        <div formArrayName="pricing_data">
+            <div *ngFor="let data of pricingDATA().controls; let i =index">
+                <div [formGroupName]="i" class="row">
+
+                    <div class="col-sm-3">
+                        <div class=" mb-3">
+                            <div class="col-sm-12">
+                                <label for="exampleFormControlSelect2">Select processor</label>
+                                <select class="form-select" id="exampleFormControlSelect2" formControlName="payment_processor_id" (change)="onChangepaymentprocessorid($event.target.value)">
+                            <option selected disabled>Please Select processor</option>
+                            <option value="{{data.payment_processor_id}}" *ngFor="let data of processorList">{{data.payment_processor_name}}</option>
+                            
+                          </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class=" mb-3">
+                            <div class="col-sm-12">
+                                <label for="processor_method_id">Select Payment Method</label>
+                                <select class="form-select" id="processor_method_id" formControlName="processor_method_id">
+                            <option selected disabled>Please Select Payment Method</option>
+                            <option value="{{item.payment_processor_methods_id}}"  *ngFor="let item of profileMethod">{{item.method_type}}</option>
+                          
+                          </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="" formControlName="processor_type">
+
+                    <div class="col-sm-3">
+                        <div class=" mb-3">
+                            <div class="col-sm-12">
+                                <label for="EnterPercentageAmount">Enter Percentage Amount</label>
+                                <input type="number" class="form-control" id="EnterPercentageAmount" autocomplete="off" placeholder="Enter Percentage Amount" formControlName="percentage">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class=" mb-3">
+                            <div class="col-sm-12">
+                                <label for="EnterFlatAmount">Enter Flat Amount</label>
+                                <input type="number" class="form-control" id="EnterFlatAmount" autocomplete="off" placeholder="Enter Flat Amount" formControlName="flat_amount">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <button class="btn btn-outline-primary btn-sm" (click)="addmoremerchantPrice()">+ Add More Method</button>
+
+    </div>
+
+
+    <hr>
+    <div class="group mt-3 ">
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+    </div>
+</form>
+{{merchantPricingForm.value | json}}
